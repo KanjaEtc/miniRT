@@ -1,0 +1,26 @@
+1. Calculer la taille en unites de l'ecran
+
+L'ecran est la portion du plan 3D que la camera voit, etant donne son FOV. C'est ce 
+qu'on doit voir sur le PC quand on lance miniRT. Cet ecran occupe toujours la totalite de la fenetre. Plus il est petit, plus l'image parait zoomee. C'est ce qui apparaitra sur notre fenetre, il est donc par definition en deux dimensions.
+
+Contrairement a la taille de la fenetre qui est fixe et s'exprime en pixels, la taille 
+de l'ecran depend du FOV et est exprimee en unites. Une meme fenetre peux representer 
+des ecrans de tailles differentes.
+
+Calculer la taille de l'ecran revient a determiner quelle partie du plan 3D sera 
+visible dans le rendu final.
+
+
+2. Identifier les points du plan 3D representes par chaque pixel
+
+Ca revient a determiner ce que representera chaque pixel : un point du background ou 
+un point d'un objet.
+
+
+?. Determiner la couleur de chaque pixel
+
+Les pixels representant un partie d'un objet ont une couleur qui depend de s'ils sont 
+eclaires par la source de lumiere et des caracteristiques de cette derniere (couleur, 
+intensite).
+
+...
