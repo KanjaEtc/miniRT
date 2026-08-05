@@ -1,3 +1,17 @@
+A VERIFIER :
+
+Pour chaque pixel on regarde s'il peut atteindre la source de lumiere sans
+rencontrer d'intersection. S'il en recontre, alors le pixel fait partie d'une ombre. 
+S'il n'en rencontre pas, soit il est lui-meme une intersection, et alors on calcule 
+sa couleur comme decrit dans couleur_et_lumiere.md ; soit il n'en est pas et alors 
+il represente du vide eclaire pas la lumiere ambiante.
+
+Pour verifier si le point que simule un pixel peut atteindre la source de lumiere, 
+on remonte vers celui-ci en suivant son vecteur directeur. On verifie chacun des 
+pixels par lesquels on passe. 
+
+
+
 1. Calculer la taille en unites de l'ecran
 
 L'ecran est la portion du plan 3D que la camera voit, etant donne son FOV. C'est ce 

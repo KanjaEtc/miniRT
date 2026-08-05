@@ -1,11 +1,11 @@
-**DEFINITIONS ET CALCULS DE BASE**
+**DEFINITIONS**
 
 
 **Produit scalaire** : multiplication d'un vecteur A avec un vecteur B
 
 Dans un plan en 3 dimensions x, y et z :
 
-		A * B = Ax * Bx + Ay * By + Cx * Cy
+		A . B = Ax * Bx + Ay * By + Cx * Cy
 
 
 

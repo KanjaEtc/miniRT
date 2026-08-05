@@ -6,6 +6,8 @@
 *basics* : https://raytracing.github.io/books/RayTracingInOneWeekend.html
 
 *intersections* : https://www.cl.cam.ac.uk/teaching/1999/AGraphHCI/SMAG/node2.html
+				https://www.tutorialspoint.com/computer_graphics/ray_object_intersection_in_ray_tracing.htm
+				https://www.cl.cam.ac.uk/teaching/1999/AGraphHCI/SMAG/node2.html#SECTION00023100000000000000
 
 *matrix et rotation* : https://learnopengl.com/Getting-started/Coordinate-Systems
 
