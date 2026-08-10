@@ -1,0 +1,2 @@
+- remplir le fichier rotation,
+- terminer le fichier intersection (cylindre) 
