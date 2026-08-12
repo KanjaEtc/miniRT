@@ -1,0 +1,36 @@
+TROUVER LE POINT DU PLAN AUQUEL CORRESPOND CHAQUE PIXEL
+
+t_vector	*ft_coordinates_in_cameras_viewpoint(t_scene scene, t_point *point,
+	double a, double b)
+{
+	t_vector camera_to_point;
+	t_vector forward;
+	t_vector right;
+	t_vector up;
+	
+	forward = normalize(scene.camera_coordinates.x, scene.camera_coordinates.y,
+		scene.camera_coordinates.z);
+	right = normalize((0,1,0) * forward)
+	up = forward * right
+
+	point->coordinates = scene.camera_coordinates + forward * 1 + right * a + up * b
+	camera_to_point = ft_normalize(ft_vector_subtraction(point->coordinates, scene.camera_coordinates))
+	return (camera_to_point)
+}
+
+t_vector	*ft_from_pixel_to_point(t_scene scene, t_point *point, x_pixel, y_pixel)
+{
+	t_vector camera_to_point;
+	double	a;
+	double	b;
+
+	pixel->x_pixel = x_pixel;
+	pixel->y_pixel = y_pixel;
+
+	a = (x_pixel / scene.window_width - 0.5) * scene.screen_width
+	b = (y_pixel / scene.window_height - 0.5) * scene.screen_height
+
+	camera_to_point = ft_coordinates_in_cameras_viewpoint(scene, point, a, b)
+	return (camera_to_point)
+	
+}

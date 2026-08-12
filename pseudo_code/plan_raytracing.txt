@@ -1,0 +1,28 @@
+int ft_raytracing(t_scene scene)
+{
+	t_pixel	*pixel;
+	t_vector *new_point;
+	int		x = -1;
+	int		y;
+
+	pixel->scene = scene;
+	while (++x < scene.window_width)
+	{
+		y = -1;
+		while (++y < scene.window_height)
+		{
+			pixel->camera_to_point = ft_from_pixel_to_point(scene, pixel, x, y);
+			new_point = ft_closest_intersection(pixel, scene.camera_coordinates,
+				pixel->point_coordinates);
+			if (new_point)
+				pixel->point_coordinates = new_point;
+			pixel->point_to_light = ft_point_to_light_vector(scene, pixel);
+			if (ft_closest_intersection(pixel, pixel->point_coordinates,
+				scene.light_coordinates))
+				ft_shadow_color(pixel);
+			else
+				ft_find_out_color(pixel)
+		}
+		ft_render(pixel);
+	}
+}

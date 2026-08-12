@@ -34,11 +34,11 @@ L'ecran fait H unites de haut et W unites de large.
 2) Passer d'un pixel a un point dans le plan
 
 - version longue (avec explications) (a.)
-- version courte (sans explications)(b.)
+- version courte (sans explications) (b.)
 
 a. Version longue (avec explications)
 
-Ecran a les caracterisitques suivantes :
+Ecran a les caracteristiques suivantes :
 - son centre est (0,0)
 - coins : (-W/2, -H/2) ; (W/2, -H/2) ; (W/2, H/2) ; (-W/2, H/2)
 

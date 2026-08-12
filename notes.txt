@@ -1,2 +1,11 @@
-- remplir le fichier rotation,
-- terminer le fichier intersection (cylindre) 
+A FAIRE
+- continuer le plan en pseudo code
+- revoir rotation.md
+
+ROTATION :
+
+Le fichier rotation.md sert pour simuler la rotation de la camera autour de la scene. 
+Ce serait peut-etre plus pertinent de plutot la faire tourner sur elle-meme. 
+
+On peut rendre l'affichage interactif (controler la rotation de la camera avec le clavier) 
+mais a priori c'est facultatif

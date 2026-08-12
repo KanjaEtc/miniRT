@@ -5,7 +5,9 @@
 
 Dans un plan en 3 dimensions x, y et z :
 
-		A . B = Ax * Bx + Ay * By + Cx * Cy
+			A.B = Ax * Bx + Ay * By + Cx * Cy
+
+Le produit scalaire est une operation non commutative : A.B =/= B.A
 
 
 
@@ -35,3 +37,23 @@ Ensuite :
 
 Alors on obtient : normal(x_normal, y_normal, z_normal)
 
+
+
+**Rayon et point** : Chaque rayon P peut etre note de la facon suivante :
+
+			P(t) = O - tD
+Ou :
+- O est l'origine du rayon
+- D est le vecteur de direction normalise du rayon
+
+t est une variable qui determine la distance qui separe le point P(t) du rayon de l'origine de celui-ci. Exemple : si t = 3 alors on parle du point situe a 3 unites de distance de O dans la direction D.
+
+
+
+**Longueur d'un vecteur**
+
+Soit le vecteur v(x,y,z). On calcule sa longueur comme suit :
+
+					|v| = sqrt(x² + y² + z²)
+Ou :
+- sqrt = racine carree

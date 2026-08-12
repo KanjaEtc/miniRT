@@ -1,0 +1,104 @@
+/* Fonctions utilitaires */
+
+t_vector	*ft_vector(t_vector point_1, t_vector point_2);
+double		ft_scalar(t_vector v1, t_vector v2);
+t_vector	*ft_vector_subtraction(t_vector v1, t_vector v2);
+double		ft_vector_length(t_vector point_1, t_vector point_2);
+t_vector	*ft_normalize(t_vector veector);
+
+
+t_vector
+{
+	double x;
+	double y;
+	double z;
+}
+
+t_sphere
+{
+	t_vector	center;
+	double		diameter;
+	t_vector	color;
+}
+
+t_plane
+{
+	t_vector	random_point;
+	t_vector	normal_vector;
+	t_vector	color;
+}
+
+t_cylinder
+{
+	t_vector	center;
+	t_vector	axis;
+	double		diameter;
+	double		height;
+	t_vector	color;
+}
+
+t_scene
+{
+	double		ambient_ratio;
+	t_vector	color;
+
+	t_vector	camera_coordinates;
+	t_vector	camera_vector;
+	double		camera_fov;
+
+	t_vector	light_coordinates;
+	double		light_brightness;
+
+	double		window_width;
+	double		window_height;
+
+	double		screen_width;
+	double		screen_height;
+
+	t_sphere	*spheres; //list
+	t_plane		*planes; //list
+	t_cylinder	*cylinders; //list
+}
+
+
+t_pixel
+{
+	double		x_pixel;
+	double		y_pixel;
+
+	t_vector 	point_coordinates;
+
+	t_vector	camera_to_point;
+	bool		hidden;
+	
+	t_vector	point_to_light;
+	bool		shadow;
+	t_vector	color;
+
+	t_scene		scene;
+}
+
+---------------------------------------------------------------------------
+
+// t_pixel
+// {
+// 	double	x_pixel;
+// 	double	y_pixel;
+// 
+// 	// double	x_point;
+// 	// double	y_point;
+// 
+// 	t_scene	scene;
+// }
+// fusionner ?
+// t_point
+// {
+// 	// t_vector	coordinates;
+// 	
+// 	t_vector	camera_to_point;
+// 	bool		hidden;
+// 	
+// 	t_vector	point_to_light;
+// 	bool		shadow;
+// 	t_vector	color;
+// }

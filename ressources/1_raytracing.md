@@ -25,7 +25,7 @@ Camera :
 	plus gros.
 - le vecteur d'orientation normalise(*1*) : c'est la direction dans laquelle regarde 
 	la camera. S'il est de (0,0,1) alors la camera regarde dans la profondeur (donc 
-	le long de l'axe z).
+	le long de l'axe z).Ca a l'air plus complique...
 
 Objet :
 - les coordonnees de leur centre (sphere, cylindre)
