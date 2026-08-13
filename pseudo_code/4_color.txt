@@ -1,0 +1,23 @@
+t_vector	*ft_find_ambient_color(t_scene scene, t_pixel pixel)
+{
+	t_vector	*ambient_color;
+
+	// Couleur de l'objet * Couleur de la lumiere ambiante * Intensite 
+	//	de la lumiere ambiante
+	ambient_color = ft_product(pixel->object.color, scene.ambient_ratio);
+	ambient_color = ft_product(ambient_color, scene.ambient_color);
+	return (ambient_color);
+}
+
+t_vector	*ft_find_pixel_color(t_scene scene, t_pixel pixel)
+{
+	t_vector	*ambient_color;
+	t_vector	*diffuse_color;
+	t_vector	*specular_color;
+
+	ambient_color = ft_find_ambient_color;
+	diffuse_color = ft_find_diffuse_color;
+	specular_color = ft_find_specular_color;
+
+	return (ft_addition(ambient_color + diffuse_color + specular_color));
+}

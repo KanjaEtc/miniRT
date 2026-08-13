@@ -1,10 +1,15 @@
 /* Fonctions utilitaires */
 
-t_vector	*ft_vector(t_vector point_1, t_vector point_2);
-double		ft_scalar(t_vector v1, t_vector v2);
-t_vector	*ft_vector_subtraction(t_vector v1, t_vector v2);
 double		ft_vector_length(t_vector point_1, t_vector point_2);
 t_vector	*ft_normalize(t_vector veector);
+
+double		ft_scalar(t_vector v1, t_vector v2);
+
+t_vector	*ft_vector_subtraction(t_vector v1, t_vector v2);
+t_vector	*ft_vector_addition(t_vector v1, t_vector v2);
+t_vector	*ft_vector_product(t_vector v1, t_vector v2);
+
+double		*ft_quadratic_equation(double a, double b, double c);
 
 
 t_vector
@@ -14,8 +19,18 @@ t_vector
 	double z;
 }
 
+typedef enum e_type
+{
+	// SHADOW,
+	// BACKGROUND,
+	PLANE,
+	SPHERE,
+	CYLINDER
+}	t_type;
+
 t_sphere
 {
+	t_type		type;
 	t_vector	center;
 	double		diameter;
 	t_vector	color;
@@ -23,6 +38,7 @@ t_sphere
 
 t_plane
 {
+	t_type		type;
 	t_vector	random_point;
 	t_vector	normal_vector;
 	t_vector	color;
@@ -30,6 +46,7 @@ t_plane
 
 t_cylinder
 {
+	t_type		type;
 	t_vector	center;
 	t_vector	axis;
 	double		diameter;
@@ -43,10 +60,11 @@ t_scene
 	t_vector	color;
 
 	t_vector	camera_coordinates;
-	t_vector	camera_vector;
+	t_vector	camera_normal;
 	double		camera_fov;
 
 	t_vector	light_coordinates;
+	t_vector	light_color; // =(255,255,255)
 	double		light_brightness;
 
 	double		window_width;
@@ -60,7 +78,6 @@ t_scene
 	t_cylinder	*cylinders; //list
 }
 
-
 t_pixel
 {
 	double		x_pixel;
@@ -69,10 +86,13 @@ t_pixel
 	t_vector 	point_coordinates;
 
 	t_vector	camera_to_point;
-	bool		hidden;
+	// bool		hidden;
 	
-	t_vector	point_to_light;
 	bool		shadow;
+	bool		background;
+	void		*object;
+
+	t_vector	point_to_light;
 	t_vector	color;
 
 	t_scene		scene;

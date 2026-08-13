@@ -7,8 +7,6 @@ Dans un plan en 3 dimensions x, y et z :
 
 			A.B = Ax * Bx + Ay * By + Cx * Cy
 
-Le produit scalaire est une operation non commutative : A.B =/= B.A
-
 
 
 **Vecteur normal** : vecteur perpendiculaire a une droite, une surface ou un plan

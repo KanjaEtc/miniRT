@@ -1,0 +1,22 @@
+t_vector	*ft_find_specular_color(t_scene scene, t_pixel *pixel)
+{
+	t_vector	*specular_intensity;
+	double		spec; // determine la force de l'effet speculaire, choisie librement
+	t_vector	*reflection_vector;
+	t_vector	*normal_light;
+	t_vector	*normal_object;
+
+	normal_light = normalize(ft_subtraction(pixel->point_coordinates, scene.light_coordinates));
+	normal_object = ft_find_object_normal_vector(scene, pixel);
+	
+	// reflexion = normal_lumiere - 2(normal_lumiere . normal_surface) * normal_surface
+	reflection_vector = 2 * ft_scalar(normal_light, normal_object);
+	reflection_vector *= normal_object;
+	reflection_vector = ft_subtraction(normal_light, reflection_vector);
+
+	//intensite_speculaire = pow(max(normal_camera . vecteur_reflexion, 0), 32)
+	specular_intensity = pow(max(ft_scalar(scene.camera_normal, reflection_vector), 0), 32);
+	
+	// indice_speculaire * intensite_speculaire * couleur_lampe
+	return (ft_product(spec * specular_intensity, scene.light_color));
+}

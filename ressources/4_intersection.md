@@ -7,21 +7,21 @@ On cherche a determiner si un rayon a un point d'intersection avec un objet et, 
 
 Soit un point P dans l'espace. P fait partie d'un plan si :
 
-					N . (P - Q) = 0
+					N.(P - Q) = 0
 Ou :
 - N est le vecteur normal du plan (donne dans la map)
 - Q est un point dans le plan (donne dans la map)
 
-Pour trouver le point d'intersection t :
+Pour trouver le point d'intersection P(t) :
 
-					t = (p₀ - L₀) . n / L . n
+					t = D.N(Q - O).N
 Ou :
-- p₀ est un point appartenant au plan (donne dans la map)
-- L₀ = coordonnees de l'origine du rayon
+- Q est un point appartenant au plan (donne dans la map)
+- O = coordonnees de l'origine du rayon
 - n = vecteur normal du plan (donne dans la map)
-- L = vecteur (normal? directeur?) du rayon lumineux
+- D = vecteur directeur du rayon
 
-A noter : si L . n donne un tout petit nombre (ex : 1e-6) alors le rayon est parallele au plan. L'equation a alors 0 ou une infinite de solutions.
+A noter : si D.N donne un tout petit nombre (ex : 1e-6) alors le rayon est parallele au plan. L'equation a alors 0 ou une infinite de solutions.
 
 
 2) Sphere
@@ -36,7 +36,7 @@ Pour trouver le point d'intersection t :
 
 Un rayon peut etre represente sous la forme :
 
-					O + tD
+					P(t) = O + tD
 Ou :
 - O = origine du rayon
 - D = direction du rayon (vecteur normalise)
@@ -56,11 +56,11 @@ Il existe un point le long du rayon qui appartient aussi a la sphere. Des lors o
 
 Apres le developpement de l'identite remarquable :
 
-					tD² + 2tD . (O - C) + |O - C|² - R² = O
+					tD² + 2tD.(O - C) + |O - C|² - R² = O
 
-C'est une equation de type ax² + bx + c = 0 (equaiton du second degre), ou :
+C'est une equation de type ax² + bx + c = 0 (equation du second degre), ou :
 - a = D²
-- b = 2D . (O - C)
+- b = 2D.(O - C)
 - c = |O - C|² - R²
 
 Si D (vecteur directeur de l'origine du rayon) est bien normalise, alors par definition :
@@ -71,12 +71,12 @@ Pour resoudre cette equation du second degre on calcule le discriminant Δ :
 
 					Δ = b² - 4ac
 
-Si Δ > 0 alors l'equation a deux solutions (et il existe deux points d'intersection) :
+Si Δ > 0 alors l'equation a deux solutions (et il existe deux points d'intersection potentiels) :
 
 					(-b + √Δ) / 2a
 					(-b - √Δ) / 2a
 
-Si Δ = 0 alors l'equation a une solution (et il existe un point d'intersection) :
+Si Δ = 0 alors l'equation a une solution (et il existe un point d'intersection potentiel) :
 
 					(-b) / 2a
 
@@ -124,7 +124,7 @@ On obtient donc l'equation du second degre ax² + bx + c = 0 ou :
 - b = 2[(O - Q).D - ((O - Q).A)(D.A)]
 - c = (O - Q).(O - Q) - ((O - Q).A)² - R²
 
-On la resoud comme explique dans 2) Sphere.
+On la resoud comme expliqu) Sphe dans 2) Sphere.
 
 S'il existe au moins une solution t, on verifie qu'elle est bien la range definie par la hauteur du cylindre.
 

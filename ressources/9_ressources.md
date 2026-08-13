@@ -20,7 +20,7 @@
 *matrix and rotation* : https://learnopengl.com/Getting-started/Transformations
 
 *ambient, diffuse and specular lightning* : https://learnopengl.com/Lighting/Basic-Lighting
-
+	
 *Phong model* : https://rodolphe-vaillant.fr/entry/85/phong-illumination-model-cheat-sheet
 
 *reflexion lumineuse* : https://euler.ac-versailles.fr/IMG/pdf/raytracing.pdf

@@ -1,0 +1,45 @@
+t_vector	*ft_cylinder_normal_vector(t_scene, t_pixel *pixel)
+{
+
+}
+
+t_vector	*ft_sphere_normal_vector(t_scene, t_pixel *pixel)
+{
+
+	// (P - C) / rayon (ou C = centre de la sphere)
+}
+
+t_vector	*ft_plane_normal_vector(t_scene, t_pixel *pixel)
+{
+
+}
+
+t_vecteur	*ft_find_object_normal_vector(t_scene, t_pixel *pixel)
+{
+	if (pixel->type == PLANE)
+		return (ft_plane_normal_vector(scene, pixel));
+	if (pixel->type == SPHERE)
+		return (ft_sphere_normal_vector(scene, pixel));
+	if (pixel->type == CYLINDER)
+		return (ft_cylinder_normal_vector(scene, pixel));
+}
+
+t_vector	*ft_diffuse_color(t_scene scene, t_pixel *pixel)
+{
+	t_vector	*diffuse_color;
+	double		*light_intensity;
+	t_vector	*normal_object;
+	t_vector	*normal_light;
+
+	normal_object = ft_find_object_normal_vector(scene, pixel);
+	normal_light = ft_normalize(ft_subtraction(scene.light_coordinates, pixel->point_coordinates));
+	
+	// I = max(0, N . L) * light_brightness
+	light_intensity = max(0, ft_scalar(normal_object, normal_light)) * scene.light_brightness;
+	
+	// Couleur de l'objet * Couleur de la lumiere * Intensite de la lumiere
+	diffuse_color = ft_product(pixel->object.color, light_intensity);
+	diffuse_color = ft_vector_multiplication(diffuse_color, scene.light_color);
+
+	return (diffuse_color);
+}

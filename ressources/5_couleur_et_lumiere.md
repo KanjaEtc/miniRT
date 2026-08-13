@@ -42,12 +42,12 @@ b. Calcul du vecteur normal de la suface d'un objet un point P :
 - sphere : normal_sphere = (P - C) / rayon (ou C = centre de la sphere)
 - cylindre (extremite) : axe (extremite du haut) ou -axe (extemite du bas)
 - cylindre (cote) : 
-					projection = centre + axe . ((P - centre) . axe)
+					projection = centre + axe.((P - centre) . axe)
 					normal_cylindre = normalize(P - projection)
 
 On peut alors calculer l'intensite lumineuse I :
 
-					I = max(0, N . L) * light_brightness
+					I = max(0, N.L) * light_brightness
 
 Ou :
 - max = une fonction qui revoie le plus grand de ses arguments
@@ -62,10 +62,10 @@ couleur_speculaire =
 						indice_speculaire * intensite_speculaire * couleur_lampe
 
 Ou :
-- l'indice  est une valeur choisie entre 0 et 1 : plus elle s'approche 
+- l'indice est une valeur choisie entre 0 et 1 : plus elle s'approche 
 	de 1, plus le disque sera petit et lumineux
 - l'intensite speculaire determine le niveau de luminosite percu par la camera, selon l'indice 
-	et sa position pa rapport a l'objet
+	et sa position par rapport a l'objet
 
 L'intensite speculaire se calcule comme suit :
 

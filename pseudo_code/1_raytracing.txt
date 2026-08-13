@@ -16,12 +16,12 @@ int ft_raytracing(t_scene scene)
 				pixel->point_coordinates);
 			if (new_point)
 				pixel->point_coordinates = new_point;
-			pixel->point_to_light = ft_point_to_light_vector(scene, pixel);
+			pixel->point_to_light = ft_subtraction(scene.light_coordinates, pixel.point_coordinates);
 			if (ft_closest_intersection(pixel, pixel->point_coordinates,
 				scene.light_coordinates))
 				ft_shadow_color(pixel);
 			else
-				ft_find_out_color(pixel)
+				ft_find_pixel_color(pixel)
 		}
 		ft_render(pixel);
 	}

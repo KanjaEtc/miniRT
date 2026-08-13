@@ -1,0 +1,35 @@
+double	ft_find_ray_plane_intersection_point(t_scene scene, t_vector from_point,
+	t_vector to_point)
+{
+	t_vector	P;
+	double		t;
+	double		a;
+	double		b;
+
+	a = ft_scalar(ft_vector_subtraction(to_point - from_point),
+		scene.planes->normal_vector);
+	if (a < epsilon_a_determiner)
+		return (parallele au plan (on fait quoi?));
+	b = ft_scalar(ft_vector_subtraction(scene.planes->random_point, from_point),
+		scene.planes->normal_vector);
+	t = a * b;
+	return (t);
+}
+
+t_vector *ft_closest_ray_plane_intersection(t_scene scene, t_vector from_point, t_vector to_point)
+{
+	double		t;
+	double		t_min;
+
+	while (scene.planes)
+	{
+		// if N . (P - Q) = 0
+		if (!ft_scalar(scene.planes->normal_vector, ft_vector_subtraction(pixel.coordinates, scene.planes->random_point)))
+		{
+			t = ft_ray_plane_intersection_point(scene, from_point, to_point);
+			if (t > 0 && t < t_min)
+				t_min = t;
+		}
+	}
+	return (t_min);
+}

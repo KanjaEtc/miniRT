@@ -1,0 +1,37 @@
+double	ft_find_ray_sphere_intersection_point(t_scene scene, t_vector from_point,
+	t_vector to_point)
+{
+	t_vector	ray_vector;
+	double		a;
+	double		b;
+	double		c;
+
+	ray_vector = ft_vector_subtraction(to_point, from_point);
+	a = ft_scalar(ray_vector, ray_vector);
+	b = 2 * ft_scalar(ray_vector, ft_subtraction(from_point, scene.spheres->center));
+	c = pow(ft_vector_length(ft_vector_subtraction(from_point, scene.spheres->center)), 2)
+		- pow(scene.spheres->diameter / 2);
+	return (ft_quadratic_equation(a, b, c));
+}
+
+
+double	ft_closest_ray_sphere_intersection(t_scene scene, t_vector from_point,
+	t_vector to_point)
+{
+	double	*solutions;
+	double	t;
+	double	t_min;
+	
+	while (scene.spheres)
+	{
+		solutions = ft_find_ray_sphere_intersection_point(scene, from_point, to_point);
+		if (solutions)
+		{
+			if (solutions[0] > 0 && solutions[0] < t_min)
+				t_min = solutions[0];
+			if (solutions[1] && solutions[1] > 0 && solutions[1] < t_min)
+				t_min = solutions[1];
+		}
+	}
+	return (t_min);
+}

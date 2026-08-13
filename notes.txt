@@ -1,6 +1,9 @@
 A FAIRE
-- continuer le plan en pseudo code
 - revoir rotation.md
+- revoir logique de intersections en pseudo-code (notamment la collecte des points d'intersection)
+- trouver un moyen de tester le code deja ecrit
+- formules de calcul du vecteur normal selon surface = peu clair
+- noter en commentaires les formules maths dans le pseudo-code
 
 ROTATION :
 
@@ -9,3 +12,6 @@ Ce serait peut-etre plus pertinent de plutot la faire tourner sur elle-meme.
 
 On peut rendre l'affichage interactif (controler la rotation de la camera avec le clavier) 
 mais a priori c'est facultatif
+
+
+Il faudra aussi traiter le cas des objets transparents (refraction).
