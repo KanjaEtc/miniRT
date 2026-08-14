@@ -1,7 +1,7 @@
 t_vector	*ft_find_specular_color(t_scene scene, t_pixel *pixel)
 {
 	t_vector	*specular_intensity;
-	double		spec; // determine la force de l'effet speculaire, choisie librement
+	double		spec; // determine la force de l'effet speculaire, choisi librement
 	t_vector	*reflection_vector;
 	t_vector	*normal_light;
 	t_vector	*normal_object;

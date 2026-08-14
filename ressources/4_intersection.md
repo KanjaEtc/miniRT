@@ -127,7 +127,7 @@ On obtient donc l'equation du second degre ax² + bx + c = 0 ou :
 On la resoud comme expliqu) Sphe dans 2) Sphere.
 
 S'il existe au moins une solution t, on verifie qu'elle est bien la range definie par la hauteur du cylindre.
-
+P(t) = O + tD
 Soient :
 - C le centre du cylindre (donne dans la map)
 - H sa hauteur (donnee dans la map)

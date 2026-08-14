@@ -42,7 +42,7 @@ b. Calcul du vecteur normal de la suface d'un objet un point P :
 - sphere : normal_sphere = (P - C) / rayon (ou C = centre de la sphere)
 - cylindre (extremite) : axe (extremite du haut) ou -axe (extemite du bas)
 - cylindre (cote) : 
-					projection = centre + axe.((P - centre) . axe)
+					projection = centre + axe * ((P - centre).axe)
 					normal_cylindre = normalize(P - projection)
 
 On peut alors calculer l'intensite lumineuse I :

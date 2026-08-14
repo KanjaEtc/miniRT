@@ -9,7 +9,11 @@ t_vector	*ft_vector_subtraction(t_vector v1, t_vector v2);
 t_vector	*ft_vector_addition(t_vector v1, t_vector v2);
 t_vector	*ft_vector_product(t_vector v1, t_vector v2);
 
-double		*ft_quadratic_equation(double a, double b, double c);
+t_vector	*ft_vector_number_addition(t_vector *vector, double n);
+t_vector	*ft_vector_number_product(t_vector *vector, double n);
+t_vector	*ft_vector_number_division(t_vector *vector, double n);
+
+double		*ft_quadratic_equation_smallest_solution(double a, double b, double c);
 
 
 t_vector
@@ -25,7 +29,8 @@ typedef enum e_type
 	// BACKGROUND,
 	PLANE,
 	SPHERE,
-	CYLINDER
+	CYLINDER_SURFACE,
+	CYLINDER_CAP
 }	t_type;
 
 t_sphere

@@ -1,44 +1,40 @@
 double	ft_find_ray_disk_intersection_point(t_scene scene, t_vector from_point,
 	t_vector to_point, t_vector disk_center)
 {
-	double	t;
-	double	denominator;
+	double		t;
+	double		denominator;
 	t_vector	intersection_point;
 
 	// t = - (O - C₁).A / D.A
-	denominator = ft_scalar(ft_subtraction(to_point, from_point), scene.cylinders->axis);
+	denominator = ft_scalar(ft_normalize(ft_subtraction(to_point, from_point)), scene.cylinders->axis);
 	if (!denominator)
-		return (0);
+		return (-1);
 	t = -(ft_scalar(ft_subtraction(from_point, disk_center), scene.cylinders->height)
 		/ denominator);
 
 	// |P - C₁| <= R
-	intersection_point = ft_addition(from_point, ft_multiplication(ft_subtraction(to_point, from_point), t));
-	if (ft_vector_length(ft_subtraction(intersection_point, disk_center)) <= scene.cylinders->height)
+	intersection_point = ft_addition(from_point, ft_multiplication(ft_normalize(ft_subtraction(to_point, from_point)), t));
+	if (ft_vector_length(ft_subtraction(intersection_point, disk_center)) <= scene.cylinders->diameter / 2)
 		return (t);
-	return (0);
+	return (-1);
 }
 
-double	*ft_check_intersection_points_validity(t_scene scene, double *solutions,
+double	ft_check_intersection_points_validity(t_scene scene, double to_check,
 	t_vector from_point, t_vector to_point)
 {
 	t_vector	point;
-	double	*valid;
-	double	t;
-	double	h;
+	double		t;
+	double		h;
 
-	while (solutions[i])
-	{
-		// P(t) = O + tD avec un t trouve avec ft_find
-		point = ft_subtraction(from_point, ft_multiplication(to_point, solutions[0]));
-		h = ft_scalar(ft_subtaction(point, scene.cylinders->center), scene.cylinders->axis);
-		if (h >= -(scene.cylinders->height / 2) && h <= scene.cylinders->height / 2)
-			valid[j++] = solutions[i++];
-	}
-	return (valid);
+	// P(t) = O + tD avec un t trouve avec ft_find
+	point = ft_addition(from_point, ft_multiplication(ft_normalize(ft_subtraction(to_point, from_point)), t));
+	h = ft_scalar(ft_subtraction(point, scene.cylinders->center), scene.cylinders->axis);
+	if (h >= -(scene.cylinders->height / 2) && h <= scene.cylinders->height / 2)
+		return (1);
+	return (0);
 }
 
-double	*ft_find_ray_cylinder_intersection_point(t_scene scene, t_vector from_point,
+double	ft_find_ray_cylinder_intersection_point(t_scene scene, t_vector from_point,
 	t_vector to_point)
 {
 	t_vector	ray_vector;
@@ -47,7 +43,7 @@ double	*ft_find_ray_cylinder_intersection_point(t_scene scene, t_vector from_poi
 	double		b;
 	double		c;
 
-	ray_vector = ft_subtraction(to_point, from_point);
+	ray_vector = ft_normalize(ft_subtraction(to_point, from_point));
 	origin_axis_vector = ft_subtraction(from_point, scene.cylinder->center);
 
 	a = ft_scalar(ray_vector, ray_vector)
@@ -59,40 +55,42 @@ double	*ft_find_ray_cylinder_intersection_point(t_scene scene, t_vector from_poi
 	c = ft_scalar(origin_axis_vector, origin_axis_vector)
 		- pow(ft_scalar(origin_axis_vector, scene.cylinder->axis), 2)
 			- pow(scene.cylinder->diameter, 2);
-	return (ft_quadratic_equation(a, b, c));
+	return (ft_quadratic_equation_smallest_solution(a, b, c));
 }
 
-double	ft_closest_ray_cylinder_intersection(t_scene scene, t_vector from_point,
+double	ft_closest_ray_cylinder_intersection(t_scene scene, t_pixel *pixel, t_vector from_point,
 	t_vector to_point)
 {
-	double		*solutions;
+	double		t
 	double		t_min;
 	t_vector	disk_center;
 
-	solutions = malloc(sizeof(double) * (nb_cylinders * 2 + 1));
 	while (scene.cylinder)
 	{
-		solutions = ft_find_ray_cylinder_intersection_point(scene, from_point, to_point);
-		solutions = ft_check_intersection_points_validity();
-		if (solutions)
+		t = ft_find_ray_cylinder_intersection_point(scene, from_point, to_point);
+		if (ft_check_intersection_points_validity(scene, t, from_point, to_point) && t > 0 && t < t_min)
 		{
-			if (solutions[0] > 0 && solutions[0] < t_min)
-				t_min = solutions[0];
-			if (solutions[1] && solutions[1] > 0 && solutions[1] < t_min)
-				t_min = solutions[1];
+			t_min = t;
+			pixel->type = CYLINDER_SURFACE;
+			pixel->object = scene.cylinders;
 		}
 		// C₁ = C - (H / 2)A
 		disk_cylinder = scene.cylinder->center - ft_multiplication(scene.cylinder->axis, scene.cylinder->height / 2);
-		solutions = ft_find_ray_disk_intersection_point(scene, from_point, to_point, t_vector disk_center);
-		disk_cylinder = scene.cylinder->center + ft_multiplication(scene.cylinder->axis, scene.cylinder->height / 2);
-		solutions = ft_find_ray_disk_intersection_point(scene, from_point, to_point, t_vector disk_center);
-		if (solutions)
+		t = ft_find_ray_disk_intersection_point(scene, from_point, to_point, t_vector disk_center);
+		if (t > 0 && t < t_min)
 		{
-			if (solutions[0] > 0 && solutions[0] < t_min)
-				t_min = solutions[0];
-			if (solutions[1] && solutions[1] > 0 && solutions[1] < t_min)
-				t_min = solutions[1];
+			t_min = t;
+			pixel->type = CYLINDER_CAP;
+			pixel->object = scene.cylinders;
+		}
+		disk_cylinder = scene.cylinder->center + ft_multiplication(scene.cylinder->axis, scene.cylinder->height / 2);
+		t = ft_find_ray_disk_intersection_point(scene, from_point, to_point, t_vector disk_center);
+		if (t > 0 && t < t_min)
+		{
+			t_min = t;
+			pixel->type = CYLINDER_CAP;
+			pixel->object = scene.cylinders;
 		}
 	}
-	return (t_min);
+	return (ft_addition(from_point, ft_multiplication(ft_normalize(ft_subtraction(to_point, from_point)), t_min)));
 }

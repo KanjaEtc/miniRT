@@ -1,17 +1,7 @@
 A FAIRE
-- revoir rotation.md
-- revoir logique de intersections en pseudo-code (notamment la collecte des points d'intersection)
+- verifier que intersections fonctionne aussi pour la lampe
 - trouver un moyen de tester le code deja ecrit
-- formules de calcul du vecteur normal selon surface = peu clair
 - noter en commentaires les formules maths dans le pseudo-code
-
-ROTATION :
-
-Le fichier rotation.md sert pour simuler la rotation de la camera autour de la scene. 
-Ce serait peut-etre plus pertinent de plutot la faire tourner sur elle-meme. 
-
-On peut rendre l'affichage interactif (controler la rotation de la camera avec le clavier) 
-mais a priori c'est facultatif
-
-
-Il faudra aussi traiter le cas des objets transparents (refraction).
+- relire toutes les ressources (notamment : P(t) = O + tD, ou D est le vecteur directeur normalise)
+- relire tous les pseudo-code (plusieurs fois chacun)
+- cas des objets transparents (refraction) (mandatory ou bonus?)

@@ -39,7 +39,7 @@ Alors on obtient : normal(x_normal, y_normal, z_normal)
 
 **Rayon et point** : Chaque rayon P peut etre note de la facon suivante :
 
-			P(t) = O - tD
+			P(t) = O + tD
 Ou :
 - O est l'origine du rayon
 - D est le vecteur de direction normalise du rayon

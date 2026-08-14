@@ -1,27 +1,57 @@
-t_vector	*ft_cylinder_normal_vector(t_scene, t_pixel *pixel)
+t_vector	*ft_cylinder_cap_normal_vector(t_scene, t_pixel *pixel)
 {
+	t_vector	cap1_center;
+	t_vector	cap2_center;
 
+	// C - (H/2)A;
+	cap1_center = ft_vector_number_product(pixel->object->axis, pixel->object->diameter / 2);
+	cap1_center = ft_vector_subtraction(pixel->object->center, cap1_center);
+
+	// C + (H/2)A;
+	cap2_center = ft_vector_number_product(pixel->object->axis, pixel->object->diameter / 2);
+	cap2_center = ft_vector_addition(pixel->object->center, cap1_center);
+	if (ft_vector_length(cap1_center, pixel->point_coordinates)
+		<= ft_vector_length(cap2_center, pixel->point_coordinates))
+		return (pixel->object->axis);
+	return (ft_vector_number_product(pixel->object->axis, -1));
+}
+
+t_vector	*ft_cylinder_surface_normal_vector(t_scene, t_pixel *pixel)
+{
+	t_vector	projection;
+	double		dot_product;
+
+	// projection = centre + axe * ((P - centre).axe)
+	dot_product = ft_scalar(ft_vecteur_subtraction(pixel->point_coordinates, pixel->object->center),
+		pixel->object->axis);
+	projection = ft_vector_number_product(pixel->object->axis, dot_product);
+	projection = ft_vector_addition(pixel->object->center, projection);
+
+	// normal_cylindre = normalize(P - projection)
+	return (ft_normalize(ft_vector_subtraction(pixel->point_coordinates, projection)));
 }
 
 t_vector	*ft_sphere_normal_vector(t_scene, t_pixel *pixel)
 {
+	t_vector	*normal_vector;
 
 	// (P - C) / rayon (ou C = centre de la sphere)
-}
-
-t_vector	*ft_plane_normal_vector(t_scene, t_pixel *pixel)
-{
-
+	normal_vector = ft_subtraction(pnormal_vectorixel->point_coordinates, pixel->object->center);
+	normal_vector->x /= pixel->object->diameter / 2;
+	normal_vector->y /= pixel->object->diameter / 2;
+	normal_vector->z /= pixel->object->diameter / 2;
 }
 
 t_vecteur	*ft_find_object_normal_vector(t_scene, t_pixel *pixel)
 {
 	if (pixel->type == PLANE)
-		return (ft_plane_normal_vector(scene, pixel));
+		return (pixel->object->normal_vector);
 	if (pixel->type == SPHERE)
 		return (ft_sphere_normal_vector(scene, pixel));
-	if (pixel->type == CYLINDER)
-		return (ft_cylinder_normal_vector(scene, pixel));
+	if (pixel->type == CYLINDER_SURFACE)
+		return (ft_cylinder_surface_normal_vector(scene, pixel));
+	if (pixel->type == CYLINDER_CAP)
+		return (ft_cylinder_cap_normal_vector(scene, pixel));
 }
 
 t_vector	*ft_diffuse_color(t_scene scene, t_pixel *pixel)
@@ -39,7 +69,7 @@ t_vector	*ft_diffuse_color(t_scene scene, t_pixel *pixel)
 	
 	// Couleur de l'objet * Couleur de la lumiere * Intensite de la lumiere
 	diffuse_color = ft_product(pixel->object.color, light_intensity);
-	diffuse_color = ft_vector_multiplication(diffuse_color, scene.light_color);
+	diffuse_color = ft_vector_product(diffuse_color, scene.light_color);
 
 	return (diffuse_color);
 }

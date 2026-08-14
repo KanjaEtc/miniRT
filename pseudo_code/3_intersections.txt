@@ -1,16 +1,13 @@
-/* Il faudrait que cette fonction remplisse pixel->object avec un pointeur vers l'objet (le plan/sphere/cylindre precis)
-	sur lequel se trouve pixel */
-
-t_vector	*ft_closest_intersection(t_scene scene, t_vector from_point, t_vector to_point)
+t_vector	*ft_closest_intersection(t_scene scene, t_pixel *pixel, t_vector from_point, t_vector to_point)
 {
 	t_vector	plane_intersection;
 	t_vector	sphere_intersection;
 	t_vector	cylinder_intersection;
 	t_vector	tmp;
 
-	plane_intersection = ft_closest_ray_plane_intersection(scene, from_point, to_point)
-	sphere_intersection = ft_intersection_with_sphere(scene, from_point, to_point)
-	cylinder_intersection = ft_intersection_with_cylinder(scene, from_point, to_point)
+	plane_intersection = ft_closest_ray_plane_intersection(scene, pixel, from_point, to_point)
+	sphere_intersection = ft_intersection_with_sphere(scene, pixel, from_point, to_point)
+	cylinder_intersection = ft_intersection_with_cylinder(scene, pixel, from_point, to_point)
 
 	if (ft_vector_length(scene.camera_coordinates, plane_intersection)
 		< ft_vector_length(scene.camera_coordinates, sphere_intersection))
