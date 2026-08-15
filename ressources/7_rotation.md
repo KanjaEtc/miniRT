@@ -36,4 +36,4 @@ Soit le vecteur (x,y,z). Si on applique la rotation verticale d'angle A a ce vec
 			
 			new_z = sin(A) * x + cos(A) * z
 
-Pour chaque rotation on recalcule chaque rayon de la camera en le multipliant par la matrice pour reafficher la scene apres rotation de la camera. 
+Pour chaque rotation on recalcule les vecteurs x, y et z (cad les vecteurs forward, right et up, cf 3_representer_un_plan_en_pixels.md, point 2) en les multipliant par la matrice de rotation. On reaffiche ensuite la scene apres rotation de la camera.

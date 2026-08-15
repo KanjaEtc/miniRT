@@ -14,14 +14,14 @@ Ou :
 
 Pour trouver le point d'intersection P(t) :
 
-					t = D.N(Q - O).N
+					t = (Q - O).N / D.N
 Ou :
 - Q est un point appartenant au plan (donne dans la map)
 - O = coordonnees de l'origine du rayon
 - n = vecteur normal du plan (donne dans la map)
 - D = vecteur directeur du rayon
 
-A noter : si D.N donne un tout petit nombre (ex : 1e-6) alors le rayon est parallele au plan. L'equation a alors 0 ou une infinite de solutions.
+A noter : si D.N donne un tout petit nombre (ex : 1e-6) alors le rayon est parallele au plan. L'equation a alors 0 (si (Q - O).N =/= 0) ou une infinite (si (Q - O).N = 0) de solutions.
 
 
 2) Sphere
@@ -56,7 +56,7 @@ Il existe un point le long du rayon qui appartient aussi a la sphere. Des lors o
 
 Apres le developpement de l'identite remarquable :
 
-					tD² + 2tD.(O - C) + |O - C|² - R² = O
+					t²D² + 2tD.(O - C) + |O - C|² - R² = 0
 
 C'est une equation de type ax² + bx + c = 0 (equation du second degre), ou :
 - a = D²
@@ -117,7 +117,7 @@ On remplace P(t) par O + tD :
 [(O + tD - Q) - ((O + tD - Q).A)A]² - R² = 0
 
 On developpe les identites remarquables :
-tD² + (O - Q).(O - Q) - 2((O - Q).tD) - (tD.A)² + ((O - Q).A)² - 2((O - Q).A)(tD.A) - R²
+t²(D.D) + 2t[(O - Q).D - ((O - Q).A)(D.A)] + |(O - Q)|² - ((O - Q).A)² - R² = 0
 
 On obtient donc l'equation du second degre ax² + bx + c = 0 ou :
 - a = D.D - (D.A)²
@@ -126,7 +126,8 @@ On obtient donc l'equation du second degre ax² + bx + c = 0 ou :
 
 On la resoud comme expliqu) Sphe dans 2) Sphere.
 
-S'il existe au moins une solution t, on verifie qu'elle est bien la range definie par la hauteur du cylindre.
+S'il existe au moins une solution t, on verifie qu'elle est bien la range definie par la hauteur du cylindre. Si elle est est positive alors il y a intersection.
+
 P(t) = O + tD
 Soient :
 - C le centre du cylindre (donne dans la map)
@@ -163,9 +164,11 @@ Qui s'ecrit aussi :
 On isole t :
 t = - (O - C₁).A / D.A
 
+Et si t >= 0 alors il y a intersection.
+
 On retrouve P (avec P = O + tD)
 
-(Si D.A = 0 alors le rayon est parallele au disque : il n'y a donc pas de pint d'intersection. Verifier ca avant de chercher t pour eviter de diviser par 0);
+(Si D.A = 0 alors le rayon est parallele au disque. Si (O - C₁).A = 0 alors le rayon est dans le plan du disque : s'il est aussi dans le disque, alors il y a une infinite de solutions, Sinon, il n'y a pas de point d'intersection. Verifier ca avant de chercher t pour eviter de diviser par 0);
 
 Le point P(t) appartient au plan du disque. Il appartient au disque lui-meme si, et seulement si :
 

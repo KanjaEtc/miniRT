@@ -16,7 +16,8 @@ Couleur_ambiante_pixel =
 
 					Couleur de l'objet * Couleur de la lumiere ambiante * Intensite 
 						de la lumiere ambiante
-
+Ou :
+- les couleurs (R,G,B) sont normalisees
 
 2) Luminosite diffuse
 
@@ -62,8 +63,7 @@ couleur_speculaire =
 						indice_speculaire * intensite_speculaire * couleur_lampe
 
 Ou :
-- l'indice est une valeur choisie entre 0 et 1 : plus elle s'approche 
-	de 1, plus le disque sera petit et lumineux
+- l'indice est une valeur choisie entre 0 et 1
 - l'intensite speculaire determine le niveau de luminosite percu par la camera, selon l'indice 
 	et sa position par rapport a l'objet
 
@@ -73,6 +73,8 @@ L'intensite speculaire se calcule comme suit :
 	
 Ou :
 - pow est une fonction qui eleve son premier argument a la puissance [second argument]
+- la puissance 32 est choisie arbitrairement parmi les puissances de 2. Plus la 
+	puissance est elevee, plus le reflet sera petit et brillant
 - normal_camera est le vecteur normal de la camera en un point P
 - vecteur_reflexion caracterise la reflexion d'un rayon de lumiere en un point P
 
@@ -80,9 +82,7 @@ normal_camera =
 					normalize(position_camera - position_P)
 
 vecteur_reflexion =
-					-normal_lumiere - 2(-normal_lumiere . normal_surface) * normal_surface
-					
-
+					-normal_lumiere - 2(-normal_lumiere.normal_surface) * normal_surface
 Ou :
 - -normal_lumiere va de la lampe vers l'objet (contrairement a normal_lumiere)
 - normal_surface a ete calcule en 2)

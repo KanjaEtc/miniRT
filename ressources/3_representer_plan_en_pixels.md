@@ -10,7 +10,11 @@ Ecran = portion du plan dans le champ de vision de la camera. C'est ce qui sera 
 
 
 *Hauteur H de l'ecran* :
-							H = 2 x tan(FOV / 2)
+							H = 2d x tan(FOV / 2)
+
+Ou :
+- d = la distance entre l'ecran et la camera. On choisit generalement 1. Le reste du 
+	doc part du principe qu'on se tient a cette convention.
 
 Dans cette formule, FOV est exprime en radians.
 Pour convertir les degres en radians :
@@ -68,8 +72,6 @@ Pour que les images ne paraissent pas deformees, on finit par adapter ces coordo
 
 			y = y * H
 
-Les coordonnees x et y finalement obtenues sont celles du point P si et seulement si la camera regarde dans une direction strictement parallele a un des trois axes x, y et z du plan.
-
 Pour generaliser on commence par definir trois vecteurs, right, up et forward, qui representent les axes horizontal, vertical et de profondeur du point de vue de la camera. 
 
 
@@ -79,7 +81,13 @@ Forward : c'est la direction dans laquelle regarde la camera :
 
 Right : il est perpendiculaire a forward :
 
-			right = normalize((0,1,0) * forward)
+			tmp = (0,1,0) * forward
+			if (tmp = (0,0,0))
+				tmp = (0,0,1)
+			right = normalize(tmp * forward)
+
+L'idee etant qu'on ne peut pas normaliser le vecteur nul (0,0,0). On obtient un vecteur nul quand on multiplie deux vecteurs paralleles.
+
 Up :
 			up = forward * right
 
@@ -114,7 +122,7 @@ Etape 2 :
 
 			right = normalize((0,1,0) * forward)
 
-			up = forward * right
+			up = forward.right
 Ou :
 - _camera sont les coordonnees de la camera
 
