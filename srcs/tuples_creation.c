@@ -10,7 +10,7 @@ int	ft_is_a_point(t_tuple *tuple)
 	return (tuple && tuple->w == 1);
 }
 
-int	ft_vector_creator(double x, double y, double z)
+t_tuple	*ft_vector_creator(double x, double y, double z)
 {
 	t_tuple	*vector;
 
@@ -24,7 +24,7 @@ int	ft_vector_creator(double x, double y, double z)
 	return (vector);
 }
 
-int	ft_point_creator(double x, double y, double z)
+t_tuple	*ft_point_creator(double x, double y, double z)
 {
 	t_tuple	*point;
 
