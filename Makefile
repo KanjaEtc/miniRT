@@ -17,6 +17,7 @@ OBJ = $(SRCS:srcs/.c=object/.o)
 CR_SRCS = test/test_tuples_creation.c \
 		test/test_tuples_comparison.c \
 		test/test_tuples_basic_operations.c \
+		test/test_tuples_complex_operations.c \
 
 
 CR_OBJ = $(CR_SRCS:test/.c=object/.o)

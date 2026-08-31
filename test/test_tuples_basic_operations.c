@@ -85,6 +85,7 @@ Test(tuples, opposite)
 
 Test(tuples, opposite_bd_arguments)
 {
+	cr_assert(ft_tuple_opposite(ft_point_creator(1, 2, 3)) == NULL);
 	cr_assert(ft_tuple_opposite(NULL) == NULL);
 }
 
