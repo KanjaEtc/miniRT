@@ -7,7 +7,7 @@ double	ft_abs(double n)
 	return (n);
 }
 
-int	ft_vectors_compare(t_tuple *v1, t_tuple *v2)
+int	ft_vectors_equality(t_tuple *v1, t_tuple *v2)
 {
 	double	epsilon;
 
@@ -19,7 +19,7 @@ int	ft_vectors_compare(t_tuple *v1, t_tuple *v2)
 			&& ft_abs(v1->z - v2->z) <= epsilon);
 }
 
-int	ft_points_compare(t_tuple *v1, t_tuple *v2)
+int	ft_points_equality(t_tuple *v1, t_tuple *v2)
 {
 	double	epsilon;
 

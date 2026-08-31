@@ -10,10 +10,13 @@ SRCS = srcs/tuples_creation.c \
 	srcs/tuples_comparison.c \
 	srcs/tuples_basic_operations.c \
 	srcs/tuples_complex_operations.c \
+	
 
 OBJ = $(SRCS:srcs/.c=object/.o)
 
-CR_SRCS = test/test_tuples.c
+CR_SRCS = test/test_tuples_creation.c \
+		test/test_tuples_comparison.c \
+
 
 CR_OBJ = $(CR_SRCS:test/.c=object/.o)
 
