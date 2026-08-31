@@ -47,7 +47,7 @@ Test(tuples, is_not_a_point)
 }
 
 
-Test(tuples, bad_arguments)
+Test(tuples, tuples_identity_bad_arguments)
 {
 	t_tuple tuple;
 

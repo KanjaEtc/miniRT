@@ -5,3 +5,7 @@
 **Installer Criterion**
 
 1) Git clone ce repo : https://github.com/RoKerjea/Criterion-demo-42 + suivre le README pour installer criterion
+
+**TESTER LE CODE**
+
+make test (pas de main)

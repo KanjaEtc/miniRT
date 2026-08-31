@@ -55,7 +55,7 @@ Test(tuples, vectors_are_equal_less_than_epsilon)
 	cr_assert(ft_vectors_equality(v2, v1));
 }
 
-Test(tuples, vectors_bad_arguments)
+Test(tuples, vectors_comparison_bad_arguments)
 {
 	t_tuple *p1 = ft_point_creator(-1, -2.2, 0);
 	t_tuple *v2 = ft_vector_creator(-1, -2.2, 0);
@@ -131,7 +131,7 @@ Test(tuples, points_are_equal_less_than_epsilon)
 	cr_assert(ft_points_equality(p2, p1));
 }
 
-Test(tuples, points_bad_arguments)
+Test(tuples, points_comparison_bad_arguments)
 {
 	t_tuple *p = ft_point_creator(-1, -2.2, 0);
 	t_tuple *v = ft_vector_creator(-1, -2.2, 0);
