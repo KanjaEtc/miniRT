@@ -21,7 +21,7 @@ t_tuple	*ft_point_creator(double x, double y, double z);
 
 /* tuples_comparison.c */
 int		ft_vectors_equality(t_tuple *v1, t_tuple *v2);
-int		ft_points_equality(t_tuple *v1, t_tuple *v2);
+int		ft_points_equality(t_tuple *p1, t_tuple *p2);
 double	ft_abs(double n);
 
 /* tuples_basic_operations.c */

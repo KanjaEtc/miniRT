@@ -1,6 +1,6 @@
 CC = cc
 
-CFLAGS = -Wall -Wextra -Werror -I /home/adbarth/Criterion/include/
+CFLAGS = -Wall -Wextra -Werror -I /home/adbarth/Criterion/include/ -lm
 
 # CR_FLAGS = -Wall -Wextra -Werror -I /home/adbarth/Criterion/include/
 
@@ -10,12 +10,13 @@ SRCS = srcs/tuples_creation.c \
 	srcs/tuples_comparison.c \
 	srcs/tuples_basic_operations.c \
 	srcs/tuples_complex_operations.c \
-	
+
 
 OBJ = $(SRCS:srcs/.c=object/.o)
 
 CR_SRCS = test/test_tuples_creation.c \
 		test/test_tuples_comparison.c \
+		test/test_tuples_basic_operations.c \
 
 
 CR_OBJ = $(CR_SRCS:test/.c=object/.o)
@@ -33,7 +34,7 @@ $(NAME): $(OBJ)
 test: $(CR_NAME)
 
 $(CR_NAME) : $(OBJ) $(CR_OBJ)
-	$(CC) $(CFLAGS) $^ -L /home/adbarth/Criterion/build/src/ -lcriterion -lm -o $@
+	$(CC) $(CFLAGS) $^ -L /home/adbarth/Criterion/build/src/ -lcriterion -o $@
 
 clean: rm -rf $(OBJ) $(CR_OBJ)
 
