@@ -7,7 +7,9 @@ CFLAGS = -Wall -Wextra -Werror -I /home/adbarth/Criterion/include/ -lm
 # INCLUDES = header.h
 
 SRCS = srcs/canvas_and_pixels.c \
+	srcs/display.c \
 	srcs/matrix_basics.c \
+	srcs/matrix_operations.c \
 	srcs/tuples_creation.c \
 	srcs/tuples_comparison.c \
 	srcs/tuples_basic_operations.c \
@@ -19,6 +21,7 @@ OBJ = $(SRCS:srcs/.c=object/.o)
 
 CR_SRCS = test/test_canvas_and_pixels.c \
 		test/test_matrix_basics.c \
+		test/test_matrix_operations.c \
 		test/test_tuples_creation.c \
 		test/test_tuples_comparison.c \
 		test/test_tuples_basic_operations.c \

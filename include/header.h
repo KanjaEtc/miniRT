@@ -37,11 +37,20 @@ void 		ft_write_pixel_color(t_canvas *canvas, int w, int h, t_tuple *color);
 t_tuple		*ft_color_creator(double x, double y, double z);
 
 
+/* =============================== DISPLAY ETC ============================== */
+
+void	ft_display_matrix(t_matrix *matrix);
+void	ft_fill_matrix(t_matrix *matrix, double start);
+
+
 /* =============================== MATRICES ============================== */
 
 /* matrix_creation.c */
 t_matrix	*ft_matrix_creator(int n);
 int			ft_matrix_equality(t_matrix *a, t_matrix *b);
+
+/* matrix_operations.c */
+t_matrix	*ft_matrices_multplication(t_matrix *a, t_matrix *b);
 
 
 /* =============================== TUPLES ============================== */
