@@ -1,7 +1,2 @@
 A FAIRE
-- verifier que intersections fonctionne aussi pour la lampe
-- trouver un moyen de tester le code deja ecrit
-- noter en commentaires les formules maths dans le pseudo-code
-- relire toutes les ressources (notamment : P(t) = O + tD, ou D est le vecteur directeur normalise)
-- relire tous les pseudo-code (plusieurs fois chacun)
-- cas des objets transparents (refraction) (mandatory ou bonus?)
+- tuples.c : proteger les fonctions contre DOUBLE_MAX

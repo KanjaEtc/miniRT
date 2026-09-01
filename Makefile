@@ -10,6 +10,8 @@ SRCS = srcs/tuples_creation.c \
 	srcs/tuples_comparison.c \
 	srcs/tuples_basic_operations.c \
 	srcs/tuples_complex_operations.c \
+	srcs/canvas_and_pixels.c \
+	srcs/utils_free.c \
 
 
 OBJ = $(SRCS:srcs/.c=object/.o)
@@ -18,6 +20,7 @@ CR_SRCS = test/test_tuples_creation.c \
 		test/test_tuples_comparison.c \
 		test/test_tuples_basic_operations.c \
 		test/test_tuples_complex_operations.c \
+		test/test_canvas_and_pixels.c \
 
 
 CR_OBJ = $(CR_SRCS:test/.c=object/.o)
