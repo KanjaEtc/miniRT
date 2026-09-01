@@ -20,6 +20,31 @@ typedef struct s_canvas
 	t_tuple	**pixel_grid;
 }	t_canvas;
 
+typedef struct s_matrix
+{
+	double	**mtx;
+	int		n;
+}	t_matrix;
+
+
+/* =============================== CANVAS ============================== */
+
+/* canvas_and_pixels.c */
+t_canvas	*ft_canvas_creator(int width, int height);
+t_tuple		**ft_pixel_grid_allocator(int width, int height);
+t_tuple		*ft_get_pixel_color(t_canvas *canvas, int w, int h);
+void 		ft_write_pixel_color(t_canvas *canvas, int w, int h, t_tuple *color);
+t_tuple		*ft_color_creator(double x, double y, double z);
+
+
+/* =============================== MATRICES ============================== */
+
+/* matrix_creation.c */
+t_matrix	*ft_matrix_creator(int n);
+int			ft_matrix_equality(t_matrix *a, t_matrix *b);
+
+
+/* =============================== TUPLES ============================== */
 
 /* tuples_creation.c */
 int			ft_is_a_vector(t_tuple *tuple);
@@ -45,14 +70,11 @@ t_tuple		*ft_normalize(t_tuple *vector);
 double		ft_dot_product(t_tuple *v1, t_tuple *v2);
 t_tuple		*ft_cross_product(t_tuple *v1, t_tuple *v2);
 
-/* canvas_and_pixels.c */
-t_canvas	*ft_canvas_creator(int width, int height);
-t_tuple		**ft_pixel_grid_allocator(int width, int height);
-t_tuple		*ft_get_pixel_color(t_canvas *canvas, int w, int h);
-void 		ft_write_pixel_color(t_canvas *canvas, int w, int h, t_tuple *color);
-t_tuple		*ft_color_creator(double x, double y, double z);
+
+/* =============================== UTILS ============================== */
 
 /* utils_free.c */
-void		*ft_free_array(t_tuple **array, int index);
+void		*ft_free_tuple_array(t_tuple **array, int index);
+void		*ft_free_double_array(double **array, int index);
 
 #endif

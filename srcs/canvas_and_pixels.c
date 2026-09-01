@@ -1,16 +1,16 @@
 #include "../include/header.h"
 
 
-void	*ft_free_array(t_tuple **array, int index)
-{
-	int	i;
+// void	*ft_free_array(t_tuple **array, int index)
+// {
+// 	int	i;
 
-	i = -1;
-	while (array && ++i < index)
-		free(array[i]);
-	free(array);
-	return (NULL);
-}
+// 	i = -1;
+// 	while (array && ++i < index)
+// 		free(array[i]);
+// 	free(array);
+// 	return (NULL);
+// }
 
 
 t_tuple	*ft_color_creator(double x, double y, double z)
@@ -65,7 +65,7 @@ t_tuple	**ft_pixel_grid_allocator(int width, int height)
 	{
 		pixel_grid[i] = malloc(sizeof(t_tuple) * height);
 		if (!pixel_grid[i])
-			return (ft_free_array(pixel_grid, i), NULL);
+			return (ft_free_tuple_array(pixel_grid, i), NULL);
 	}
 	return (pixel_grid);
 }
