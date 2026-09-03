@@ -26,32 +26,33 @@ typedef struct s_matrix
 	int		n;
 }	t_matrix;
 
-
 /* =============================== CANVAS ============================== */
 
 /* canvas_and_pixels.c */
 t_canvas	*ft_canvas_creator(int width, int height);
 t_tuple		**ft_pixel_grid_allocator(int width, int height);
 t_tuple		*ft_get_pixel_color(t_canvas *canvas, int w, int h);
-void 		ft_write_pixel_color(t_canvas *canvas, int w, int h, t_tuple *color);
+void		ft_write_pixel_color(t_canvas *canvas, int w, int h,
+				t_tuple *color);
 t_tuple		*ft_color_creator(double x, double y, double z);
-
 
 /* =============================== DISPLAY ETC ============================== */
 
-void	ft_display_matrix(t_matrix *matrix);
-void	ft_fill_matrix(t_matrix *matrix, double start);
-
+void		ft_display_matrix(t_matrix *matrix);
+void		test_fill_matrix(t_matrix *matrix, double start);
 
 /* =============================== MATRICES ============================== */
 
 /* matrix_creation.c */
 t_matrix	*ft_matrix_creator(int n);
 int			ft_matrix_equality(t_matrix *a, t_matrix *b);
+t_matrix	*ft_identity_matrix_creator(int n);
+t_matrix	*ft_identity_matrix_creator(int n);
 
 /* matrix_operations.c */
 t_matrix	*ft_matrices_multplication(t_matrix *a, t_matrix *b);
-
+t_tuple		*ft_matrix_by_tuple_multiplication(t_matrix *m, t_tuple *t);
+t_matrix	*ft_transpose_matrix(t_matrix *m);
 
 /* =============================== TUPLES ============================== */
 
@@ -78,7 +79,6 @@ double		ft_vector_length(t_tuple *v);
 t_tuple		*ft_normalize(t_tuple *vector);
 double		ft_dot_product(t_tuple *v1, t_tuple *v2);
 t_tuple		*ft_cross_product(t_tuple *v1, t_tuple *v2);
-
 
 /* =============================== UTILS ============================== */
 

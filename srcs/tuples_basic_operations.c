@@ -50,21 +50,12 @@ t_tuple	*ft_tuple_opposite(t_tuple *t)
 	return (opposite);
 }
 
-
 t_tuple	*ft_vector_by_scalar_multiplication(t_tuple *vector, double scalar)
 {
-	// t_tuple	*result;
-
 	if (!vector || ft_is_a_point(vector))
 		return (NULL);
-	// result = malloc(sizeof(t_tuple));
-	// if (!result)
-	// 	return (NULL);
-	// result->x = vector->x * scalar;
-	// result->y = vector->y * scalar;
-	// result->z = vector->z * scalar;
-	// result->w = 1;
-	return (ft_point_creator(vector->x * scalar, vector->y * scalar, vector->z * scalar));
+	return (ft_point_creator(vector->x * scalar, vector->y * scalar,
+			vector->z * scalar));
 }
 
 t_tuple	*ft_vector_by_scalar_division(t_tuple *vector, double scalar)
@@ -82,14 +73,3 @@ t_tuple	*ft_vector_by_scalar_division(t_tuple *vector, double scalar)
 	result->w = 1;
 	return (result);
 }
-
-// int main()
-// {
-// 	t_tuple *v = ft_vector_creator(0, -8, 0.5);
-// 	double scalar = -2;
-// 	t_tuple *expected = ft_point_creator(v->x * scalar, v->y * scalar, v->z * scalar);
-// 	t_tuple *result = ft_vector_by_scalar_multiplication(v, scalar);
-// 	printf("expected : x = %f\ny = %f\nz = %f\nw = %f\n", expected->x, expected->y, expected->z, expected->w);
-// 	printf("actual : x = %f\ny = %f\nz = %f\nw = %f\n", result->x, result->y, result->z, result->w);
-// 	printf("%d\n", ft_points_equality(result, expected));
-// }

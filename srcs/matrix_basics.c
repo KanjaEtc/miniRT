@@ -1,5 +1,31 @@
 #include "../include/header.h"
 
+t_matrix	*ft_identity_matrix_creator(int n)
+{
+	t_matrix	*identity;
+	int			i;
+	int			j;
+
+	if (n <= 0)
+		return (NULL);
+	identity = ft_matrix_creator(n);
+	if (!identity)
+		return (NULL);
+	i = -1;
+	while (++i < n)
+	{
+		j = -1;
+		while (++j < n)
+		{
+			if (i == j)
+				identity->mtx[i][j] = 1;
+			else
+				identity->mtx[i][j] = 0;
+		}
+	}
+	return (identity);
+}
+
 t_matrix	*ft_matrix_creator(int n)
 {
 	t_matrix	*matrix;

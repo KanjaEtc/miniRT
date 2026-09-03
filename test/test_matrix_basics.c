@@ -1,5 +1,8 @@
 #include "../include/header.h"
 
+
+/* =============================== MATRIX CREATION ============================== */
+
 Test(matrix, matrix_creation)
 {
 	cr_assert_not_null(ft_matrix_creator(4));
@@ -8,6 +11,9 @@ Test(matrix, matrix_creation)
 	cr_assert_null(ft_matrix_creator(0));
 	cr_assert_null(ft_matrix_creator(-2));
 }
+
+
+/* =============================== MATRIX COMPARISON ============================== */
 
 Test(matrix, matrices_are_equal)
 {
@@ -97,4 +103,41 @@ Test(matrix, matrix_basics_bad_arguments)
 	cr_assert(ft_matrix_equality(NULL, b) == 0);
 	cr_assert(ft_matrix_equality(a, NULL) == 0);
 	cr_assert(ft_matrix_equality(NULL, NULL) == 0);
+}
+
+
+/* =============================== IDENTITY MATRIX ============================== */
+
+void	test_expected_identity_matrix(t_matrix *m)
+{
+	m->mtx[0][0] = 1;
+	m->mtx[0][1] = 0;
+	m->mtx[0][2] = 0;
+	m->mtx[0][3] = 0;
+	m->mtx[1][0] = 0;
+	m->mtx[1][1] = 1;
+	m->mtx[1][2] = 0;
+	m->mtx[1][3] = 0;
+	m->mtx[2][0] = 0;
+	m->mtx[2][1] = 0;
+	m->mtx[2][2] = 1;
+	m->mtx[2][3] = 0;
+	m->mtx[3][0] = 0;
+	m->mtx[3][1] = 0;
+	m->mtx[3][2] = 0;
+	m->mtx[3][3] = 1;
+}
+
+Test(matrix, identity_matrix_creation)
+{
+	t_matrix *expected = ft_matrix_creator(4);
+	test_expected_identity_matrix(expected);
+
+	cr_assert(ft_matrix_equality(ft_identity_matrix_creator(4), expected));
+}
+
+Test(matrix, identity_matrix_creation_bad_arguments)
+{
+	cr_assert_null(ft_identity_matrix_creator(-1));
+	cr_assert_null(ft_identity_matrix_creator(0));
 }

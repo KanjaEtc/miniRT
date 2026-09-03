@@ -15,8 +15,8 @@ int	ft_vectors_equality(t_tuple *v1, t_tuple *v2)
 		return (0);
 	epsilon = 10e-5;
 	return (ft_abs(v1->x - v2->x) <= epsilon
-			&& ft_abs(v1->y - v2->y) <= epsilon
-			&& ft_abs(v1->z - v2->z) <= epsilon);
+		&& ft_abs(v1->y - v2->y) <= epsilon
+		&& ft_abs(v1->z - v2->z) <= epsilon);
 }
 
 int	ft_points_equality(t_tuple *p1, t_tuple *p2)
@@ -27,6 +27,6 @@ int	ft_points_equality(t_tuple *p1, t_tuple *p2)
 		return (0);
 	epsilon = 10e-5;
 	return (ft_abs(p1->x - p2->x) <= epsilon
-			&& ft_abs(p1->y - p2->y) <= epsilon
-			&& ft_abs(p1->z - p2->z) <= epsilon);
+		&& ft_abs(p1->y - p2->y) <= epsilon
+		&& ft_abs(p1->z - p2->z) <= epsilon);
 }

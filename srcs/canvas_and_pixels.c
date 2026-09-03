@@ -1,18 +1,5 @@
 #include "../include/header.h"
 
-
-// void	*ft_free_array(t_tuple **array, int index)
-// {
-// 	int	i;
-
-// 	i = -1;
-// 	while (array && ++i < index)
-// 		free(array[i]);
-// 	free(array);
-// 	return (NULL);
-// }
-
-
 t_tuple	*ft_color_creator(double x, double y, double z)
 {
 	t_tuple	*color;
@@ -96,44 +83,5 @@ t_canvas	*ft_canvas_creator(int width, int height)
 			canvas->pixel_grid[i][j].w = -1;
 		}
 	}
-	canvas->width = width;
-	canvas->height = height;
-	return (canvas);
+	return (canvas->width = width, canvas->height = height, canvas);
 }
-
-// int main()
-// {
-// 	int width = 5;
-// 	int height = 4;
-// 	int w = 3;
-// 	int h = 1;
-	
-// 	t_canvas *canvas = ft_canvas_creator(width, height);
-// 	t_tuple *color = ft_color_creator(2, 0.5, 1);
-
-// 	printf("color : %f %f %f %f\n", color->x, color->y, color->z, color->w);
-// 	printf("color : %f %f %f %f\n", canvas->pixel_grid[0][0].x, canvas->pixel_grid[0][0].y, canvas->pixel_grid[0][0].z, canvas->pixel_grid[0][0].w);
-
-// 	canvas = ft_write_pixel_color(canvas, w, h, color);
-// 	printf("color : %f %f %f %f\n", canvas->pixel_grid[w][h].x,
-// 		canvas->pixel_grid[w][h].y, canvas->pixel_grid[w][h].z,
-// 		canvas->pixel_grid[w][h].w);
-
-// }
-
-// int main()
-// {
-// 	int width = 5;
-// 	int height = 4;
-// 	t_canvas *canvas = ft_canvas_creator(width, height);
-
-// 	// printf("premier pixel : %f %f %f %f\n", canvas->pixel_grid[0][0].x,
-// 	// 	canvas->pixel_grid[0][0].y, canvas->pixel_grid[3][1].z,
-// 	// 	canvas->pixel_grid[0][0].w);
-
-// 	printf("sizeof tuple = %ld\n", sizeof(t_tuple));
-// 	printf("sizeof tuple* = %ld\n", sizeof(t_tuple *));
-// 	printf("sizeof tuple** = %ld\n", sizeof(t_tuple **));
-// 	printf("sizeof pixel_grid = %ld\n", sizeof(canvas->pixel_grid));
-// }
-
