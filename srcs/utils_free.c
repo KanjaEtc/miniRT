@@ -21,3 +21,12 @@ void	*ft_free_double_array(double **array, int index)
 	free(array);
 	return (NULL);
 }
+
+void	*ft_free_matrix(t_matrix *m)
+{
+	if (!m)
+		return (NULL);
+	ft_free_double_array(m->mtx, m->n);
+	free(m);
+	return (NULL);
+}
