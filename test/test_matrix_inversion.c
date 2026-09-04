@@ -233,3 +233,5 @@ Test(matrix, inversion_and_multiplication)
 
 	cr_assert(ft_matrix_equality(m_1, ft_matrices_multplication(product, inverse_m_2)));
 }
+
+

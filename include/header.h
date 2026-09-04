@@ -39,6 +39,7 @@ t_tuple		*ft_color_creator(double x, double y, double z);
 /* =============================== DISPLAY ETC ============================== */
 
 void		ft_display_matrix(t_matrix *matrix);
+void		ft_display_tuple(t_tuple *t);
 void		test_fill_matrix(t_matrix *matrix, double start);
 
 /* =============================== MATRICES ============================== */
@@ -63,6 +64,12 @@ double		ft_matrix_determinant(t_matrix *m);
 /* matrix_inversion.c */
 int			ft_is_matrix_invertible(t_matrix *m);
 t_matrix	*ft_inverse(t_matrix *m);
+
+/* =============================== TRANSFORMATIONS ============================== */
+
+/* transformation.c */
+t_matrix	*ft_translation(double x, double y, double z);
+t_matrix	*ft_scaling(double x, double y, double z);
 
 /* =============================== TUPLES ============================== */
 

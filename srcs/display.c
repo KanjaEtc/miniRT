@@ -13,3 +13,10 @@ void	ft_display_matrix(t_matrix *matrix)
 		printf("\n");
 	}
 }
+
+void	ft_display_tuple(t_tuple *t)
+{
+	if (!t)
+		return ;
+	printf("%f %f %f %f\n", t->x, t->y, t->z, t->w);
+}
