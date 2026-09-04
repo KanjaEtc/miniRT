@@ -54,11 +54,15 @@ t_matrix	*ft_matrices_multplication(t_matrix *a, t_matrix *b);
 t_tuple		*ft_matrix_by_tuple_multiplication(t_matrix *m, t_tuple *t);
 t_matrix	*ft_transpose_matrix(t_matrix *m);
 
-/* matrix_inversion.c */
-double		ft_matrix2_determinant(t_matrix *m);
+/* matrix_determinant.c */
 t_matrix	*ft_submatrix(t_matrix *m, int row, int col);
 double		ft_minor(t_matrix *m, int row, int col);
 double		ft_cofactor(t_matrix *m, int row, int col);
+double		ft_matrix_determinant(t_matrix *m);
+
+/* matrix_inversion.c */
+int			ft_is_matrix_invertible(t_matrix *m);
+t_matrix	*ft_inverse(t_matrix *m);
 
 /* =============================== TUPLES ============================== */
 
