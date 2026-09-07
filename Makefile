@@ -1,8 +1,8 @@
 CC = cc
 
-CFLAGS = -Wall -Wextra -Werror -I /home/adbarth/Criterion/include/ -lm
+CFLAGS = -Wall -Wextra -Werror -I /home/marotsen/Criterion/include/ -lm
 
-# CR_FLAGS = -Wall -Wextra -Werror -I /home/adbarth/Criterion/include/
+# CR_FLAGS = -Wall -Wextra -Werror -I /home/marotsen/Criterion/include/
 
 # INCLUDES = header.h
 
@@ -45,7 +45,7 @@ $(NAME): $(OBJ)
 test: $(CR_NAME)
 
 $(CR_NAME) : $(OBJ) $(CR_OBJ)
-	$(CC) $(CFLAGS) $^ -L /home/adbarth/Criterion/build/src/ -lcriterion -o $@
+	$(CC) $(CFLAGS) $^ -L /home/marotsen/Criterion/build/src/ -lcriterion -o $@
 
 clean: rm -rf $(OBJ) $(CR_OBJ)
 
