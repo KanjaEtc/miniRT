@@ -1,7 +1,7 @@
 CC = cc
 
-CFLAGS = -Wall -Wextra -Werror -I /home/marotsen/Criterion/include/ -lm
-
+CFLAGS = -Wall -Wextra -Werror -I/home/marotsen/Criterion/include -lm
+LD_LIBRARY_PATH=/home/marotsen/Criterion/build/src
 # CR_FLAGS = -Wall -Wextra -Werror -I /home/marotsen/Criterion/include/
 
 # INCLUDES = header.h
