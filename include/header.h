@@ -1,10 +1,22 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   header.h                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: adbarth <adbarth@learner.42.tech>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/09/08 11:50:00 by adbarth           #+#    #+#             */
+/*   Updated: 2026/09/08 11:50:03 by adbarth          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef HEADER_H
 # define HEADER_H
 # include <criterion/criterion.h>
 # include <stdlib.h>
 # include <math.h>
 # include <stdio.h>
-
+# include <float.h>
 
 typedef struct s_tuple
 {
@@ -32,6 +44,9 @@ typedef struct s_matrix
 /* canvas_and_pixels.c */
 t_canvas	*ft_canvas_creator(int width, int height);
 t_tuple		**ft_pixel_grid_allocator(int width, int height);
+
+/* =============================== COLORS ============================== */
+
 t_tuple		*ft_get_pixel_color(t_canvas *canvas, int w, int h);
 void		ft_write_pixel_color(t_canvas *canvas, int w, int h,
 				t_tuple *color);
@@ -66,9 +81,9 @@ double		ft_matrix_determinant(t_matrix *m);
 int			ft_is_matrix_invertible(t_matrix *m);
 t_matrix	*ft_inverse(t_matrix *m);
 
-/* =============================== TRANSFORMATIONS ============================== */
+/* ============================ TRANSFORMATIONS =========================== */
 
-/* transformation.c */
+/* transformations.c */
 t_matrix	*ft_translation(double x, double y, double z);
 t_matrix	*ft_scaling(double x, double y, double z);
 t_matrix	*ft_x_axis_rotation(double radians);

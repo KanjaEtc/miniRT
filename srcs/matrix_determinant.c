@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   matrix_determinant.c                               :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: adbarth <adbarth@learner.42.tech>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/09/08 11:43:35 by adbarth           #+#    #+#             */
+/*   Updated: 2026/09/08 11:43:38 by adbarth          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../include/header.h"
 
 t_matrix	*ft_submatrix(t_matrix *m, int row, int col)
@@ -11,11 +23,9 @@ t_matrix	*ft_submatrix(t_matrix *m, int row, int col)
 	if (!m || !m->mtx || row < 0 || row >= m->n || col < 0 || col >= m->n)
 		return (NULL);
 	sub = ft_matrix_creator(m->n - 1);
-	if (!sub)
-		return (NULL);
 	i = -1;
 	r = 0;
-	while (++i < m->n)
+	while (sub && ++i < m->n)
 	{
 		j = -1;
 		c = 0;
@@ -47,7 +57,7 @@ double	ft_minor(t_matrix *m, int row, int col)
 double	ft_cofactor(t_matrix *m, int row, int col)
 {
 	double	minor;
-	
+
 	if (!m || !m->mtx || m->n != 3 || row < 0
 		|| row >= m->n || col < 0 || col >= m->n)
 		return (0);
@@ -78,5 +88,3 @@ double	ft_matrix_determinant(t_matrix *m)
 	}
 	return (0);
 }
-
-

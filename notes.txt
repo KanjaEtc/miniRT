@@ -1,2 +1,3 @@
 A FAIRE
-- tuples.c : proteger les fonctions contre DOUBLE_MAX
+- tuples_*.c : proteger les fonctions contre DBL_MAX
+- canvas_and_pixels.c : prevoir une valeur max pour width et height

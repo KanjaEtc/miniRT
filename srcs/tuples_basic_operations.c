@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   tuples_basic_operations.c                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: adbarth <adbarth@learner.42.tech>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/09/08 11:44:16 by adbarth           #+#    #+#             */
+/*   Updated: 2026/09/08 11:44:18 by adbarth          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../include/header.h"
 
 // proteger contre DOUBLE_MAX
@@ -7,6 +19,10 @@ t_tuple	*ft_tuples_addition(t_tuple *t1, t_tuple *t2)
 	t_tuple	*result;
 
 	if (!t1 || !t2 || (ft_is_a_point(t1) && ft_is_a_point(t2)))
+		return (NULL);
+	if (DBL_MAX - t1->x < t2->x
+		|| DBL_MAX - t1->y < t2->y
+		|| DBL_MAX - t1->z < t2->z)
 		return (NULL);
 	result = malloc(sizeof(t_tuple));
 	if (!result)
