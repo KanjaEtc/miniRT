@@ -5,6 +5,7 @@
 # include <math.h>
 # include <stdio.h>
 
+
 typedef struct s_tuple
 {
 	double	x;
@@ -70,6 +71,9 @@ t_matrix	*ft_inverse(t_matrix *m);
 /* transformation.c */
 t_matrix	*ft_translation(double x, double y, double z);
 t_matrix	*ft_scaling(double x, double y, double z);
+t_matrix	*ft_x_axis_rotation(double radians);
+t_matrix	*ft_y_axis_rotation(double radians);
+t_matrix	*ft_z_axis_rotation(double radians);
 
 /* =============================== TUPLES ============================== */
 

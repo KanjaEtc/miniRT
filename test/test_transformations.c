@@ -50,6 +50,38 @@ Test(transformations, scaling)
 	cr_assert(ft_vectors_equality(product_2, expected_2));
 }
 
+// Test(transformations, scaling)
+// {
+// 	t_tuple *point = ft_point_creator(-4, 6, 8);
+// 	t_tuple *rotated_point = ft_scaling(point, 2, 3, 4);
+// 	t_tuple *expected_point = ft_point_creator(-8, 18, 32);
+	
+// 	cr_assert(ft_points_equality(rotated_point, expected_point));
+
+
+// 	t_tuple *vector = ft_vector_creator(-4, 6, 8);
+// 	t_tuple *rotated_vector = ft_scaling(vector, 2, 3, 4);
+// 	t_tuple *expected_vector = ft_vector_creator(-8, 18, 32);
+	
+// 	cr_assert(ft_vectors_equality(rotated_vector, expected_vector));
+// }
+
+// Test(transformations, inverse_scaling)
+// {
+// 	t_tuple *point = ft_point_creator(-4, 6, 8);
+// 	t_tuple *rotated_point = ft_scaling(point, 2, 3, 4);
+// 	t_tuple *expected_point = ft_point_creator(-8, 18, 32);
+	
+// 	cr_assert(ft_points_equality(rotated_point, expected_point));
+
+
+// 	t_tuple *vector = ft_vector_creator(-4, 6, 8);
+// 	t_tuple *rotated_vector = ft_scaling(vector, 2, 3, 4);
+// 	t_tuple *expected_vector = ft_vector_creator(-8, 18, 32);
+	
+// 	cr_assert(ft_vectors_equality(rotated_vector, expected_vector));
+// }
+
 Test(transformations, inverse_scaling)
 {
 	t_matrix *scaling_matrix = ft_scaling(2, 3, 4);
@@ -70,3 +102,61 @@ Test(transformations, negative_scaling_aka_reflection)
 	
 	cr_assert(ft_points_equality(product, expected));
 }
+
+
+/* =============================== ROTATION ============================== */
+
+Test(transformations, x_rotation)
+{
+	double pi = 3.1415926535;
+	t_tuple *p = ft_point_creator(0, 1, 0);
+
+	t_matrix *quarter = ft_x_axis_rotation(pi / 2);
+	t_matrix *half_quarter = ft_x_axis_rotation(pi / 4);
+
+	t_tuple *right_quarter_point = ft_point_creator(0, 0, 1);
+	t_tuple *right_half_quarter_point = ft_point_creator(0, sqrt(2) / 2, sqrt(2) / 2);
+
+	t_tuple *tested_quarter_point = ft_matrix_by_tuple_multiplication(quarter, p);
+	t_tuple *tested_half_quarter_point = ft_matrix_by_tuple_multiplication(half_quarter, p);
+
+	cr_assert(ft_points_equality(right_quarter_point, tested_quarter_point));
+	cr_assert(ft_points_equality(right_half_quarter_point, tested_half_quarter_point));
+}
+
+Test(transformations, y_rotation)
+{
+	double pi = 3.1415926535;
+	t_tuple *p = ft_point_creator(0, 0, 1);
+
+	t_matrix *quarter = ft_y_axis_rotation(pi / 2);
+	t_matrix *half_quarter = ft_y_axis_rotation(pi / 4);
+
+	t_tuple *right_quarter_point = ft_point_creator(1, 0, 0);
+	t_tuple *right_half_quarter_point = ft_point_creator(sqrt(2) / 2, 0, sqrt(2) / 2);
+
+	t_tuple *tested_quarter_point = ft_matrix_by_tuple_multiplication(quarter, p);
+	t_tuple *tested_half_quarter_point = ft_matrix_by_tuple_multiplication(half_quarter, p);
+
+	cr_assert(ft_points_equality(right_quarter_point, tested_quarter_point));
+	cr_assert(ft_points_equality(right_half_quarter_point, tested_half_quarter_point));
+}
+
+Test(transformations, z_rotation)
+{
+	double pi = 3.1415926535;
+	t_tuple *p = ft_point_creator(0, 1, 0);
+
+	t_matrix *quarter = ft_z_axis_rotation(pi / 2);
+	t_matrix *half_quarter = ft_z_axis_rotation(pi / 4);
+
+	t_tuple *right_quarter_point = ft_point_creator(-1, 0, 0);
+	t_tuple *right_half_quarter_point = ft_point_creator(-(sqrt(2) / 2), sqrt(2) / 2, 0);
+
+	t_tuple *tested_quarter_point = ft_matrix_by_tuple_multiplication(quarter, p);
+	t_tuple *tested_half_quarter_point = ft_matrix_by_tuple_multiplication(half_quarter, p);
+
+	cr_assert(ft_points_equality(right_quarter_point, tested_quarter_point));
+	cr_assert(ft_points_equality(right_half_quarter_point, tested_half_quarter_point));
+}
+

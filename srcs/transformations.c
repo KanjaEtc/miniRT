@@ -26,11 +26,44 @@ t_matrix	*ft_scaling(double x, double y, double z)
 	return (scaling_matrix);
 }
 
-// int main()
-// {
-// 	t_matrix *translation_matrix = ft_translation(5, -3, 2);
-// 	t_tuple *vector = ft_vector_creator(-3, 4, 5);
-// 	t_tuple *product = ft_matrix_by_tuple_multiplication(translation_matrix, vector);
-	
-// 	ft_display_tuple(product);
-// }
+t_matrix	*ft_x_axis_rotation(double radians)
+{
+	t_matrix	*rotation_matrix;
+
+	rotation_matrix = ft_identity_matrix_creator(4);
+	if (!rotation_matrix)
+		return (NULL);
+	rotation_matrix->mtx[1][1] = cos(radians);
+	rotation_matrix->mtx[1][2] = -sin(radians);
+	rotation_matrix->mtx[2][1] = sin(radians);
+	rotation_matrix->mtx[2][2] = cos(radians);
+	return (rotation_matrix);
+}
+
+t_matrix	*ft_y_axis_rotation(double radians)
+{
+	t_matrix	*rotation_matrix;
+
+	rotation_matrix = ft_identity_matrix_creator(4);
+	if (!rotation_matrix)
+		return (NULL);
+	rotation_matrix->mtx[0][0] = cos(radians);
+	rotation_matrix->mtx[0][2] = sin(radians);
+	rotation_matrix->mtx[2][0] = -sin(radians);
+	rotation_matrix->mtx[2][2] = cos(radians);
+	return (rotation_matrix);
+}
+
+t_matrix	*ft_z_axis_rotation(double radians)
+{
+	t_matrix	*rotation_matrix;
+
+	rotation_matrix = ft_identity_matrix_creator(4);
+	if (!rotation_matrix)
+		return (NULL);
+	rotation_matrix->mtx[0][0] = cos(radians);
+	rotation_matrix->mtx[0][1] = -sin(radians);
+	rotation_matrix->mtx[1][0] = sin(radians);
+	rotation_matrix->mtx[1][1] = cos(radians);
+	return (rotation_matrix);
+}
