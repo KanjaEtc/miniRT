@@ -12,11 +12,14 @@
 
 #ifndef HEADER_H
 # define HEADER_H
-# include <criterion/criterion.h>
+// # include <criterion/criterion.h>
+# include "../libft/libft.h"
 # include <stdlib.h>
 # include <math.h>
 # include <stdio.h>
 # include <float.h>
+# include <unistd.h>
+# include <fcntl.h>
 
 typedef struct s_tuple
 {
@@ -25,6 +28,57 @@ typedef struct s_tuple
 	double	z;
 	double	w;
 }	t_tuple;
+
+typedef struct s_map
+{
+	char			*identifier;
+	char			**parameters;
+	struct s_map	*next;
+}	t_map;
+
+typedef struct s_sphere
+{
+	t_tuple			*center;
+	double			diameter;
+	t_tuple			*color;
+	struct s_sphere	*next;
+}	t_sphere;
+
+typedef struct s_plane
+{
+	t_tuple			*random_point;
+	t_tuple			*normal_vector;
+	t_tuple			*color;
+	struct s_plane	*next;
+}	t_plane;
+
+typedef struct s_cylinder
+{
+	t_tuple				*center;
+	t_tuple				*axis;
+	double				diameter;
+	double				height;
+	t_tuple				*color;
+	struct s_cylinder	*next;
+}	t_cylinder;
+
+typedef struct s_world
+{
+	int			*window_width;
+	int			*window_height;
+
+	double		ambient_ratio;
+	t_tuple		*ambient_color;
+
+	t_tuple		*camera_coordinates;
+	t_tuple		*camera_normal;
+	double		camera_fov;
+
+	t_sphere	*spheres;
+	t_cylinder	*cylinders;
+	t_plane		*planes;
+
+}	t_world;
 
 typedef struct s_canvas
 {
@@ -38,6 +92,18 @@ typedef struct s_matrix
 	double	**mtx;
 	int		n;
 }	t_matrix;
+
+/* =============================== PARSER ============================== */
+
+/* parsing.c */
+t_map		*ft_parser(int fd);
+char		*ft_extract_identifier(char *line, int *k);
+char		*ft_extract_parameters(char *line, int k);
+
+/* parsing_list.c */
+t_map		*ft_new_map_list(char *line);
+void		ft_mapadd_back(t_map **map, t_map *new);
+void		ft_map_list_clear(t_map **map);
 
 /* =============================== CANVAS ============================== */
 

@@ -1,4 +1,5 @@
 #include "../include/header.h"
+# include <criterion/criterion.h>
 
 Test(canvas, canvas_creation)
 {

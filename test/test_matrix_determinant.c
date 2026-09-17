@@ -1,4 +1,5 @@
 #include "../include/header.h"
+# include <criterion/criterion.h>
 
 /* =============================== 2x2 MATRIX DETERMINANT ============================== */
 
