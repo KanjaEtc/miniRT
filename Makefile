@@ -38,6 +38,7 @@ OBJS = object/canvas_and_pixels.o \
 	   object/matrix_determinant.o \
 	   object/matrix_inversion.o \
 	   object/parsing.o \
+	   object/parsing_list.o \
 	   object/transformations.o \
 	   object/tuples_creation.o \
 	   object/tuples_comparison.o \

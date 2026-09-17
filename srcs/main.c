@@ -15,6 +15,6 @@ int	main(int argc, char **argv)
 	if (!map)
 		return (1);
 	ft_map_list_clear(&map);
-	if (!ft_parser(fd))
-		return (1);
+	// if (!ft_parser(fd))
+	// 	return (1);
 }
