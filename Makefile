@@ -28,24 +28,9 @@ SRCS = srcs/canvas_and_pixels.c \
 	   srcs/tuples_basic_operations.c \
 	   srcs/tuples_complex_operations.c \
 	   srcs/utils_free.c \
-	   srcs/main.c \
+	   srcs/main.c
 
-OBJS = object/canvas_and_pixels.o \
-	   object/colors.o \
-	   object/display.o \
-	   object/matrix_basics.o \
-	   object/matrix_operations.o \
-	   object/matrix_determinant.o \
-	   object/matrix_inversion.o \
-	   object/parsing.o \
-	   object/parsing_list.o \
-	   object/transformations.o \
-	   object/tuples_creation.o \
-	   object/tuples_comparison.o \
-	   object/tuples_basic_operations.o \
-	   object/tuples_complex_operations.o \
-	   object/utils_free.o \
-	   object/main.o
+OBJS = $(patsubst srcs/%.c,object/%.o,$(SRCS))
 
 
 TEST_SRCS = test/test_canvas_and_pixels.c \
@@ -60,37 +45,15 @@ TEST_SRCS = test/test_canvas_and_pixels.c \
 			test/test_tuples_basic_operations.c \
 			test/test_tuples_complex_operations.c
 
-TEST_OBJS = object/test_canvas_and_pixels.o \
-			object/test_colors.o \
-			object/test_matrix_basics.o \
-			object/test_matrix_determinant.o \
-			object/test_matrix_inversion.o \
-			object/test_matrix_operations.o \
-			object/test_transformations.o \
-			object/test_tuples_creation.o \
-			object/test_tuples_comparison.o \
-			object/test_tuples_basic_operations.o \
-			object/test_tuples_complex_operations.o
+TEST_OBJS = $(patsubst test/%.c,object/%.o,$(TEST_SRCS))
 
 
-# Tous les objets du projet sauf main.o
-PROJECT_TEST_OBJS = object/canvas_and_pixels.o \
-				   object/colors.o \
-				   object/display.o \
-				   object/matrix_basics.o \
-				   object/matrix_operations.o \
-				   object/matrix_determinant.o \
-				   object/matrix_inversion.o \
-				   object/parsing.o \
-				   object/transformations.o \
-				   object/tuples_creation.o \
-				   object/tuples_comparison.o \
-				   object/tuples_basic_operations.o \
-				   object/tuples_complex_operations.o \
-				   object/utils_free.o
+# Tous les objets du projet sauf main.o et parsing_list.o
+PROJECT_TEST_OBJS = $(filter-out object/main.o,$(OBJS))
 
 
 all: $(NAME)
+
 
 $(NAME): $(OBJS)
 	$(MAKE) -C $(LIBFT_DIR)
@@ -104,6 +67,7 @@ object/%.o: srcs/%.c
 
 test: $(TEST_NAME)
 	./$(TEST_NAME)
+
 
 $(TEST_NAME): $(TEST_OBJS) $(PROJECT_TEST_OBJS)
 	$(MAKE) -C $(LIBFT_DIR)
@@ -130,5 +94,6 @@ fclean: clean
 
 
 re: fclean all
+
 
 .PHONY: all test clean fclean re
