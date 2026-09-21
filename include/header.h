@@ -29,6 +29,12 @@ typedef struct s_tuple
 	double	w;
 }	t_tuple;
 
+typedef struct s_ray
+{
+	t_tuple	*origin;
+	t_tuple	*direction;
+}	t_ray;
+
 // typedef struct s_map
 // {
 // 	char			*identifier;
