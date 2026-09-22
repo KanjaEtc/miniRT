@@ -1,18 +1,39 @@
 #include "../include/header.h"
 
-char	*ft_extract_parameters(char *line, int k)
+static t_map	*ft_fill_A_node(t_map *node, char **informations)
 {
-	int	i;
+	double	ratio;
 
-	if (!line)
+	if (!node || !informations || ft_array_length(informations) != 4)
 		return (NULL);
-	i = k;
-	while (line[i])
-		i++;
-	return (ft_substr(line, k, i - k));
+	ratio = (double)ft_atoi(informations[0]);
+	if (ratio < 0 || ratio > 1)
+		return (NULL);
+	node->ratio = ratio;
+	node->color = ft_color_creator((double)ft_atoi(informations[1]),
+		(double)ft_atoi(informations[2]), (double)ft_atoi(informations[3]));
+	return (node);
 }
 
-char	*ft_extract_identifier(char *line, int *k)
+static void	ft_fill_nodes(t_map *node, char **informations)
+{
+	if (!node || !informations)
+		return ;
+	if (!ft_strncmp(node->identifier, "A", ft_strlen(node->identifier)))
+		node = ft_fill_A_node(node, informations);
+	else if (!ft_strncmp(node->identifier, "L", ft_strlen(node->identifier)))
+		node = ft_fill_L_node(node, informations);
+	else if (!ft_strncmp(node->identifier, "C", ft_strlen(node->identifier)))
+		node = ft_fill_C_node(node, informations);
+	else if (!ft_strncmp(node->identifier, "sp", ft_strlen(node->identifier)))
+		node = ft_fill_sp_node(node, informations);
+	else if (!ft_strncmp(node->identifier, "pl", ft_strlen(node->identifier)))
+		node = ft_fill_pl_node(node, informations);
+	else
+		node = ft_fill_cy_node(node, informations);
+}
+
+static char	*ft_extract_identifier(char *line, int *k)
 {
 	int		i;
 	int		j;
@@ -44,29 +65,7 @@ static int	ft_empty_line(char *line)
 	return (1);
 }
 
-double	**ft_double_params(char *line, int k)
-{
-	double	*double_array_params;
-	char	*single_string_params;
-	char	**strings_array_params;
-	int		i;
-	
-
-	i = -1;
-	single_string_params = ft_extract_parameters(line, k);
-	strings_array_params = ft_split(single_string_params, "\t\n\v\f\r ,");
-	free(single_string_params);
-	if (!strings_array_params)
-		return (NULL);
-	double_array_params = malloc(sizeof(double) * ft_array_length(strings_array_params));
-	if (!double_array_params)
-		return (ft_free_array(strings_array_params), NULL);
-	while (strings_array_params[++i])
-		double_array_params[i] = (double)ft_atoi(strings_array_params[i]);
-	ft_free_array(strings_array_params);
-}
-
-t_map	*ft_create_list(int fd)
+t_map	*ft_create_map_list(int fd)
 {
 	t_map	*map;
 	t_map	*node;
@@ -78,7 +77,9 @@ t_map	*ft_create_list(int fd)
 	{
 		if (!ft_empty_line(line))
 		{
-			node = ft_new_map_list(line);
+			node = ft_new_map_node(line);
+			if (!node)
+				return (free(line), ft_map_list_clear(map), NULL);
 			ft_mapadd_back(&map, node);
 		}
 		free(line);

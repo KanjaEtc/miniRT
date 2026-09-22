@@ -10,7 +10,10 @@ void	ft_map_list_clear(t_map **map)
 	{
 		tmp = (*map)->next;
 		free((*map)->identifier);
-		ft_free_array((*map)->parameters);
+		free((*map)->color);
+		free((*map)->point);
+		free((*map)->normalized_orientation);
+		free((*map)->origin);
 		free(*map);
 		*map = tmp;
 	}
@@ -34,28 +37,24 @@ void	ft_mapadd_back(t_map **map, t_map *new)
 	tmp->next = new;
 }
 
-t_map	*ft_new_map_list(char *line)
+t_map	*ft_new_map_node(char *line)
 {
-	t_map	*new;
-	char	*single_string_parameters;
-	char	**strings_parameters;
-	double	**double_parameters;
+	t_map	*node;
+	char	**informations;
+	char	*subline;
 	int		k;
 
-	new = malloc(sizeof(t_map));
-	if (!new)
+	if (!line)
 		return (NULL);
-	k = 0;
-	new->identifier = ft_extract_identifier(line, &k);
-	// single_string_parameters = ft_extract_parameters(line, k);
-	// strings_parameters = ft_split(single_string_parameters, "\t\n\v\f\r ");
-	// free(single_string_parameters);
-	// if (!new->identifier || !strings_parameters)
-	// 	return (NULL);
-	k = -1;
-
-	while (strings_parameters[++k])
-
-	new->next = NULL;
-	return (new);
+	node = malloc(sizeof(t_map));
+	if (!node)
+		return (NULL);
+	node->next = NULL;
+	node->identifier = ft_extract_identifier(line, &k);
+	subline = ft_substr(line, k, ft_strlen(line) - k);
+	informations = ft_split(subline, "\t\n\v\f\r ,");
+	if (!informations)
+		return (free(node->identifier), free(node), free(subline), NULL);
+	ft_fill_nodes(node, informations);
+	return (free(subline), ft_free_array(informations), node);
 }

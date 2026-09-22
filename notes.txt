@@ -1,3 +1,13 @@
 A FAIRE
 - tuples_*.c : proteger les fonctions contre DBL_MAX
 - canvas_and_pixels.c : prevoir une valeur max pour width et height
+
+
+BROUILLON
+- checker identifiers
+- creer des nodes selon identifiers
+
+- fonction1 : ligne par ligne, envoyer a la fonction correspondant a l'identifier
+- fonction A : checke qu'il y a un double et un tuple
+- si oui : cree un node ambient et le retourne a fonction1
+

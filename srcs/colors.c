@@ -16,8 +16,7 @@ t_tuple	*ft_color_creator(double x, double y, double z)
 {
 	t_tuple	*color;
 
-	if (x < 0 || x > 1 || y < 0 || y > 1 || z < 0 || z > 1
-		|| x > DBL_MAX || y > DBL_MAX || z > DBL_MAX)
+	if (x < 0 || x > 255 || y < 0 || y > 255 || z < 0 || z > 255)
 		return (NULL);
 	color = malloc(sizeof(t_tuple));
 	if (!color)

@@ -32,7 +32,14 @@ typedef struct s_tuple
 typedef struct s_map
 {
 	char			*identifier;
-	double			*parameters;
+	double			ratio;
+	double			diameter;
+	double			height;
+	double			fov;
+	t_tuple			*color;
+	t_tuple			*origin;
+	t_tuple			*normalized_orientation;
+	t_tuple			*point;
 	struct s_map	*next;
 }	t_map;
 
@@ -99,12 +106,17 @@ typedef struct s_matrix
 int			ft_parser(char *file_name);
 
 /* parsing_create_list.c */
-t_map		*ft_create_list(int fd);
-char		*ft_extract_identifier(char *line, int *k);
-char		*ft_extract_parameters(char *line, int k);
+t_map		*ft_create_map_list(int fd);
+
+/* parsing_fill_list.c */
+t_map		*ft_fill_C_node(t_map *node, char **informations);
+t_map		*ft_fill_L_node(t_map *node, char **informations);
+t_map		*ft_fill_sp_node(t_map *node, char **informations);
+t_map		*ft_fill_pl_node(t_map *node, char **informations);
+t_map		*ft_fill_cy_node(t_map *node, char **informations);
 
 /* parsing_list_utils.c */
-t_map		*ft_new_map_list(char *line);
+t_map		*ft_new_map_node(char *line);
 void		ft_mapadd_back(t_map **map, t_map *new);
 void		ft_map_list_clear(t_map **map);
 

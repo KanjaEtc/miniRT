@@ -29,5 +29,6 @@ int	ft_parser(char *file_name)
 	if (!ft_check_identifiers_validity(map)
 		|| !ft_check_mandatory_identifiers(map))
 		return (ft_map_list_clear(&map), 0);
-	return (ft_check_parameters(map));
+	return (0);
+	// return (ft_check_parameters(map));
 }
