@@ -15,7 +15,7 @@ static t_map	*ft_fill_A_node(t_map *node, char **informations)
 	return (node);
 }
 
-static void	ft_fill_nodes(t_map *node, char **informations)
+void	ft_fill_nodes(t_map *node, char **informations)
 {
 	if (!node || !informations)
 		return ;
@@ -33,7 +33,7 @@ static void	ft_fill_nodes(t_map *node, char **informations)
 		node = ft_fill_cy_node(node, informations);
 }
 
-static char	*ft_extract_identifier(char *line, int *k)
+char	*ft_extract_identifier(char *line, int *k)
 {
 	int		i;
 	int		j;
@@ -79,7 +79,7 @@ t_map	*ft_create_map_list(int fd)
 		{
 			node = ft_new_map_node(line);
 			if (!node)
-				return (free(line), ft_map_list_clear(map), NULL);
+				return (free(line), ft_map_list_clear(&map), NULL);
 			ft_mapadd_back(&map, node);
 		}
 		free(line);

@@ -103,10 +103,12 @@ typedef struct s_matrix
 /* =============================== PARSER ============================== */
 
 /* parsing.c */
-int			ft_parser(char *file_name);
+t_map		*ft_parser(char *file_name);
 
 /* parsing_create_list.c */
 t_map		*ft_create_map_list(int fd);
+char		*ft_extract_identifier(char *line, int *k);
+void		ft_fill_nodes(t_map *node, char **informations);
 
 /* parsing_fill_list.c */
 t_map		*ft_fill_C_node(t_map *node, char **informations);
@@ -145,6 +147,7 @@ t_tuple		*ft_color_creator(double x, double y, double z);
 void		ft_display_matrix(t_matrix *matrix);
 void		ft_display_tuple(t_tuple *t);
 void		test_fill_matrix(t_matrix *matrix, double start);
+void		ft_display_map(t_map *map);
 
 /* =============================== MATRICES ============================== */
 
@@ -203,6 +206,9 @@ double		ft_vector_length(t_tuple *v);
 t_tuple		*ft_normalize(t_tuple *vector);
 double		ft_dot_product(t_tuple *v1, t_tuple *v2);
 t_tuple		*ft_cross_product(t_tuple *v1, t_tuple *v2);
+
+/* tuples_utils.c */
+int			ft_is_a_normalized_vector(t_tuple *vector);
 
 /* =============================== UTILS ============================== */
 

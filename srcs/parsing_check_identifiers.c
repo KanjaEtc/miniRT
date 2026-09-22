@@ -8,14 +8,14 @@ int	ft_check_mandatory_identifiers(t_map *map)
 	int		C;
 
 	if (!map)
-		return (NULL);
+		return (0);
 	A = 0;
 	L = 0;
 	C = 0;
 	tmp = map;
 	while (tmp)
 	{
-		if (!ft_strcmp(tmp->identifier, "A", ft_strlen(tmp->identifier)))
+		if (!ft_strncmp(tmp->identifier, "A", ft_strlen(tmp->identifier)))
 			A++;
 		else if (!ft_strncmp(tmp->identifier, "L", ft_strlen(tmp->identifier)))
 			L++;
@@ -31,7 +31,7 @@ int	ft_check_identifiers_validity(t_map *map)
 	t_map	*tmp;
 
 	if (!map)
-		return (NULL);
+		return (0);
 	tmp = map;
 	while (tmp)
 	{
