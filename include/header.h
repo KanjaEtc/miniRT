@@ -35,6 +35,12 @@ typedef struct s_ray
 	t_tuple	*direction;
 }	t_ray;
 
+typedef struct s_sphere
+{
+	t_tuple	*center;
+	double	radius;
+}	t_sphere;
+
 // typedef struct s_map
 // {
 // 	char			*identifier;
