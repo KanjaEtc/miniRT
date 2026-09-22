@@ -13,22 +13,22 @@ static int	ft_check_rt_extension(char *file_name)
 	return (0);
 }
 
-t_world	*ft_parser(char *file_name)
+t_map	*ft_parser(char *file_name)
 {
 	int		fd;
-	t_world	*world;
+	t_map	*map;
 
 	fd = open(file_name, O_RDONLY);
 	if (fd < 0)
 		return (NULL);
 	if (!ft_check_rt_extension(file_name))
 		return (NULL);
-	world = ft_create_world(fd);
-	if (!world)
+	map = ft_create_map_list(fd);
+	if (!map)
 		return (NULL);
-	// if (!ft_check_identifiers_validity(wor)
-		// || !ft_check_mandatory_identifiers(map)) utile
-		// return (ft_map_list_clear(&map), NULL);
-	return (world);
+	if (!ft_check_identifiers_validity(map)
+		|| !ft_check_mandatory_identifiers(map))
+		return (ft_map_list_clear(&map), NULL);
+	return (map);
 	// return (ft_check_parameters(map));
 }

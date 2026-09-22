@@ -53,8 +53,8 @@ typedef struct s_sphere
 
 typedef struct s_plane
 {
-	t_tuple			*random_point;
-	t_tuple			*normal_vector;
+	t_tuple			*point;
+	t_tuple			*normal;
 	t_tuple			*color;
 	struct s_plane	*next;
 }	t_plane;
@@ -69,23 +69,26 @@ typedef struct s_cylinder
 	struct s_cylinder	*next;
 }	t_cylinder;
 
-typedef struct s_world
+typedef struct s_light
 {
-	int			*window_width;
-	int			*window_height;
+	t_tuple			*origin;
+	t_tuple			*color;
+	double			ratio;
+	struct s_light	*next;
+}	t_light;
 
-	double		ambient_ratio;
-	t_tuple		*ambient_color;
+typedef struct s_camera
+{
+	t_tuple		*origin;
+	t_tuple		*normal;
+	double		fov;
+}	t_camera;
 
-	t_tuple		*camera_coordinates;
-	t_tuple		*camera_normal;
-	double		camera_fov;
-
-	t_sphere	*spheres;
-	t_cylinder	*cylinders;
-	t_plane		*planes;
-
-}	t_world;
+typedef struct s_ambient
+{
+	double		ratio;
+	t_tuple		*color;
+}	t_ambient;
 
 typedef struct s_canvas
 {
@@ -93,6 +96,21 @@ typedef struct s_canvas
 	int		height;
 	t_tuple	**pixel_grid;
 }	t_canvas;
+
+typedef struct s_world
+{
+	t_canvas	*canvas;
+
+	t_ambient	*ambient;
+	t_camera	camera;
+
+	t_light		*lights;
+
+	t_sphere	*spheres;
+	t_cylinder	*cylinders;
+	t_plane		*planes;
+
+}	t_world;
 
 typedef struct s_matrix
 {
@@ -103,19 +121,20 @@ typedef struct s_matrix
 /* =============================== PARSER ============================== */
 
 /* parsing.c */
-t_map		*ft_parser(char *file_name);
+t_world		*ft_parser(char *file_name);
 
-/* parsing_create_list.c */
-t_map		*ft_create_map_list(int fd);
-char		*ft_extract_identifier(char *line, int *k);
-void		ft_fill_nodes(t_map *node, char **informations);
+/* parsing_create_world.c */
+t_world		*ft_create_world(int fd);
+// t_map		*ft_create_map_list(int fd);
+// char		*ft_extract_identifier(char *line, int *k);
+// void		ft_fill_nodes(t_map *node, char **informations);
 
-/* parsing_fill_list.c */
-t_map		*ft_fill_C_node(t_map *node, char **informations);
-t_map		*ft_fill_L_node(t_map *node, char **informations);
-t_map		*ft_fill_sp_node(t_map *node, char **informations);
-t_map		*ft_fill_pl_node(t_map *node, char **informations);
-t_map		*ft_fill_cy_node(t_map *node, char **informations);
+/* parsing_fill_world.c */
+t_map		*ft_fill_C_struct(char *line);
+t_map		*ft_fill_L_struct(char *line);
+t_map		*ft_fill_sp_struct(char *line);
+t_map		*ft_fill_pl_struct(char *line);
+t_map		*ft_fill_cy_struct(char *line);
 
 /* parsing_list_utils.c */
 t_map		*ft_new_map_node(char *line);

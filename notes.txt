@@ -11,3 +11,11 @@ BROUILLON
 - fonction A : checke qu'il y a un double et un tuple
 - si oui : cree un node ambient et le retourne a fonction1
 
+
+T_WORLD
+- ft_parser lit avec gnl et envoie chaque ligne a ft_check_identifier
+- ft_check_identifier envoie la ligne a ft_x_identifier
+- ft_X_identifier renvoie une petite strucutre de l'identifier a ft_check_identifier
+- ft_check_indentifier renvoie cette petite structure a ft_parser
+- ft_parser stocke la petite structure dans t_world et si elle est null, 
+	elle renvoie null et le programme quitte proprement
