@@ -21,6 +21,8 @@ int	ft_atoi(const char *s)
 	i = 0;
 	n = 0;
 	neg = 1;
+	if (!s)
+		return (0);
 	while ((s[i] >= 9 && s[i] <= 13) || s[i] == ' ')
 		i++;
 	if (s[i] == '-' || s[i] == '+')

@@ -1,66 +1,33 @@
 #include "../include/header.h"
 
-char	*ft_extract_parameters(char *line, int k)
+static int	ft_check_rt_extension(char *file_name)
 {
 	int	i;
 
-	if (!line)
-		return (NULL);
-	i = k;
-	while (line[i])
-		i++;
-	return (ft_substr(line, k, i - k));
-}
-
-char	*ft_extract_identifier(char *line, int *k)
-{
-	int		i;
-	int		j;
-
-	if (!line)
-		return (NULL);
-	i = 0;
-	while (ft_isspace(line[i]))
-		i++;
-	j = i;
-	while (!ft_isspace(line[j]))
-		j++;
-	*k = j;
-	return (ft_substr(line, i, j - i));
-}
-
-static int	ft_empty_line(char *line)
-{
-	int	i;
-
-	if (!line)
-		return (1);
 	i = -1;
-	while (line[++i])
+	while (file_name && file_name[++i])
 	{
-		if (!ft_isspace(line[i]))
-			return (0);
+		if (file_name[i] == '.')
+			return (!ft_strncmp(&file_name[i], ".rt", ft_strlen(&file_name)));
 	}
-	return (1);
+	return (0);
 }
 
-t_map	*ft_parser(int fd)
+int	ft_parser(char *file_name)
 {
+	int		fd;
 	t_map	*map;
-	t_map	*node;
-	char	*line;
 
-	map = NULL;
-	line = get_next_line(fd);
-	while (line)
-	{
-		if (!ft_empty_line(line))
-		{
-			node = ft_new_map_list(line);
-			ft_mapadd_back(&map, node);
-		}
-		free(line);
-		line = get_next_line(fd);
-	}
-	return (map);
+	fd = open(file_name, O_RDONLY);
+	if (fd < 0)
+		return (1);
+	if (!ft_check_rt_extension(file_name))
+		return (0);
+	map = ft_create_list(fd);
+	if (!map)
+		return (0);
+	if (!ft_check_identifiers_validity(map)
+		|| !ft_check_mandatory_identifiers(map))
+		return (ft_map_list_clear(&map), 0);
+	return (ft_check_parameters(map));
 }

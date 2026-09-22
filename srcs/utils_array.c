@@ -1,0 +1,34 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   utils_free.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: adbarth <adbarth@learner.42.tech>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/09/08 11:45:02 by adbarth           #+#    #+#             */
+/*   Updated: 2026/09/08 11:45:03 by adbarth          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "../include/header.h"
+
+int	ft_array_length(char **array)
+{
+	int	i;
+
+	i = 0;
+	while (array && array[i])
+		i++;
+	return (i);
+}
+
+// void	*ft_free_string_array(char **array)
+// {
+// 	int	i;
+
+// 	i = 0;
+// 	while (array && array[i])
+// 		free(array[i++]);
+// 	free(array);
+// 	return (NULL);
+// }

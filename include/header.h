@@ -32,7 +32,7 @@ typedef struct s_tuple
 typedef struct s_map
 {
 	char			*identifier;
-	char			**parameters;
+	double			*parameters;
 	struct s_map	*next;
 }	t_map;
 
@@ -96,14 +96,24 @@ typedef struct s_matrix
 /* =============================== PARSER ============================== */
 
 /* parsing.c */
-t_map		*ft_parser(int fd);
+int			ft_parser(char *file_name);
+
+/* parsing_create_list.c */
+t_map		*ft_create_list(int fd);
 char		*ft_extract_identifier(char *line, int *k);
 char		*ft_extract_parameters(char *line, int k);
 
-/* parsing_list.c */
+/* parsing_list_utils.c */
 t_map		*ft_new_map_list(char *line);
 void		ft_mapadd_back(t_map **map, t_map *new);
 void		ft_map_list_clear(t_map **map);
+
+/* parsing_check_identifiers.c */
+int			ft_check_identifiers_validity(t_map *map);
+int			ft_check_mandatory_identifiers(t_map *map);
+
+/* parsing_check_parameters.c */
+int			ft_check_parameters(t_map *map);
 
 /* =============================== CANVAS ============================== */
 
@@ -188,5 +198,8 @@ t_tuple		*ft_cross_product(t_tuple *v1, t_tuple *v2);
 void		*ft_free_tuple_array(t_tuple **array, int index);
 void		*ft_free_double_array(double **array, int index);
 void		*ft_free_matrix(t_matrix *m);
+
+/* utils_array */
+int			ft_array_length(char **array);
 
 #endif

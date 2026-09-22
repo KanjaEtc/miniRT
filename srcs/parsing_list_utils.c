@@ -38,6 +38,8 @@ t_map	*ft_new_map_list(char *line)
 {
 	t_map	*new;
 	char	*single_string_parameters;
+	char	**strings_parameters;
+	double	**double_parameters;
 	int		k;
 
 	new = malloc(sizeof(t_map));
@@ -45,9 +47,15 @@ t_map	*ft_new_map_list(char *line)
 		return (NULL);
 	k = 0;
 	new->identifier = ft_extract_identifier(line, &k);
-	single_string_parameters = ft_extract_parameters(line, k);
-	new->parameters = ft_split(single_string_parameters, "\t\n\v\f\r ");
-	free(single_string_parameters);
+	// single_string_parameters = ft_extract_parameters(line, k);
+	// strings_parameters = ft_split(single_string_parameters, "\t\n\v\f\r ");
+	// free(single_string_parameters);
+	// if (!new->identifier || !strings_parameters)
+	// 	return (NULL);
+	k = -1;
+
+	while (strings_parameters[++k])
+
 	new->next = NULL;
 	return (new);
 }
