@@ -25,7 +25,6 @@ SRCS = srcs/canvas_and_pixels.c \
 	   srcs/parsing_init_struct.c \
 	   srcs/parsing_init_list.c \
 	   srcs/parsing_fill_world.c \
-	   srcs/parsing_list_utils.c \
 	   srcs/transformations.c \
 	   srcs/tuples_creation.c \
 	   srcs/tuples_utils.c \

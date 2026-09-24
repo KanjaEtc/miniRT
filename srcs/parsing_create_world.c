@@ -1,38 +1,5 @@
 #include "../include/header.h"
 
-// static t_map	*ft_fill_A_node(t_map *node, char **informations)
-// {
-// 	double	ratio;
-
-// 	if (!node || !informations || ft_array_length(informations) != 4)
-// 		return (NULL);
-// 	ratio = (double)ft_atoi(informations[0]);
-// 	if (ratio < 0 || ratio > 1)
-// 		return (NULL);
-// 	node->ratio = ratio;
-// 	node->color = ft_color_creator((double)ft_atoi(informations[1]),
-// 		(double)ft_atoi(informations[2]), (double)ft_atoi(informations[3]));
-// 	return (node);
-// }
-
-// void	ft_fill_nodes(t_map *node, char **informations)
-// {
-// 	if (!node || !informations)
-// 		return ;
-// 	if (!ft_strncmp(node->identifier, "A", ft_strlen(node->identifier)))
-// 		node = ft_fill_A_node(node, informations);
-// 	else if (!ft_strncmp(node->identifier, "L", ft_strlen(node->identifier)))
-// 		node = ft_fill_L_node(node, informations);
-// 	else if (!ft_strncmp(node->identifier, "C", ft_strlen(node->identifier)))
-// 		node = ft_fill_C_node(node, informations);
-// 	else if (!ft_strncmp(node->identifier, "sp", ft_strlen(node->identifier)))
-// 		node = ft_fill_sp_node(node, informations);
-// 	else if (!ft_strncmp(node->identifier, "pl", ft_strlen(node->identifier)))
-// 		node = ft_fill_pl_node(node, informations);
-// 	else
-// 		node = ft_fill_cy_node(node, informations);
-// }
-
 static t_ambient	*ft_fill_A_struct(char *line, int *null_flag)
 {
 	t_ambient	*ambient;
@@ -45,10 +12,11 @@ static t_ambient	*ft_fill_A_struct(char *line, int *null_flag)
 		return (*null_flag = 1, NULL);
 	infos = ft_split(line, "\t\n\v\f\r ,");
 	if (!infos || !*infos || ft_array_length(infos) != 4)
-		return (free(ambient), ft_free_array(infos), *null_flag = 1, NULL);
+		return (ft_free_ambient(ambient), ft_free_array(infos), *null_flag = 1, NULL);
 	ambient->ratio = (double)ft_atoi(infos[0]);
 	ambient->color = ft_color_creator((double)ft_atoi(infos[1]),
 		(double)ft_atoi(infos[2]), (double)ft_atoi(infos[3]));
+	ft_free_array(infos);
 	if (!ambient->color)
 		return (ft_free_ambient(ambient), *null_flag = 1, NULL);
 	return (ambient);
@@ -126,9 +94,10 @@ t_world	*ft_create_world(int fd)
 		else if (!ft_strncmp(identifier, "cy", ft_strlen(identifier)))
 			ft_cylinders_addback(&world->cylinders,
 				ft_fill_cy_struct(&line[k], &null_flag));
+		free(identifier);
+		free(line);
 		if (null_flag)
 			return (ft_free_world(world), NULL);
-		free(line);
 		line = get_next_line(fd);
 	}
 	return (world);

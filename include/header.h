@@ -29,20 +29,6 @@ typedef struct s_tuple
 	double	w;
 }	t_tuple;
 
-// typedef struct s_map
-// {
-// 	char			*identifier;
-// 	double			ratio;
-// 	double			diameter;
-// 	double			height;
-// 	double			fov;
-// 	t_tuple			*color;
-// 	t_tuple			*origin;
-// 	t_tuple			*normalized_orientation;
-// 	t_tuple			*point;
-// 	struct s_map	*next;
-// }	t_map;
-
 typedef struct s_sphere
 {
 	t_tuple			*center;
@@ -125,9 +111,6 @@ t_world		*ft_parser(char *file_name);
 
 /* parsing_create_world.c */
 t_world		*ft_create_world(int fd);
-// t_map		*ft_create_map_list(int fd);
-// char		*ft_extract_identifier(char *line, int *k);
-// void		ft_fill_nodes(t_map *node, char **informations);
 
 /* parsing_fill_world.c */
 t_camera	*ft_fill_C_struct(char *line, int *null_flag);
@@ -135,12 +118,6 @@ t_light		*ft_fill_L_struct(char *line, int *null_flag);
 t_sphere	*ft_fill_sp_struct(char *line, int *null_flag);
 t_plane		*ft_fill_pl_struct(char *line, int *null_flag);
 t_cylinder	*ft_fill_cy_struct(char *line, int *null_flag);
-
-/* parsing_list_utils.c */
-
-// t_map		*ft_new_map_node(char *line);
-// void		ft_mapadd_back(t_map **map, t_map *new);
-// void		ft_map_list_clear(t_map **map);
 
 /* parsing_check_identifiers.c */
 // int			ft_check_identifiers_validity(t_map *map);
@@ -176,6 +153,7 @@ t_tuple		*ft_color_creator(double x, double y, double z);
 /* =============================== DISPLAY ETC ============================== */
 
 void		ft_display_matrix(t_matrix *matrix);
+void		ft_display_world(t_world *world);
 void		ft_display_tuple(t_tuple *t);
 void		test_fill_matrix(t_matrix *matrix, double start);
 // void		ft_display_map(t_map *map);

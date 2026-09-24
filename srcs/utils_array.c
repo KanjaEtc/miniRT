@@ -21,14 +21,3 @@ int	ft_array_length(char **array)
 		i++;
 	return (i);
 }
-
-// void	*ft_free_string_array(char **array)
-// {
-// 	int	i;
-
-// 	i = 0;
-// 	while (array && array[i])
-// 		free(array[i++]);
-// 	free(array);
-// 	return (NULL);
-// }
