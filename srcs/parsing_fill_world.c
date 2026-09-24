@@ -1,18 +1,18 @@
 #include "../include/header.h"
 
-t_camera	*ft_fill_C_struct(char *line, int *null_flag)
+t_camera	*ft_fill_C_struct(char *line)
 {
 	t_camera	*camera;
 	char		**infos;
 
 	if (!line)
-		return (*null_flag = 1, NULL);
+		return (NULL);
 	camera = ft_init_camera();
 	if (!camera)
-		return (*null_flag = 1, NULL);
+		return (NULL);
 	infos = ft_split(line, "\t\n\v\f\r ,");
 	if (!infos || !*infos || ft_array_length(infos) != 7)
-		return (ft_free_camera(camera), ft_free_array(infos), *null_flag = 1, NULL);
+		return (ft_free_camera(camera), ft_free_array(infos), NULL);
 	camera->origin =  ft_point_creator((double)ft_atoi(infos[0]),
 		(double)ft_atoi(infos[1]), (double)ft_atoi(infos[2]));
 	camera->normal = ft_vector_creator((double)ft_atoi(infos[3]),
@@ -20,23 +20,23 @@ t_camera	*ft_fill_C_struct(char *line, int *null_flag)
 	camera->fov = (double)ft_atoi(infos[6]);
 	ft_free_array(infos);
 	if (!camera->origin || !camera->normal)
-		return (ft_free_camera(camera), *null_flag = 1, NULL);
+		return (ft_free_camera(camera), NULL);
 	return (camera);
 }
 
-t_light	*ft_fill_L_struct(char *line, int *null_flag)
+t_light	*ft_fill_L_struct(char *line)
 {
 	t_light	*light;
 	char	**infos;
 
 	if (!line)
-		return (*null_flag = 1, NULL);
+		return (NULL);
 	light = ft_init_lights();
 	if (!light)
-		return (*null_flag = 1, NULL);
+		return (NULL);
 	infos = ft_split(line, "\t\n\v\f\r ,");
 	if (!infos || !*infos || ft_array_length(infos) != 7)
-		return (ft_lights_list_clear(&light), ft_free_array(infos), *null_flag = 1, NULL);
+		return (ft_lights_list_clear(&light), ft_free_array(infos), NULL);
 	light->origin = ft_point_creator(ft_atoi(infos[0]),
 		ft_atoi(infos[1]), ft_atoi(infos[2]));
 	light->ratio = ft_atoi(infos[3]);
@@ -44,23 +44,23 @@ t_light	*ft_fill_L_struct(char *line, int *null_flag)
 		ft_atoi(infos[5]), ft_atoi(infos[6]));
 	ft_free_array(infos);
 	if (!light->origin || !light->color)
-		return (ft_lights_list_clear(&light), *null_flag = 1, NULL);
+		return (ft_lights_list_clear(&light), NULL);
 	return (light);
 }
 
-t_sphere	*ft_fill_sp_struct(char *line, int *null_flag)
+t_sphere	*ft_fill_sp_struct(char *line)
 {
 	t_sphere	*sphere;
 	char		**infos;
 
 	if (!line)
-		return (*null_flag = 1, NULL);
+		return (NULL);
 	sphere = ft_init_spheres();
 	if (!sphere)
-		return (*null_flag = 1, NULL);
+		return (NULL);
 	infos = ft_split(line, "\t\n\v\f\r ,");
 	if (!infos || !*infos || ft_array_length(infos) != 7)
-		return (ft_spheres_list_clear(&sphere), ft_free_array(infos), *null_flag = 1, NULL);
+		return (ft_spheres_list_clear(&sphere), ft_free_array(infos), NULL);
 	sphere->center = ft_point_creator(ft_atoi(infos[0]),
 		ft_atoi(infos[1]), ft_atoi(infos[2]));
 	sphere->diameter = ft_atoi(infos[3]);
@@ -68,23 +68,23 @@ t_sphere	*ft_fill_sp_struct(char *line, int *null_flag)
 		ft_atoi(infos[5]), ft_atoi(infos[6]));
 	ft_free_array(infos);
 	if (!sphere->center || !sphere->color)
-		return (ft_spheres_list_clear(&sphere), *null_flag = 1, NULL);
+		return (ft_spheres_list_clear(&sphere), NULL);
 	return (sphere);
 }
 
-t_plane	*ft_fill_pl_struct(char *line, int *null_flag)
+t_plane	*ft_fill_pl_struct(char *line)
 {
 	t_plane		*plane;
 	char		**infos;
 
 	if (!line)
-		return (*null_flag = 1, NULL);
+		return (NULL);
 	plane = ft_init_planes();
 	if (!plane)
-		return (*null_flag = 1, NULL);
+		return (NULL);
 	infos = ft_split(line, "\t\n\v\f\r ,");
 	if (!infos || !*infos || ft_array_length(infos) != 9)
-		return (ft_planes_list_clear(&plane), ft_free_array(infos), *null_flag = 1, NULL);
+		return (ft_planes_list_clear(&plane), ft_free_array(infos), NULL);
 	plane->point = ft_point_creator(ft_atoi(infos[0]),
 		ft_atoi(infos[1]), ft_atoi(infos[2]));
 	plane->normal = ft_vector_creator(ft_atoi(infos[3]),
@@ -93,23 +93,23 @@ t_plane	*ft_fill_pl_struct(char *line, int *null_flag)
 		ft_atoi(infos[7]), ft_atoi(infos[8]));
 	ft_free_array(infos);
 	if (!plane->point || !plane->normal || !plane->color)
-		return (ft_planes_list_clear(&plane), *null_flag = 1, NULL);
+		return (ft_planes_list_clear(&plane), NULL);
 	return (plane);
 }
 
-t_cylinder	*ft_fill_cy_struct(char *line, int *null_flag)
+t_cylinder	*ft_fill_cy_struct(char *line)
 {
 	t_cylinder	*cylinder;
 	char		**infos;
 
 	if (!line)
-		return (*null_flag = 1, NULL);
+		return (NULL);
 	cylinder = ft_init_cylinders();
 	if (!cylinder)
-		return (*null_flag = 1, NULL);
+		return (NULL);
 	infos = ft_split(line, "\t\n\v\f\r ,");
 	if (!infos || !*infos || ft_array_length(infos) != 11)
-		return (ft_cylinders_list_clear(&cylinder), ft_free_array(infos), *null_flag = 1, NULL);
+		return (ft_cylinders_list_clear(&cylinder), ft_free_array(infos), NULL);
 	cylinder->center = ft_point_creator(ft_atoi(infos[0]),
 		ft_atoi(infos[1]), ft_atoi(infos[2]));
 	cylinder->axis = ft_vector_creator(ft_atoi(infos[3]),
@@ -120,6 +120,6 @@ t_cylinder	*ft_fill_cy_struct(char *line, int *null_flag)
 		ft_atoi(infos[9]), ft_atoi(infos[10]));
 	ft_free_array(infos);
 	if (!cylinder->center || !cylinder->axis || !cylinder->color)
-		return (ft_cylinders_list_clear(&cylinder), *null_flag = 1, NULL);
+		return (ft_cylinders_list_clear(&cylinder), NULL);
 	return (cylinder);
 }

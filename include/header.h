@@ -113,15 +113,15 @@ t_world		*ft_parser(char *file_name);
 t_world		*ft_create_world(int fd);
 
 /* parsing_fill_world.c */
-t_camera	*ft_fill_C_struct(char *line, int *null_flag);
-t_light		*ft_fill_L_struct(char *line, int *null_flag);
-t_sphere	*ft_fill_sp_struct(char *line, int *null_flag);
-t_plane		*ft_fill_pl_struct(char *line, int *null_flag);
-t_cylinder	*ft_fill_cy_struct(char *line, int *null_flag);
+t_camera	*ft_fill_C_struct(char *line);
+t_light		*ft_fill_L_struct(char *line);
+t_sphere	*ft_fill_sp_struct(char *line);
+t_plane		*ft_fill_pl_struct(char *line);
+t_cylinder	*ft_fill_cy_struct(char *line);
 
 /* parsing_check_identifiers.c */
 // int			ft_check_identifiers_validity(t_map *map);
-// int			ft_check_mandatory_identifiers(t_map *map);
+int			ft_check_mandatory_identifiers(t_world *world);
 
 /* parsing_check_parameters.c */
 // int			ft_check_parameters(t_map *map);
@@ -239,7 +239,7 @@ void		*ft_free_double_array(double **array, int index);
 void		*ft_free_matrix(t_matrix *m);
 
 /* utils_free_struct.c */
-void		ft_free_world(t_world *world);
+void		*ft_free_world(t_world *world);
 void		ft_free_ambient(t_ambient *ambient);
 void		ft_free_camera(t_camera *camera);
 

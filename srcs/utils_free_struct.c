@@ -12,10 +12,10 @@
 
 #include "../include/header.h"
 
-void	ft_free_world(t_world *world)
+void	*ft_free_world(t_world *world)
 {
 	if (!world)
-		return ;
+		return (NULL);
 	ft_free_ambient(world->ambient);
 	ft_free_camera(world->camera);
 	ft_lights_list_clear(&world->lights);
@@ -23,6 +23,7 @@ void	ft_free_world(t_world *world)
 	ft_planes_list_clear(&world->planes);
 	ft_cylinders_list_clear(&world->cylinders);
 	free(world);
+	return (NULL);
 }
 
 void	ft_free_ambient(t_ambient *ambient)

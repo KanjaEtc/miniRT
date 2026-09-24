@@ -1,5 +1,5 @@
 A FAIRE
-- tuples_*.c : proteger les fonctions contre DBL_MAX
+- link ft_printf
 - canvas_and_pixels.c : prevoir une valeur max pour width et height
 
 
@@ -19,3 +19,37 @@ T_WORLD
 - ft_check_indentifier renvoie cette petite structure a ft_parser
 - ft_parser stocke la petite structure dans t_world et si elle est null, 
 	elle renvoie null et le programme quitte proprement
+
+
+CREATE_WORLD
+- fonction0 envoie world a init et boucle avec gnl.
+	elle les envoie quand sont pas vides avec leur identifier
+- fonction1 recoit chaque line avec son identifier. elle les envoie a leur fonction	
+	elle compte les identifier en majuscule et guette les identifiers invalides
+- fonctionA = fill_A
+
+fonction0
+{
+	t_world world;
+
+	world = ft_world_init
+	line = gnl
+	while (line)
+	{
+		identifier = extract_identifier(line)
+		if (!identifier || is_invalid_identifier)
+			return (free_world(world_))
+		if (!fonction1(&world, identifier))
+			free_world(world)
+		free(line)
+		line = gnl
+	}
+	return (&world);
+}
+
+int fonction1(world, line, identifier)
+{
+	if (identifier == A)
+		return (world->ambient = fill_A_struct, world->ambient != NULL)
+	...
+}
