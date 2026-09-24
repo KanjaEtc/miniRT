@@ -12,32 +12,70 @@
 
 #include "../include/header.h"
 
-void	ft_free_world(t_world *world)
+void	ft_lights_addback(t_light **lights, t_light *new)
 {
-	if (!world)
+	t_light	*tmp;
+
+	if (!lights || !new)
 		return ;
-	ft_free_ambient(world->ambient);
-	ft_free_camera(world->camera);
-	ft_lights_list_clear(&world->lights);
-	ft_spheres_list_clear(&world->spheres);
-	ft_planes_list_clear(&world->planes);
-	ft_cylinders_list_clear(&world->cylinders);
-	free(world);
-}
-
-void	ft_free_ambient(t_ambient *ambient)
-{
-	if (ambient && ambient->color)
-		free(ambient->color);
-	free(ambient);
-}
-
-void	ft_free_camera(t_camera *camera)
-{
-	if (!camera)
+	if (!*lights)
+	{
+		*lights = new;
 		return ;
-	free(camera->origin);
-	free(camera->normal);
-	free(camera);
+	}
+	tmp = *lights;
+	while (tmp->next)
+		tmp = tmp->next;
+	tmp->next = new;
 }
 
+void	ft_spheres_addback(t_sphere **spheres, t_sphere *new)
+{
+	t_sphere	*tmp;
+
+	if (!spheres || !new)
+		return ;
+	if (!*spheres)
+	{
+		*spheres = new;
+		return ;
+	}
+	tmp = *spheres;
+	while (tmp->next)
+		tmp = tmp->next;
+	tmp->next = new;
+}
+
+void	ft_planes_addback(t_plane **planes, t_plane *new)
+{
+	t_plane	*tmp;
+
+	if (!planes || !new)
+		return ;
+	if (!*planes)
+	{
+		*planes = new;
+		return ;
+	}
+	tmp = *planes;
+	while (tmp->next)
+		tmp = tmp->next;
+	tmp->next = new;
+}
+
+void	ft_cylinders_addback(t_cylinder **cylinders, t_cylinder *new)
+{
+	t_cylinder	*tmp;
+
+	if (!cylinders || !new)
+		return ;
+	if (!*cylinders)
+	{
+		*cylinders = new;
+		return ;
+	}
+	tmp = *cylinders;
+	while (tmp->next)
+		tmp = tmp->next;
+	tmp->next = new;
+}

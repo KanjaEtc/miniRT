@@ -22,10 +22,10 @@ SRCS = srcs/canvas_and_pixels.c \
 	   srcs/matrix_inversion.c \
 	   srcs/parsing.c \
 	   srcs/parsing_create_world.c \
+	   srcs/parsing_init_struct.c \
+	   srcs/parsing_init_list.c \
 	   srcs/parsing_fill_world.c \
 	   srcs/parsing_list_utils.c \
-	   srcs/parsing_check_identifiers.c \
-	   srcs/parsing_check_parameters.c \
 	   srcs/transformations.c \
 	   srcs/tuples_creation.c \
 	   srcs/tuples_utils.c \
@@ -33,7 +33,10 @@ SRCS = srcs/canvas_and_pixels.c \
 	   srcs/tuples_basic_operations.c \
 	   srcs/tuples_complex_operations.c \
 	   srcs/utils_free.c \
+	   srcs/utils_free_struct.c \
 	   srcs/utils_array.c \
+	   srcs/utils_list_addback.c \
+	   srcs/utils_list_clear.c \
 	   srcs/main.c
 
 OBJS = $(patsubst srcs/%.c,object/%.o,$(SRCS))

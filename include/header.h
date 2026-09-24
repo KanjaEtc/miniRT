@@ -137,14 +137,7 @@ t_plane		*ft_fill_pl_struct(char *line, int *null_flag);
 t_cylinder	*ft_fill_cy_struct(char *line, int *null_flag);
 
 /* parsing_list_utils.c */
-void	ft_lights_list_clear(t_light **lights);
-void	ft_spheres_list_clear(t_sphere **spheres);
-void	ft_planes_list_clear(t_plane **planes);
-void	ft_cylinders_list_clear(t_cylinder **cylinders);
-void	ft_lights_addback(t_light **lights, t_light *new);
-void	ft_spheres_addback(t_sphere **spheres, t_sphere *new);
-void	ft_planes_addback(t_plane **planes, t_plane *new);
-void	ft_cylinders_addback(t_cylinder **cylinders, t_cylinder *new);
+
 // t_map		*ft_new_map_node(char *line);
 // void		ft_mapadd_back(t_map **map, t_map *new);
 // void		ft_map_list_clear(t_map **map);
@@ -155,6 +148,17 @@ void	ft_cylinders_addback(t_cylinder **cylinders, t_cylinder *new);
 
 /* parsing_check_parameters.c */
 // int			ft_check_parameters(t_map *map);
+
+/* parsing_init_struct */
+t_world		*ft_init_world(void);
+t_ambient	*ft_init_ambient(void);
+t_camera	*ft_init_camera(void);
+
+/* parsing_init_list */
+t_light		*ft_init_lights(void);
+t_sphere	*ft_init_spheres(void);
+t_plane		*ft_init_planes(void);
+t_cylinder	*ft_init_cylinders(void);
 
 /* =============================== CANVAS ============================== */
 
@@ -239,12 +243,29 @@ int			ft_is_a_normalized_vector(t_tuple *vector);
 
 /* =============================== UTILS ============================== */
 
+/* utils_list_addback.c */
+void		ft_lights_addback(t_light **lights, t_light *new);
+void		ft_spheres_addback(t_sphere **spheres, t_sphere *new);
+void		ft_planes_addback(t_plane **planes, t_plane *new);
+void		ft_cylinders_addback(t_cylinder **cylinders, t_cylinder *new);
+
+/* utils_list_clear.c */
+void		ft_lights_list_clear(t_light **lights);
+void		ft_spheres_list_clear(t_sphere **spheres);
+void		ft_planes_list_clear(t_plane **planes);
+void		ft_cylinders_list_clear(t_cylinder **cylinders);
+
 /* utils_free.c */
 void		*ft_free_tuple_array(t_tuple **array, int index);
 void		*ft_free_double_array(double **array, int index);
 void		*ft_free_matrix(t_matrix *m);
 
-/* utils_array */
+/* utils_free_struct.c */
+void		ft_free_world(t_world *world);
+void		ft_free_ambient(t_ambient *ambient);
+void		ft_free_camera(t_camera *camera);
+
+/* utils_array.c */
 int			ft_array_length(char **array);
 
 #endif

@@ -40,7 +40,7 @@ static t_ambient	*ft_fill_A_struct(char *line, int *null_flag)
 
 	if (!line)
 		return (*null_flag = 1, NULL);
-	ambient = malloc(sizeof(t_ambient));
+	ambient = ft_init_ambient();
 	if (!ambient)
 		return (*null_flag = 1, NULL);
 	infos = ft_split(line, "\t\n\v\f\r ,");
@@ -86,22 +86,6 @@ static int	ft_empty_line(char *line)
 	return (1);
 }
 
-static t_world	*ft_init_world(void)
-{
-	t_world	*world;
-
-	world = malloc(sizeof(t_world));
-	if (!world)
-		return (NULL);
-	world->ambient = NULL;
-	world->camera = NULL;
-	world->lights = NULL;
-	world->spheres = NULL;
-	world->planes = NULL;
-	world->cylinders = NULL;
-	return (world);
-}
-
 t_world	*ft_create_world(int fd)
 {
 	t_world	*world;
@@ -119,7 +103,11 @@ t_world	*ft_create_world(int fd)
 	while (line)
 	{
 		if (ft_empty_line(line))
+		{
+			free(line);
+			line = get_next_line(fd);
 			continue ;
+		}
 		identifier = ft_extract_identifier(line, &k);
 		/* checker que l'identiifer existe */
 		if (!ft_strncmp(identifier, "A", ft_strlen(identifier)))
@@ -127,16 +115,16 @@ t_world	*ft_create_world(int fd)
 		else if (!ft_strncmp(identifier, "C", ft_strlen(identifier)))
 			world->camera = ft_fill_C_struct(&line[k], &null_flag);
 		else if (!ft_strncmp(identifier, "L", ft_strlen(identifier)))
-			world->lights = ft_lights_addback(&world->lights,
+			ft_lights_addback(&world->lights,
 				ft_fill_L_struct(&line[k], &null_flag));
 		else if (!ft_strncmp(identifier, "sp", ft_strlen(identifier)))
-			world->spheres = ft_spheres_addback(&world->spheres,
+			ft_spheres_addback(&world->spheres,
 				ft_fill_sp_struct(&line[k], &null_flag));
 		else if (!ft_strncmp(identifier, "pl", ft_strlen(identifier)))
-			world->planes = ft_planes_addback(&world->planes,
+			ft_planes_addback(&world->planes,
 				ft_fill_pl_struct(&line[k], &null_flag));
 		else if (!ft_strncmp(identifier, "cy", ft_strlen(identifier)))
-			world->cylinders = ft_cylinders_addback(&world->cylinders,
+			ft_cylinders_addback(&world->cylinders,
 				ft_fill_cy_struct(&line[k], &null_flag));
 		if (null_flag)
 			return (ft_free_world(world), NULL);

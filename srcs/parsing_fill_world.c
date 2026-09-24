@@ -7,7 +7,7 @@ t_camera	*ft_fill_C_struct(char *line, int *null_flag)
 
 	if (!line)
 		return (*null_flag = 1, NULL);
-	camera = malloc(sizeof(t_camera));
+	camera = ft_init_camera();
 	if (!camera)
 		return (*null_flag = 1, NULL);
 	infos = ft_split(line, "\t\n\v\f\r ,");
@@ -30,7 +30,7 @@ t_light	*ft_fill_L_struct(char *line, int *null_flag)
 
 	if (!line)
 		return (*null_flag = 1, NULL);
-	light = malloc(sizeof(t_light));
+	light = ft_init_lights();
 	if (!light)
 		return (*null_flag = 1, NULL);
 	infos = ft_split(line, "\t\n\v\f\r ,");
@@ -42,7 +42,7 @@ t_light	*ft_fill_L_struct(char *line, int *null_flag)
 	light->color = ft_color_creator(ft_atoi(infos[4]),
 		ft_atoi(infos[5]), ft_atoi(infos[6]));
 	if (!light->origin || !light->color)
-		return (ft_free_light(light), *null_flag = 1, NULL);
+		return (ft_lights_list_clear(&light), *null_flag = 1, NULL);
 	return (light);
 }
 
@@ -53,7 +53,7 @@ t_sphere	*ft_fill_sp_struct(char *line, int *null_flag)
 
 	if (!line)
 		return (*null_flag = 1, NULL);
-	sphere = malloc(sizeof(t_sphere));
+	sphere = ft_init_spheres();
 	if (!sphere)
 		return (*null_flag = 1, NULL);
 	infos = ft_split(line, "\t\n\v\f\r ,");
@@ -65,7 +65,7 @@ t_sphere	*ft_fill_sp_struct(char *line, int *null_flag)
 	sphere->color = ft_color_creator(ft_atoi(infos[4]),
 		ft_atoi(infos[5]), ft_atoi(infos[6]));
 	if (!sphere->center || !sphere->color)
-		return (ft_free_sphere(sphere), *null_flag = 1, NULL);
+		return (ft_spheres_list_clear(&sphere), *null_flag = 1, NULL);
 	return (sphere);
 }
 
@@ -76,7 +76,7 @@ t_plane	*ft_fill_pl_struct(char *line, int *null_flag)
 
 	if (!line)
 		return (*null_flag = 1, NULL);
-	plane = malloc(sizeof(t_plane));
+	plane = ft_init_planes();
 	if (!plane)
 		return (*null_flag = 1, NULL);
 	infos = ft_split(line, "\t\n\v\f\r ,");
@@ -89,7 +89,7 @@ t_plane	*ft_fill_pl_struct(char *line, int *null_flag)
 	plane->color = ft_color_creator(ft_atoi(infos[6]),
 		ft_atoi(infos[7]), ft_atoi(infos[8]));
 	if (!plane->point || !plane->normal || !plane->color)
-		return (*null_flag = 1, NULL);
+		return (ft_planes_list_clear(&plane), *null_flag = 1, NULL);
 	return (plane);
 }
 
@@ -100,7 +100,7 @@ t_cylinder	*ft_fill_cy_struct(char *line, int *null_flag)
 
 	if (!line)
 		return (*null_flag = 1, NULL);
-	cylinder = malloc(sizeof(t_cylinder));
+	cylinder = ft_init_cylinders();
 	if (!cylinder)
 		return (*null_flag = 1, NULL);
 	infos = ft_split(line, "\t\n\v\f\r ,");
@@ -115,7 +115,7 @@ t_cylinder	*ft_fill_cy_struct(char *line, int *null_flag)
 	cylinder->color = ft_color_creator(ft_atoi(infos[8]),
 		ft_atoi(infos[9]), ft_atoi(infos[10]));
 	if (!cylinder->center || !cylinder->axis || !cylinder->color)
-		return (*null_flag = 1, NULL);
+		return (ft_cylinders_list_clear(&cylinder), *null_flag = 1, NULL);
 	return (cylinder);
 }
 
