@@ -21,8 +21,8 @@ SRCS = srcs/canvas_and_pixels.c \
 	   srcs/matrix_determinant.c \
 	   srcs/matrix_inversion.c \
 	   srcs/parsing.c \
-	   srcs/parsing_create_list.c \
-	   srcs/parsing_fill_list.c \
+	   srcs/parsing_create_world.c \
+	   srcs/parsing_fill_world.c \
 	   srcs/parsing_list_utils.c \
 	   srcs/parsing_check_identifiers.c \
 	   srcs/parsing_check_parameters.c \

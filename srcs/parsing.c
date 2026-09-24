@@ -24,6 +24,7 @@ t_world	*ft_parser(char *file_name)
 	if (!ft_check_rt_extension(file_name))
 		return (NULL);
 	world = ft_create_world(fd);
+	/* checker que tous les identifiers soient la */
 	if (!world)
 		return (NULL);
 	// if (!ft_check_identifiers_validity(wor)

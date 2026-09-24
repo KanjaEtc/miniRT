@@ -29,25 +29,25 @@ typedef struct s_tuple
 	double	w;
 }	t_tuple;
 
-typedef struct s_map
-{
-	char			*identifier;
-	double			ratio;
-	double			diameter;
-	double			height;
-	double			fov;
-	t_tuple			*color;
-	t_tuple			*origin;
-	t_tuple			*normalized_orientation;
-	t_tuple			*point;
-	struct s_map	*next;
-}	t_map;
+// typedef struct s_map
+// {
+// 	char			*identifier;
+// 	double			ratio;
+// 	double			diameter;
+// 	double			height;
+// 	double			fov;
+// 	t_tuple			*color;
+// 	t_tuple			*origin;
+// 	t_tuple			*normalized_orientation;
+// 	t_tuple			*point;
+// 	struct s_map	*next;
+// }	t_map;
 
 typedef struct s_sphere
 {
 	t_tuple			*center;
-	double			diameter;
 	t_tuple			*color;
+	double			diameter;
 	struct s_sphere	*next;
 }	t_sphere;
 
@@ -63,9 +63,9 @@ typedef struct s_cylinder
 {
 	t_tuple				*center;
 	t_tuple				*axis;
+	t_tuple				*color;
 	double				diameter;
 	double				height;
-	t_tuple				*color;
 	struct s_cylinder	*next;
 }	t_cylinder;
 
@@ -102,7 +102,7 @@ typedef struct s_world
 	t_canvas	*canvas;
 
 	t_ambient	*ambient;
-	t_camera	camera;
+	t_camera	*camera;
 
 	t_light		*lights;
 
@@ -130,23 +130,31 @@ t_world		*ft_create_world(int fd);
 // void		ft_fill_nodes(t_map *node, char **informations);
 
 /* parsing_fill_world.c */
-t_map		*ft_fill_C_struct(char *line);
-t_map		*ft_fill_L_struct(char *line);
-t_map		*ft_fill_sp_struct(char *line);
-t_map		*ft_fill_pl_struct(char *line);
-t_map		*ft_fill_cy_struct(char *line);
+t_camera	*ft_fill_C_struct(char *line, int *null_flag);
+t_light		*ft_fill_L_struct(char *line, int *null_flag);
+t_sphere	*ft_fill_sp_struct(char *line, int *null_flag);
+t_plane		*ft_fill_pl_struct(char *line, int *null_flag);
+t_cylinder	*ft_fill_cy_struct(char *line, int *null_flag);
 
 /* parsing_list_utils.c */
-t_map		*ft_new_map_node(char *line);
-void		ft_mapadd_back(t_map **map, t_map *new);
-void		ft_map_list_clear(t_map **map);
+void	ft_lights_list_clear(t_light **lights);
+void	ft_spheres_list_clear(t_sphere **spheres);
+void	ft_planes_list_clear(t_plane **planes);
+void	ft_cylinders_list_clear(t_cylinder **cylinders);
+void	ft_lights_addback(t_light **lights, t_light *new);
+void	ft_spheres_addback(t_sphere **spheres, t_sphere *new);
+void	ft_planes_addback(t_plane **planes, t_plane *new);
+void	ft_cylinders_addback(t_cylinder **cylinders, t_cylinder *new);
+// t_map		*ft_new_map_node(char *line);
+// void		ft_mapadd_back(t_map **map, t_map *new);
+// void		ft_map_list_clear(t_map **map);
 
 /* parsing_check_identifiers.c */
-int			ft_check_identifiers_validity(t_map *map);
-int			ft_check_mandatory_identifiers(t_map *map);
+// int			ft_check_identifiers_validity(t_map *map);
+// int			ft_check_mandatory_identifiers(t_map *map);
 
 /* parsing_check_parameters.c */
-int			ft_check_parameters(t_map *map);
+// int			ft_check_parameters(t_map *map);
 
 /* =============================== CANVAS ============================== */
 
@@ -166,7 +174,7 @@ t_tuple		*ft_color_creator(double x, double y, double z);
 void		ft_display_matrix(t_matrix *matrix);
 void		ft_display_tuple(t_tuple *t);
 void		test_fill_matrix(t_matrix *matrix, double start);
-void		ft_display_map(t_map *map);
+// void		ft_display_map(t_map *map);
 
 /* =============================== MATRICES ============================== */
 
