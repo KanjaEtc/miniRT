@@ -41,9 +41,19 @@ static void	ft_display_cylinders(t_cylinder *cylinder)
 	printf("CYLINDER:\n");
 	while (tmp)
 	{
+		if (!tmp->axis)
+		{
+			printf("cylinder : axis est NULL\n\n");
+			return ;
+		}
+		if (!tmp->center)
+		{
+			printf("cylinder : center est NULL\n\n");
+			return ;
+		}
 		if (!tmp->color)
 		{
-			printf("cylinder : color est NULL\n");
+			printf("cylinder : color est NULL\n\n");
 			return ;
 		}
 		printf("center = %.1f, %.1f, %.1f\n", tmp->center->x, tmp->center->y,
@@ -66,9 +76,24 @@ static void	ft_display_planes(t_plane *planes)
 	printf("PLANE:\n");
 	while (tmp)
 	{
-		printf("orientation = %.1f, %.1f, %.1f\n", tmp->point->x,
+		if (!tmp->point)
+		{
+			printf("plane : point est NULL\n\n");
+			return ;
+		}
+		if (!tmp->normal)
+		{
+			printf("plane : normal est NULL\n\n");
+			return ;
+		}
+		if (!tmp->color)
+		{
+			printf("plane : color est NULL\n\n");
+			return ;
+		}
+		printf("point = %.1f, %.1f, %.1f\n", tmp->point->x,
 			tmp->point->y, tmp->point->z);
-		printf("orientation = %.1f, %.1f, %.1f\n", tmp->normal->x,
+		printf("normal = %.1f, %.1f, %.1f\n", tmp->normal->x,
 			tmp->normal->y, tmp->normal->z);
 		printf("color = %.1f, %.1f, %.1f\n\n", tmp->color->x,
 			tmp->color->y, tmp->color->z);
@@ -82,6 +107,16 @@ static void	ft_display_spheres(t_sphere *spheres)
 
 	tmp = spheres;
 	printf("SPHERE:\n");
+	if (!tmp->center)
+	{
+		printf("sphere : center est NULL\n\n");
+		return ;
+	}
+	if (!tmp->color)
+	{
+		printf("sphere : color est NULL\n\n");
+		return ;
+	}
 	while (tmp)
 	{
 		printf("center = %.1f, %.1f, %.1f\n", tmp->center->x, tmp->center->y,
@@ -99,6 +134,16 @@ static void	ft_display_lights(t_light *lights)
 
 	tmp = lights;
 	printf("LIGHT:\n");
+	if (!tmp->origin)
+	{
+		printf("light : origin est NULL\n\n");
+		return ;
+	}
+	if (!tmp->color)
+	{
+		printf("light : color est NULL\n\n");
+		return ;
+	}
 	while (tmp)
 	{
 		printf("origin = %.1f, %.1f, %.1f\n", tmp->origin->x,
@@ -113,6 +158,16 @@ static void	ft_display_lights(t_light *lights)
 static void	ft_display_camera(t_camera *camera)
 {
 	printf("CAMERA:\n");
+	if (!camera->origin)
+	{
+		printf("camera : origin est NULL\n\n");
+		return ;
+	}
+	if (!camera->normal)
+	{
+		printf("camera : normal est NULL\n\n");
+		return ;
+	}
 	printf("origin = %.1f, %.1f, %.1f\n", camera->origin->x, camera->origin->y,
 		camera->origin->z);
 	printf("normal = %.1f, %.1f, %.1f\n", camera->normal->x,
@@ -123,6 +178,11 @@ static void	ft_display_camera(t_camera *camera)
 static void	ft_display_ambient(t_ambient *ambient)
 {
 	printf("AMBIENT:\n");
+	if (!ambient->color)
+	{
+		printf("ambient : color est null\n\n");
+		return ;
+	}
 	printf("ratio = %.1f\n", ambient->ratio);
 	printf("color = %.1f, %.1f, %.1f\n\n", ambient->color->x,
 		ambient->color->y, ambient->color->z);

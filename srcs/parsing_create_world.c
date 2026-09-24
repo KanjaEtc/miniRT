@@ -94,6 +94,8 @@ t_world	*ft_create_world(int fd)
 		else if (!ft_strncmp(identifier, "cy", ft_strlen(identifier)))
 			ft_cylinders_addback(&world->cylinders,
 				ft_fill_cy_struct(&line[k], &null_flag));
+		else
+			return (free(identifier), free(line), ft_free_world(world), NULL);
 		free(identifier);
 		free(line);
 		if (null_flag)
