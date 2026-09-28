@@ -11,7 +11,8 @@ static t_ambient	*ft_fill_A_struct(char *line)
 	if (!ambient)
 		return (NULL);
 	infos = ft_split(line, "\t\n\v\f\r ,");
-	if (!infos || !*infos || ft_array_length(infos) != 4)
+	if (!infos || !*infos || ft_array_length(infos) != 4
+		|| !ft_check_infos_validity(infos, "A"))
 		return (ft_free_ambient(ambient), ft_free_array(infos), NULL);
 	ambient->ratio = (double)ft_atoi(infos[0]);
 	ambient->color = ft_color_creator((double)ft_atoi(infos[1]),
@@ -65,17 +66,17 @@ static int	ft_fill_world(t_world *world, char *line, char *identifier)
 		return (world->camera = ft_fill_C_struct(&line[start]),
 			world->camera != NULL);
 	if (!ft_strncmp(identifier, "L", ft_strlen(identifier)))
-		return (world->lights = ft_fill_L_struct(&line[start]),
+		return (ft_L_addback(&world->lights, ft_fill_L_struct(&line[start])),
 			world->lights != NULL);
 	if (!ft_strncmp(identifier, "sp", ft_strlen(identifier)))
-		return (world->spheres = ft_fill_sp_struct(&line[start]),
+		return (ft_sp_addback(&world->spheres, ft_fill_sp_struct(&line[start])),
 			world->spheres != NULL);
 	if (!ft_strncmp(identifier, "pl", ft_strlen(identifier)))
-		return (world->planes = ft_fill_pl_struct(&line[start]),
+		return (ft_pl_addback(&world->planes, ft_fill_pl_struct(&line[start])),
 			world->planes != NULL);
 	if (!ft_strncmp(identifier, "cy", ft_strlen(identifier)))
-		return (world->cylinders = ft_fill_cy_struct(&line[start]),
-			world->cylinders != NULL);
+		return (ft_cy_addback(&world->cylinders,
+			ft_fill_cy_struct(&line[start])), world->cylinders != NULL);
 	return (printf("Error: bad identifier\n"), 0); // REMPLACER PAR FT_PRINTF
 }
 

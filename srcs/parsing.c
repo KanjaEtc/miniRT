@@ -22,14 +22,9 @@ t_world	*ft_parser(char *file_name)
 	if (fd < 0)
 		return (NULL);
 	if (!ft_check_rt_extension(file_name))
-		return (NULL);
+		return (printf("Error: bad extension\n"), NULL);
 	world = ft_create_world(fd);
-	/* checker que tous les identifiers soient la */
 	if (!world)
 		return (NULL);
-	// if (!ft_check_identifiers_validity(wor)
-		// || !ft_check_mandatory_identifiers(map)) utile
-		// return (ft_map_list_clear(&map), NULL);
 	return (world);
-	// return (ft_check_parameters(map));
 }

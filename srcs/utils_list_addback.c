@@ -12,7 +12,7 @@
 
 #include "../include/header.h"
 
-void	ft_lights_addback(t_light **lights, t_light *new)
+void	ft_L_addback(t_light **lights, t_light *new)
 {
 	t_light	*tmp;
 
@@ -29,7 +29,7 @@ void	ft_lights_addback(t_light **lights, t_light *new)
 	tmp->next = new;
 }
 
-void	ft_spheres_addback(t_sphere **spheres, t_sphere *new)
+void	ft_sp_addback(t_sphere **spheres, t_sphere *new)
 {
 	t_sphere	*tmp;
 
@@ -46,7 +46,7 @@ void	ft_spheres_addback(t_sphere **spheres, t_sphere *new)
 	tmp->next = new;
 }
 
-void	ft_planes_addback(t_plane **planes, t_plane *new)
+void	ft_pl_addback(t_plane **planes, t_plane *new)
 {
 	t_plane	*tmp;
 
@@ -63,7 +63,7 @@ void	ft_planes_addback(t_plane **planes, t_plane *new)
 	tmp->next = new;
 }
 
-void	ft_cylinders_addback(t_cylinder **cylinders, t_cylinder *new)
+void	ft_cy_addback(t_cylinder **cylinders, t_cylinder *new)
 {
 	t_cylinder	*tmp;
 

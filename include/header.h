@@ -119,6 +119,9 @@ t_sphere	*ft_fill_sp_struct(char *line);
 t_plane		*ft_fill_pl_struct(char *line);
 t_cylinder	*ft_fill_cy_struct(char *line);
 
+/* parsing_infos_validity.c */
+int			ft_check_infos_validity(char **infos, char *identifier);
+
 /* parsing_check_identifiers.c */
 // int			ft_check_identifiers_validity(t_map *map);
 int			ft_check_mandatory_identifiers(t_world *world);
@@ -222,10 +225,10 @@ int			ft_is_a_normalized_vector(t_tuple *vector);
 /* =============================== UTILS ============================== */
 
 /* utils_list_addback.c */
-void		ft_lights_addback(t_light **lights, t_light *new);
-void		ft_spheres_addback(t_sphere **spheres, t_sphere *new);
-void		ft_planes_addback(t_plane **planes, t_plane *new);
-void		ft_cylinders_addback(t_cylinder **cylinders, t_cylinder *new);
+void		ft_L_addback(t_light **lights, t_light *new);
+void		ft_sp_addback(t_sphere **spheres, t_sphere *new);
+void		ft_pl_addback(t_plane **planes, t_plane *new);
+void		ft_cy_addback(t_cylinder **cylinders, t_cylinder *new);
 
 /* utils_list_clear.c */
 void		ft_lights_list_clear(t_light **lights);

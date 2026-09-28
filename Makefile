@@ -23,6 +23,7 @@ SRCS = srcs/canvas_and_pixels.c \
 	   srcs/parsing.c \
 	   srcs/parsing_check_identifiers.c \
 	   srcs/parsing_create_world.c \
+	   srcs/parsing_infos_validity.c \
 	   srcs/parsing_init_struct.c \
 	   srcs/parsing_init_list.c \
 	   srcs/parsing_fill_world.c \

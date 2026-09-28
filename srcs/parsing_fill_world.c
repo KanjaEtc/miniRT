@@ -11,7 +11,8 @@ t_camera	*ft_fill_C_struct(char *line)
 	if (!camera)
 		return (NULL);
 	infos = ft_split(line, "\t\n\v\f\r ,");
-	if (!infos || !*infos || ft_array_length(infos) != 7)
+	if (!infos || !*infos || ft_array_length(infos) != 7
+		|| !ft_check_infos_validity(infos, "C"))
 		return (ft_free_camera(camera), ft_free_array(infos), NULL);
 	camera->origin =  ft_point_creator((double)ft_atoi(infos[0]),
 		(double)ft_atoi(infos[1]), (double)ft_atoi(infos[2]));
@@ -35,7 +36,8 @@ t_light	*ft_fill_L_struct(char *line)
 	if (!light)
 		return (NULL);
 	infos = ft_split(line, "\t\n\v\f\r ,");
-	if (!infos || !*infos || ft_array_length(infos) != 7)
+	if (!infos || !*infos || ft_array_length(infos) != 7
+		|| !ft_check_infos_validity(infos, "L"))
 		return (ft_lights_list_clear(&light), ft_free_array(infos), NULL);
 	light->origin = ft_point_creator(ft_atoi(infos[0]),
 		ft_atoi(infos[1]), ft_atoi(infos[2]));
@@ -59,7 +61,8 @@ t_sphere	*ft_fill_sp_struct(char *line)
 	if (!sphere)
 		return (NULL);
 	infos = ft_split(line, "\t\n\v\f\r ,");
-	if (!infos || !*infos || ft_array_length(infos) != 7)
+	if (!infos || !*infos || ft_array_length(infos) != 7
+		|| !ft_check_infos_validity(infos, "sp"))
 		return (ft_spheres_list_clear(&sphere), ft_free_array(infos), NULL);
 	sphere->center = ft_point_creator(ft_atoi(infos[0]),
 		ft_atoi(infos[1]), ft_atoi(infos[2]));
@@ -83,7 +86,8 @@ t_plane	*ft_fill_pl_struct(char *line)
 	if (!plane)
 		return (NULL);
 	infos = ft_split(line, "\t\n\v\f\r ,");
-	if (!infos || !*infos || ft_array_length(infos) != 9)
+	if (!infos || !*infos || ft_array_length(infos) != 9
+		|| !ft_check_infos_validity(infos, "pl"))
 		return (ft_planes_list_clear(&plane), ft_free_array(infos), NULL);
 	plane->point = ft_point_creator(ft_atoi(infos[0]),
 		ft_atoi(infos[1]), ft_atoi(infos[2]));
@@ -108,7 +112,8 @@ t_cylinder	*ft_fill_cy_struct(char *line)
 	if (!cylinder)
 		return (NULL);
 	infos = ft_split(line, "\t\n\v\f\r ,");
-	if (!infos || !*infos || ft_array_length(infos) != 11)
+	if (!infos || !*infos || ft_array_length(infos) != 11
+		|| !ft_check_infos_validity(infos, "cy"))
 		return (ft_cylinders_list_clear(&cylinder), ft_free_array(infos), NULL);
 	cylinder->center = ft_point_creator(ft_atoi(infos[0]),
 		ft_atoi(infos[1]), ft_atoi(infos[2]));
