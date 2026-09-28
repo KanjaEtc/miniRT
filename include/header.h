@@ -113,8 +113,8 @@ t_world		*ft_parser(char *file_name);
 t_world		*ft_create_world(int fd);
 
 /* parsing_fill_world.c */
-t_camera	*ft_fill_C_struct(char *line);
-t_light		*ft_fill_L_struct(char *line);
+t_camera	*ft_fill_c_struct(char *line);
+t_light		*ft_fill_l_struct(char *line);
 t_sphere	*ft_fill_sp_struct(char *line);
 t_plane		*ft_fill_pl_struct(char *line);
 t_cylinder	*ft_fill_cy_struct(char *line);
@@ -225,7 +225,7 @@ int			ft_is_a_normalized_vector(t_tuple *vector);
 /* =============================== UTILS ============================== */
 
 /* utils_list_addback.c */
-void		ft_L_addback(t_light **lights, t_light *new);
+void		ft_l_addback(t_light **lights, t_light *new);
 void		ft_sp_addback(t_sphere **spheres, t_sphere *new);
 void		ft_pl_addback(t_plane **planes, t_plane *new);
 void		ft_cy_addback(t_cylinder **cylinders, t_cylinder *new);

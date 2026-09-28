@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parsing_create_world.c                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: adbarth <adbarth@learner.42.tech>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/09/28 12:27:53 by adbarth           #+#    #+#             */
+/*   Updated: 2026/09/28 12:27:55 by adbarth          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../include/header.h"
 
-static t_ambient	*ft_fill_A_struct(char *line)
+static t_ambient	*ft_fill_a_struct(char *line)
 {
 	t_ambient	*ambient;
 	char		**infos;
@@ -16,7 +28,7 @@ static t_ambient	*ft_fill_A_struct(char *line)
 		return (ft_free_ambient(ambient), ft_free_array(infos), NULL);
 	ambient->ratio = (double)ft_atoi(infos[0]);
 	ambient->color = ft_color_creator((double)ft_atoi(infos[1]),
-		(double)ft_atoi(infos[2]), (double)ft_atoi(infos[3]));
+			(double)ft_atoi(infos[2]), (double)ft_atoi(infos[3]));
 	ft_free_array(infos);
 	if (!ambient->color)
 		return (ft_free_ambient(ambient), NULL);
@@ -60,13 +72,13 @@ static int	ft_fill_world(t_world *world, char *line, char *identifier)
 
 	start = (int)ft_strlen(identifier);
 	if (!ft_strncmp(identifier, "A", ft_strlen(identifier)))
-		return (world->ambient = ft_fill_A_struct(&line[start]),
+		return (world->ambient = ft_fill_a_struct(&line[start]),
 			world->ambient != NULL);
 	if (!ft_strncmp(identifier, "C", ft_strlen(identifier)))
-		return (world->camera = ft_fill_C_struct(&line[start]),
+		return (world->camera = ft_fill_c_struct(&line[start]),
 			world->camera != NULL);
 	if (!ft_strncmp(identifier, "L", ft_strlen(identifier)))
-		return (ft_L_addback(&world->lights, ft_fill_L_struct(&line[start])),
+		return (ft_l_addback(&world->lights, ft_fill_l_struct(&line[start])),
 			world->lights != NULL);
 	if (!ft_strncmp(identifier, "sp", ft_strlen(identifier)))
 		return (ft_sp_addback(&world->spheres, ft_fill_sp_struct(&line[start])),
@@ -76,8 +88,8 @@ static int	ft_fill_world(t_world *world, char *line, char *identifier)
 			world->planes != NULL);
 	if (!ft_strncmp(identifier, "cy", ft_strlen(identifier)))
 		return (ft_cy_addback(&world->cylinders,
-			ft_fill_cy_struct(&line[start])), world->cylinders != NULL);
-	return (printf("Error: bad identifier\n"), 0); // REMPLACER PAR FT_PRINTF
+				ft_fill_cy_struct(&line[start])), world->cylinders != NULL);
+	return (printf("Error: bad identifier\n"), 0);
 }
 
 t_world	*ft_create_world(int fd)

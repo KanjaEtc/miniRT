@@ -41,4 +41,3 @@ void	ft_free_camera(t_camera *camera)
 	free(camera->normal);
 	free(camera);
 }
-

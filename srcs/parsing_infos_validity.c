@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parsing_infos_validity.c                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: adbarth <adbarth@learner.42.tech>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/09/28 12:28:24 by adbarth           #+#    #+#             */
+/*   Updated: 2026/09/28 12:28:26 by adbarth          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../include/header.h"
 
 static int	ft_inter(double min, double max, char **infos, int count)
@@ -24,7 +36,6 @@ static int	ft_inter(double min, double max, char **infos, int count)
 	return (1);
 }
 
-
 int	ft_check_infos_validity(char **infos, char *identifier)
 {
 	if (!infos || !*infos || !identifier)
@@ -46,4 +57,3 @@ int	ft_check_infos_validity(char **infos, char *identifier)
 			&& ft_inter(0, 255, &infos[8], 3));
 	return (0);
 }
-

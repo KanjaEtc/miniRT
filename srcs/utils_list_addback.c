@@ -12,7 +12,7 @@
 
 #include "../include/header.h"
 
-void	ft_L_addback(t_light **lights, t_light *new)
+void	ft_l_addback(t_light **lights, t_light *new)
 {
 	t_light	*tmp;
 

@@ -6,7 +6,7 @@
 /*   By: adbarth <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/11 11:59:14 by adbarth           #+#    #+#             */
-/*   Updated: 2025/12/11 11:59:24 by adbarth          ###   ########.fr       */
+/*   Updated: 2026/09/28 12:41:46 by adbarth          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,11 @@ char	*ft_update_stash(char *stash)
 	char	*new_stash;
 	int		n;
 	int		len;
-	int		i = 0;
+	int		i;
 
 	if (!stash)
 		return (NULL);
+	i = 0;
 	n = ft_strlen_with_limiter_included(stash, '\n');
 	len = ft_strlen_with_limiter_included(stash, '\0');
 	new_stash = malloc(sizeof(char) * (len - n + 1));
@@ -38,10 +39,11 @@ char	*ft_extract_line(char *stash)
 {
 	char	*line;
 	int		n;
-	int		i = -1;
+	int		i;
 
 	if (!stash || !*stash)
 		return (NULL);
+	i = -1;
 	n = ft_strlen_with_limiter_included(stash, '\n');
 	line = malloc(sizeof(char) * (n + 1));
 	if (!line)
