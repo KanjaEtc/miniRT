@@ -1,0 +1,25 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   utils_free.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: adbarth <adbarth@learner.42.tech>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/09/08 11:45:02 by adbarth           #+#    #+#             */
+/*   Updated: 2026/09/08 11:45:03 by adbarth          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "../include/header.h"
+
+void	ft_clean_gnl(int fd)
+{
+	char	*line;
+
+	line = get_next_line(fd);
+	while (line)
+	{
+		free(line);
+		line = get_next_line(fd);
+	}
+}

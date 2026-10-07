@@ -249,4 +249,7 @@ void		ft_free_camera(t_camera *camera);
 /* utils_array.c */
 int			ft_array_length(char **array);
 
+/* utils_clean_gnl.c */
+void		ft_clean_gnl(int fd);
+
 #endif

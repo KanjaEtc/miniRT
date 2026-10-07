@@ -19,6 +19,7 @@ t_world	*ft_init_world(void)
 	world = malloc(sizeof(t_world));
 	if (!world)
 		return (NULL);
+	world->canvas = NULL;
 	world->ambient = NULL;
 	world->camera = NULL;
 	world->lights = NULL;

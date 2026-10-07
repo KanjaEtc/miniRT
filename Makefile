@@ -38,6 +38,7 @@ SRCS = srcs/canvas_and_pixels.c \
 	   srcs/utils_array.c \
 	   srcs/utils_list_addback.c \
 	   srcs/utils_list_clear.c \
+	   srcs/utils_clean_gnl.c \
 	   srcs/main.c
 
 OBJS = $(patsubst srcs/%.c,object/%.o,$(SRCS))

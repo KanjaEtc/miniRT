@@ -26,11 +26,11 @@ t_camera	*ft_fill_c_struct(char *line)
 	if (!infos || !*infos || ft_array_length(infos) != 7
 		|| !ft_check_infos_validity(infos, "C"))
 		return (ft_free_camera(camera), ft_free_array(infos), NULL);
-	camera->origin = ft_point_creator((double)ft_atoi(infos[0]),
-			(double)ft_atoi(infos[1]), (double)ft_atoi(infos[2]));
-	camera->normal = ft_vector_creator((double)ft_atoi(infos[3]),
-			(double)ft_atoi(infos[4]), (double)ft_atoi(infos[5]));
-	camera->fov = (double)ft_atoi(infos[6]);
+	camera->origin = ft_point_creator(ft_atoi(infos[0]),
+			ft_atoi(infos[1]), ft_atoi(infos[2]));
+	camera->normal = ft_vector_creator(ft_atoi(infos[3]),
+			ft_atoi(infos[4]), ft_atoi(infos[5]));
+	camera->fov = ft_atoi(infos[6]);
 	ft_free_array(infos);
 	if (!camera->origin || !camera->normal)
 		return (ft_free_camera(camera), NULL);
