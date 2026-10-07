@@ -71,10 +71,12 @@ static int	ft_fill_world(t_world *world, char *line, char *identifier)
 	int	start;
 
 	start = (int)ft_strlen(identifier);
-	if (!ft_strncmp(identifier, "A", ft_strlen(identifier)))
+	if (!ft_strncmp(identifier, "A", ft_strlen(identifier))
+		&& !world->ambient)
 		return (world->ambient = ft_fill_a_struct(&line[start]),
 			world->ambient != NULL);
-	if (!ft_strncmp(identifier, "C", ft_strlen(identifier)))
+	if (!ft_strncmp(identifier, "C", ft_strlen(identifier))
+		&& !world->camera)
 		return (world->camera = ft_fill_c_struct(&line[start]),
 			world->camera != NULL);
 	if (!ft_strncmp(identifier, "L", ft_strlen(identifier)))
