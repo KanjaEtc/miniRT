@@ -16,6 +16,7 @@ LIBFT_DIR = libft
 SRCS = srcs/canvas_and_pixels.c \
 	   srcs/colors.c \
 	   srcs/display.c \
+	   srcs/light_sphere_normal.c \
 	   srcs/matrix_basics.c \
 	   srcs/matrix_operations.c \
 	   srcs/matrix_determinant.c \

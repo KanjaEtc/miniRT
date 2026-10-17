@@ -1,0 +1,35 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   colors.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: adbarth <adbarth@learner.42.tech>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/09/08 11:43:09 by adbarth           #+#    #+#             */
+/*   Updated: 2026/09/08 11:43:13 by adbarth          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "../include/header.h"
+
+t_tuple	*ft_normal_at_sphere_point(t_sphere *sphere, t_matrix *transform,
+	t_tuple *world_point)
+{
+	t_tuple	*world_vector;
+	t_tuple	*object_point;
+	t_tuple	*object_normal;
+	t_tuple	*world_normal;
+
+	if (!ft_is_matrix_invertible(transform))
+		return (NULL);
+	object_point = ft_matrix_by_tuple_multiplication(
+		ft_inverse(transform), world_point);
+	object_point->w = 1;
+	object_normal = ft_tuples_subtraction(object_point, sphere->center);
+	world_vector = ft_matrix_by_tuple_multiplication(ft_transpose_matrix(
+		ft_inverse(transform)), object_normal);
+	world_vector->w = 0;
+	world_normal = ft_normalize(world_vector);
+	return (free(object_point), free(object_normal), free(world_vector),
+		world_normal);
+}

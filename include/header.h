@@ -12,7 +12,7 @@
 
 #ifndef HEADER_H
 # define HEADER_H
-// # include <criterion/criterion.h>
+# include <criterion/criterion.h>
 # include "../libft/libft.h"
 # include <stdlib.h>
 # include <math.h>
@@ -104,6 +104,12 @@ typedef struct s_matrix
 	int		n;
 }	t_matrix;
 
+typedef struct s_ray
+{
+	t_tuple	*origin;
+	t_tuple	*direction;
+}	t_ray;
+
 /* =============================== PARSER ============================== */
 
 /* parsing.c */
@@ -160,6 +166,12 @@ void		ft_display_world(t_world *world);
 void		ft_display_tuple(t_tuple *t);
 void		test_fill_matrix(t_matrix *matrix, double start);
 // void		ft_display_map(t_map *map);
+
+/* =============================== LIGHT ============================== */
+
+/* light_normal_sphere.c */
+t_tuple		*ft_normal_at_sphere_point(t_sphere *sphere, t_matrix *transform,
+	t_tuple *world_point);
 
 /* =============================== MATRICES ============================== */
 

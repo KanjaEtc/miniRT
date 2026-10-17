@@ -12,7 +12,7 @@
 
 #include "../include/header.h"
 
-static int	ft_check_rt_extension(char *file_name)
+int	ft_check_rt_extension(char *file_name)
 {
 	int	i;
 
