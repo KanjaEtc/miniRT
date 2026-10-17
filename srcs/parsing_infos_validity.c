@@ -18,9 +18,9 @@ static int	ft_inter(double min, double max, char **infos, int count)
 	int	j;
 	int	nb;
 
-	i = -1;
 	if (!infos)
 		return (0);
+	i = -1;
 	while (infos[++i] && i < count)
 	{
 		j = -1;
@@ -29,7 +29,7 @@ static int	ft_inter(double min, double max, char **infos, int count)
 			if (!ft_isdigit(infos[i][j]) && infos[i][j] != '.')
 				return (0);
 		}
-		nb = (double)ft_atoi(infos[i]);
+		nb = ft_atoi(infos[i]);
 		if (nb < min || nb > max)
 			return (0);
 	}

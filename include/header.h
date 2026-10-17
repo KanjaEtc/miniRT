@@ -12,7 +12,7 @@
 
 #ifndef HEADER_H
 # define HEADER_H
-# include <criterion/criterion.h>
+
 # include "../libft/libft.h"
 # include <stdlib.h>
 # include <math.h>
@@ -114,6 +114,7 @@ typedef struct s_ray
 
 /* parsing.c */
 t_world		*ft_parser(char *file_name);
+int			ft_check_rt_extension(char *file_name);
 
 /* parsing_create_world.c */
 t_world		*ft_create_world(int fd);

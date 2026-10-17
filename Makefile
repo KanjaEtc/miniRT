@@ -51,6 +51,7 @@ TEST_SRCS = test/test_canvas_and_pixels.c \
 			test/test_matrix_determinant.c \
 			test/test_matrix_inversion.c \
 			test/test_matrix_operations.c \
+			test/test_parsing.c \
 			test/test_transformations.c \
 			test/test_tuples_creation.c \
 			test/test_tuples_comparison.c \
