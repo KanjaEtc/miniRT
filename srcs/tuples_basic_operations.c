@@ -70,7 +70,7 @@ t_tuple	*ft_vector_by_scalar_multiplication(t_tuple *vector, double scalar)
 {
 	if (!vector || ft_is_a_point(vector))
 		return (NULL);
-	return (ft_point_creator(vector->x * scalar, vector->y * scalar,
+	return (ft_vector_creator(vector->x * scalar, vector->y * scalar,
 			vector->z * scalar));
 }
 
@@ -86,6 +86,6 @@ t_tuple	*ft_vector_by_scalar_division(t_tuple *vector, double scalar)
 	result->x = vector->x / scalar;
 	result->y = vector->y / scalar;
 	result->z = vector->z / scalar;
-	result->w = 1;
+	result->w = 0;
 	return (result);
 }

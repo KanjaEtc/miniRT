@@ -174,6 +174,9 @@ void		test_fill_matrix(t_matrix *matrix, double start);
 t_tuple		*ft_normal_at_sphere_point(t_sphere *sphere, t_matrix *transform,
 	t_tuple *world_point);
 
+/* light_reflection.c */
+t_tuple		*ft_reflect(t_tuple *v_in, t_tuple* v_normal);
+
 /* =============================== MATRICES ============================== */
 
 /* matrix_creation.c */

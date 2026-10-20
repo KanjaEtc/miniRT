@@ -22,6 +22,7 @@ SRC = ft_calloc.c \
 	  ft_strlcpy.c \
 	  ft_strrchr.c \
 	  ft_atoi.c \
+	  ft_atod.c \
 	  ft_isascii.c \
 	  ft_memcmp.c \
 	  ft_putendl_fd.c \

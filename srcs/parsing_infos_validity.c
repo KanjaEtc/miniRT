@@ -14,9 +14,9 @@
 
 static int	ft_inter(double min, double max, char **infos, int count)
 {
-	int	i;
-	int	j;
-	int	nb;
+	int		i;
+	int		j;
+	double	nb;
 
 	if (!infos)
 		return (0);
@@ -26,10 +26,12 @@ static int	ft_inter(double min, double max, char **infos, int count)
 		j = -1;
 		while (infos[i][++j])
 		{
-			if (!ft_isdigit(infos[i][j]) && infos[i][j] != '.')
+			if (!ft_isdigit(infos[i][j]) && infos[i][j] != '.'
+				&& (((infos[i][j] == '-' && j != 0))
+				|| (infos[i][j] == '+' && j != 0)))
 				return (0);
 		}
-		nb = ft_atoi(infos[i]);
+		nb = ft_atod(infos[i]);
 		if (nb < min || nb > max)
 			return (0);
 	}
@@ -48,12 +50,14 @@ int	ft_check_infos_validity(char **infos, char *identifier)
 	if (!ft_strncmp(identifier, "L", ft_strlen(identifier)))
 		return (ft_inter(0, 1, &infos[3], 1) && ft_inter(0, 255, &infos[4], 3));
 	if (!ft_strncmp(identifier, "sp", ft_strlen(identifier)))
-		return (ft_inter(0, 255, &infos[4], 3));
+		return (ft_inter(0, DBL_MAX, &infos[3], 1)
+			&& ft_inter(0, 255, &infos[4], 3));
 	if (!ft_strncmp(identifier, "pl", ft_strlen(identifier)))
 		return (ft_inter(-1, 1, &infos[3], 3)
 			&& ft_inter(0, 255, &infos[6], 3));
 	if (!ft_strncmp(identifier, "cy", ft_strlen(identifier)))
 		return (ft_inter(-1, 1, &infos[3], 3)
+			&& ft_inter(0, DBL_MAX, &infos[6], 2)
 			&& ft_inter(0, 255, &infos[8], 3));
 	return (0);
 }

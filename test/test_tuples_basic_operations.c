@@ -97,16 +97,16 @@ Test(tuples, vector_by_positive_scalar_multiplication)
 {
 	t_tuple *v = ft_vector_creator(0, -8, 0.5);
 	double scalar = 1.5;
-	t_tuple *result = ft_point_creator(v->x * scalar, v->y * scalar, v->z * scalar);
-	cr_assert(ft_points_equality(ft_vector_by_scalar_multiplication(v, scalar), result));
+	t_tuple *result = ft_vector_creator(v->x * scalar, v->y * scalar, v->z * scalar);
+	cr_assert(ft_vectors_equality(ft_vector_by_scalar_multiplication(v, scalar), result));
 }
 
 Test(tuples, vector_by_negative_scalar_multiplication)
 {
 	t_tuple *v = ft_vector_creator(0, -8, 0.5);
 	double scalar = -2;
-	t_tuple *result = ft_point_creator(v->x * scalar, v->y * scalar, v->z * scalar);
-	cr_assert(ft_points_equality(ft_vector_by_scalar_multiplication(v, scalar), result));
+	t_tuple *result = ft_vector_creator(v->x * scalar, v->y * scalar, v->z * scalar);
+	cr_assert(ft_vectors_equality(ft_vector_by_scalar_multiplication(v, scalar), result));
 }
 
 Test(tuples, vector_by_scalar_multiplication_bad_arguments)
@@ -125,16 +125,16 @@ Test(tuples, vector_by_positive_scalar_division)
 {
 	t_tuple *v = ft_vector_creator(0, -8, 0.5);
 	double scalar = 1.5;
-	t_tuple *result = ft_point_creator(v->x / scalar, v->y / scalar, v->z / scalar);
-	cr_assert(ft_points_equality(ft_vector_by_scalar_division(v, scalar), result));
+	t_tuple *result = ft_vector_creator(v->x / scalar, v->y / scalar, v->z / scalar);
+	cr_assert(ft_vectors_equality(ft_vector_by_scalar_division(v, scalar), result));
 }
 
 Test(tuples, vector_by_negative_scalar_division)
 {
 	t_tuple *v = ft_vector_creator(0, -8, 0.5);
 	double scalar = -2;
-	t_tuple *result = ft_point_creator(v->x / scalar, v->y / scalar, v->z / scalar);
-	cr_assert(ft_points_equality(ft_vector_by_scalar_division(v, scalar), result));
+	t_tuple *result = ft_vector_creator(v->x / scalar, v->y / scalar, v->z / scalar);
+	cr_assert(ft_vectors_equality(ft_vector_by_scalar_division(v, scalar), result));
 }
 
 Test(tuples, vector_by_scalar_division_bad_arguments)

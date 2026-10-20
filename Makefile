@@ -16,6 +16,7 @@ LIBFT_DIR = libft
 SRCS = srcs/canvas_and_pixels.c \
 	   srcs/colors.c \
 	   srcs/display.c \
+	   srcs/light_reflection.c \
 	   srcs/light_sphere_normal.c \
 	   srcs/matrix_basics.c \
 	   srcs/matrix_operations.c \
@@ -40,12 +41,14 @@ SRCS = srcs/canvas_and_pixels.c \
 	   srcs/utils_list_addback.c \
 	   srcs/utils_list_clear.c \
 	   srcs/utils_clean_gnl.c \
-	   srcs/main.c
+	   srcs/main.c \
 
 OBJS = $(patsubst srcs/%.c,object/%.o,$(SRCS))
 
 
 TEST_SRCS = test/test_canvas_and_pixels.c \
+	  		test/test_light_reflection.c \
+	   		test/test_light_sphere_normal.c \
 			test/test_colors.c \
 			test/test_matrix_basics.c \
 			test/test_matrix_determinant.c \
