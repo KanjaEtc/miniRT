@@ -178,15 +178,21 @@ t_tuple		**ft_pixel_grid_allocator(int width, int height);
 
 /* =============================== COLORS ============================== */
 
+/* colors_basics.c */
+t_tuple		*ft_colors_multiplication(t_tuple *c1, t_tuple *c2);
+t_tuple		*ft_color_by_ratio_multiplication(t_tuple *color, double ratio);
+t_tuple		*ft_colors_addition(t_tuple *c1, t_tuple *c2);
+bool		ft_is_a_color(t_tuple *color);
+t_tuple		*ft_color_creator(double x, double y, double z);
+
+/* colors_and_canvas.c */
 t_tuple		*ft_get_pixel_color(t_canvas *canvas, int w, int h);
 void		ft_write_pixel_color(t_canvas *canvas, int w, int h,
 				t_tuple *color);
-t_tuple		*ft_colors_multiplication(t_tuple *c1, t_tuple *c2);
-t_tuple		*ft_colors_by_ratio_multiplication(t_tuple *color, double ratio);
-t_tuple		*ft_color_creator(double x, double y, double z);
 
 /* =============================== DISPLAY ETC ============================== */
 
+/* display.c */
 void		ft_display_matrix(t_matrix *matrix);
 void		ft_display_world(t_world *world);
 void		ft_display_tuple(t_tuple *t);
@@ -204,6 +210,7 @@ t_tuple		*ft_object_intersection_normal(t_intersection *intersection);
 /* light_normal_sphere.c */
 t_tuple		*ft_normal_at_sphere_point(t_sphere *sphere, t_matrix *transform,
 				t_tuple *world_point);
+t_tuple		*ft_sphere_intersection_normal(t_intersection *intersection);
 
 /* light_phong_model.c */
 t_tuple		*ft_compute_amb(t_world *world, t_object *object);

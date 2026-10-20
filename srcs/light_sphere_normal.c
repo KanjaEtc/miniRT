@@ -46,7 +46,7 @@ t_tuple	*ft_sphere_intersection_normal(t_intersection *intersection)
 	tmp1 = ft_tuples_subtraction(intersection->coordinates,
 			intersection->object->coordinates);
 	tmp2 = ft_vector_by_scalar_division(tmp1, intersection->object->radius);
-	normal = normalize(tmp2);
+	normal = ft_normalize(tmp2);
 	intersection->object->normal = normal;
 	free(tmp1);
 	free(tmp2);

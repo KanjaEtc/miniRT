@@ -14,7 +14,8 @@ LIBFT_DIR = libft
 
 
 SRCS = srcs/canvas_and_pixels.c \
-	   srcs/colors.c \
+	   srcs/colors_basics.c \
+	   srcs/colors_and_canvas.c \
 	   srcs/display.c \
 	   srcs/light_color_at_point.c \
 	   srcs/light_objects_normal_cy.c \
@@ -55,7 +56,8 @@ TEST_SRCS = test/test_canvas_and_pixels.c \
 			test/test_light_phong_model.c \
 			test/test_light_reflection.c \
 			test/test_light_sphere_normal.c \
-			test/test_colors.c \
+			test/test_colors_basics.c \
+			test/test_colors_and_canvas.c \
 			test/test_matrix_basics.c \
 			test/test_matrix_determinant.c \
 			test/test_matrix_inversion.c \

@@ -25,7 +25,7 @@ static t_tuple	*ft_color_at_object_point(t_world *world,
 
 	amb = ft_compute_amb(world, intersection->object);
 	diff = ft_compute_diff(world, intersection);
-	spec = ft_compute_spec(world, intersection->object);
+	spec = ft_compute_spec(world, intersection);
 	amb_and_diff = ft_colors_addition(amb, diff);
 	color_at_point = ft_colors_addition(amb_and_diff, spec);
 	free(amb);
@@ -40,8 +40,11 @@ t_tuple	*ft_color_at_a_point(t_world *world, t_intersection *intersection)
 	if (!world || !intersection)
 		return (NULL);
 	if (intersection->object)
+	{
+		intersection->object->normal = ft_object_intersection_normal(
+				intersection);
 		return (ft_color_at_object_point(world, intersection));
+	}
 	return (ft_color_by_ratio_multiplication(world->ambient->color,
 			world->ambient->ratio));
-	return (ft_color_at_background_point(world, intersection));
 }
