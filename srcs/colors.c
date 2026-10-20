@@ -28,6 +28,24 @@ t_tuple	*ft_color_creator(double x, double y, double z)
 	return (color);
 }
 
+/* Not tested */
+t_tuple	*ft_colors_multiplication(t_tuple *c1, t_tuple *c2)
+{
+	if (!ft_is_a_color(c1) || !ft_is_a_color(c2))
+		return (NULL);
+	return (ft_color_creator(c1->x * c2->x, c1->y * c2->y, c1->z * c2->z));
+}
+
+/* Not tested */
+t_tuple	*ft_colors_by_ratio_multiplication(t_tuple *color, double ratio)
+{
+	if (!ft_is_a_color(color) || ratio < 0 || ratio > 1)
+		return (NULL);
+	return (ft_color_creator(color->x * ratio,
+			color->y * ratio,
+			color->z * ratio));
+}
+
 t_tuple	*ft_get_pixel_color(t_canvas *canvas, int w, int h)
 {
 	if (!canvas || !canvas->pixel_grid || !*canvas->pixel_grid)

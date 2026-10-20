@@ -68,7 +68,7 @@ t_tuple	*ft_tuple_opposite(t_tuple *t)
 
 t_tuple	*ft_vector_by_scalar_multiplication(t_tuple *vector, double scalar)
 {
-	if (!vector || ft_is_a_point(vector))
+	if (!vector || !ft_is_a_vector(vector))
 		return (NULL);
 	return (ft_vector_creator(vector->x * scalar, vector->y * scalar,
 			vector->z * scalar));
@@ -78,7 +78,7 @@ t_tuple	*ft_vector_by_scalar_division(t_tuple *vector, double scalar)
 {
 	t_tuple	*result;
 
-	if (!vector || ft_is_a_point(vector) || scalar == 0)
+	if (!vector || !ft_is_a_vector(vector) || scalar == 0)
 		return (NULL);
 	result = malloc(sizeof(t_tuple));
 	if (!result)

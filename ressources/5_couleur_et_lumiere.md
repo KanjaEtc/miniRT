@@ -64,8 +64,7 @@ couleur_speculaire =
 
 Ou :
 - l'indice est une valeur choisie entre 0 et 1
-- l'intensite speculaire determine le niveau de luminosite percu par la camera, selon l'indice 
-	et sa position par rapport a l'objet
+- l'intensite speculaire determine le niveau de luminosite percu par la camera, selon l'indice et sa position par rapport a l'objet
 
 L'intensite speculaire se calcule comme suit :
 

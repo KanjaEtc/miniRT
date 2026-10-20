@@ -89,7 +89,7 @@ La solution t peut etre :
 
 3) Cylindre
 
-On doit calcule la position du ou des points d'intersection du rayon avec la surface du cylindre (a.) et avec les disques des extremites (b.).
+On doit calculer la position du ou des points d'intersection du rayon avec la surface du cylindre (a.) et avec les disques des extremites (b.).
 
 a. Surface du cylindre
 

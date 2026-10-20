@@ -20,6 +20,7 @@
 # include <float.h>
 # include <unistd.h>
 # include <fcntl.h>
+# include <stdbool.h>
 
 typedef struct s_tuple
 {
@@ -98,6 +99,28 @@ typedef struct s_world
 
 }	t_world;
 
+typedef struct s_object
+{
+	t_tuple	*coordinates;
+	t_tuple	*color;
+	t_tuple	*normal;
+
+	char	*identifier;
+
+	double	radius;
+	t_tuple	*axis;
+	bool	upper_cap;
+	bool	bottom_cap;
+}	t_object;
+
+typedef struct s_intersection
+{
+	t_tuple		*coordinates;
+	t_tuple		*color;
+
+	t_object	*object;
+}	t_intersection;
+
 typedef struct s_matrix
 {
 	double	**mtx;
@@ -158,6 +181,8 @@ t_tuple		**ft_pixel_grid_allocator(int width, int height);
 t_tuple		*ft_get_pixel_color(t_canvas *canvas, int w, int h);
 void		ft_write_pixel_color(t_canvas *canvas, int w, int h,
 				t_tuple *color);
+t_tuple		*ft_colors_multiplication(t_tuple *c1, t_tuple *c2);
+t_tuple		*ft_colors_by_ratio_multiplication(t_tuple *color, double ratio);
 t_tuple		*ft_color_creator(double x, double y, double z);
 
 /* =============================== DISPLAY ETC ============================== */
@@ -170,12 +195,23 @@ void		test_fill_matrix(t_matrix *matrix, double start);
 
 /* =============================== LIGHT ============================== */
 
+/* light_color_at_point.c */
+t_tuple		*ft_color_at_a_point(t_world *world, t_intersection *intersection);
+
+/* light_objects_normal_cy.c */
+t_tuple		*ft_object_intersection_normal(t_intersection *intersection);
+
 /* light_normal_sphere.c */
 t_tuple		*ft_normal_at_sphere_point(t_sphere *sphere, t_matrix *transform,
-	t_tuple *world_point);
+				t_tuple *world_point);
+
+/* light_phong_model.c */
+t_tuple		*ft_compute_amb(t_world *world, t_object *object);
+t_tuple		*ft_compute_diff(t_world *world, t_intersection *intersection);
+t_tuple		*ft_compute_spec(t_world *world, t_intersection *intersection);
 
 /* light_reflection.c */
-t_tuple		*ft_reflect(t_tuple *v_in, t_tuple* v_normal);
+t_tuple		*ft_reflect(t_tuple *v_in, t_tuple *v_normal);
 
 /* =============================== MATRICES ============================== */
 
@@ -232,6 +268,7 @@ t_tuple		*ft_vector_by_scalar_division(t_tuple *vector, double scalar);
 /* tuples_complex_operations */
 double		ft_vector_length(t_tuple *v);
 t_tuple		*ft_normalize(t_tuple *vector);
+t_tuple		*ft_points_subtraction_normal(t_tuple *p1, t_tuple *p2);
 double		ft_dot_product(t_tuple *v1, t_tuple *v2);
 t_tuple		*ft_cross_product(t_tuple *v1, t_tuple *v2);
 

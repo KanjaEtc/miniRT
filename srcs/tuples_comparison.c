@@ -23,7 +23,7 @@ int	ft_vectors_equality(t_tuple *v1, t_tuple *v2)
 {
 	double	epsilon;
 
-	if (!v1 || !v2 || ft_is_a_point(v1) || ft_is_a_point(v2))
+	if (!v1 || !v2 || !ft_is_a_vector(v1) || ft_is_a_vector(v2))
 		return (0);
 	epsilon = 10e-5;
 	return (ft_abs(v1->x - v2->x) <= epsilon
@@ -35,7 +35,7 @@ int	ft_points_equality(t_tuple *p1, t_tuple *p2)
 {
 	double	epsilon;
 
-	if (!p1 || !p2 || ft_is_a_vector(p1) || ft_is_a_vector(p2))
+	if (!p1 || !p2 || !ft_is_a_point(p1) || !ft_is_a_point(p2))
 		return (0);
 	epsilon = 10e-5;
 	return (ft_abs(p1->x - p2->x) <= epsilon

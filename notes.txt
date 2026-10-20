@@ -3,3 +3,5 @@ A FAIRE
 - canvas_and_pixels.c : prevoir une valeur max pour width et height
 - parsing : il faut detecter les 20. et les 20! par ex
 - remplacer les printf par des strerror / perror
+- colors : tout diviser par 255 ?
+- additionner et multiplier colors (par color et par ratio)

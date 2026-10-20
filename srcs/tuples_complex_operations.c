@@ -41,6 +41,20 @@ t_tuple	*ft_normalize(t_tuple *vector)
 	return (normal);
 }
 
+/* Not tested */
+t_tuple	*ft_points_subtraction_normal(t_tuple *p1, t_tuple *p2)
+{
+	t_tuple	*normal;
+	t_tuple	*not_normalized;
+
+	if (!p1 || !p2 || !ft_is_a_point(p1) || !ft_is_a_point(p2))
+		return (NULL);
+	not_normalized = ft_tuples_subtraction(p1, p2);
+	normal = ft_normalize(not_normalized);
+	free(not_normalized);
+	return (normal);
+}
+
 double	ft_vector_length(t_tuple *v)
 {
 	if (!v || !ft_is_a_vector(v))
