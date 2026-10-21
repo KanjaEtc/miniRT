@@ -1,7 +1,6 @@
 **Quel point du plan represente chaque pixel ?**
 
-Les pixels de notre fenetre representent les points du plan dans le champ de 
-vision de la camera.
+Les pixels de notre fenetre representent les points du plan dans le champ de vision de la camera.
 
 
 1) Calculer la taille de l'ecran
@@ -66,14 +65,22 @@ On convertit ensuite ces coordonnees [0,1] en coordonnees [-0.5,0.5].
 
 			y = 0.5 - y
 
+Le pixel(0,0) est en haut a gauche de la fenetre.
+
 Pour que les images ne paraissent pas deformees, on finit par adapter ces coordonnees en fonction de la hauteur H de l'ecran et sa largeur W :
 
 			x = x * W
 
 			y = y * H
 
-Pour generaliser on commence par definir trois vecteurs, right, up et forward, qui representent les axes horizontal, vertical et de profondeur du point de vue de la camera. 
+Pour viser le centre du pixel, la formule finale est :
+			
+			x = ((x_pixel + 0.5) / largeur_fenetre - 0.5) * W
 
+			y = (0.5 - (y_pixel + 0.5) / hauteur_fenetre) * H
+
+
+Pour generaliser on commence par definir trois vecteurs, right, up et forward, qui representent les axes horizontal, vertical et de profondeur du point de vue de la camera. 
 
 Forward : c'est la direction dans laquelle regarde la camera :
 
@@ -81,15 +88,15 @@ Forward : c'est la direction dans laquelle regarde la camera :
 
 Right : il est perpendiculaire a forward :
 
-			tmp = (0,1,0) * forward
+			tmp = (0,1,0) X forward
 			if (tmp = (0,0,0))
 				tmp = (0,0,1)
-			right = normalize(tmp * forward)
+			right = normalize(tmp X forward)
 
-L'idee etant qu'on ne peut pas normaliser le vecteur nul (0,0,0). On obtient un vecteur nul quand on multiplie deux vecteurs paralleles.
+L'idee etant qu'on ne peut pas normaliser le vecteur nul (0,0,0). Le produit vectoriel de deux vecteurs parallèles donne le vecteur nul.
 
 Up :
-			up = forward * right
+			up = forward X right
 
 Les coordonnees de P peuvent maintenant etre calculees :
 
@@ -107,9 +114,9 @@ b. Version courte (sans explications)
 
 Etape 1 :
 
-			x = (x_pixel / largeur_fenetre - 0.5) * W
+			x = ((x_pixel + 0.5) / largeur_fenetre - 0.5) * W
 
-			y = (0.5 - y_pixel / hauteur_fenetre) * H
+			y = (0.5 - (y_pixel + 0.5) / hauteur_fenetre) * H
 
 Ou :
 - W et H ont ete calcules dans le 1)
@@ -120,11 +127,14 @@ Etape 2 :
 
 			forward = normalize(x_camera, y_camera, z_camera)
 
-			right = normalize((0,1,0) * forward)
+			tmp = (0,1,0) X forward
+			if (tmp = (0,0,0))
+				tmp = (0,0,1)
+			right = normalize(tmp X forward)
 
-			up = forward.right
+			up = forward X right
 Ou :
-- _camera sont les coordonnees de la camera
+- _camera representent la direction de la camera
 
 Etape 3 :
 

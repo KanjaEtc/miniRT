@@ -26,9 +26,9 @@ static t_ambient	*ft_fill_a_struct(char *line)
 	if (!infos || !*infos || ft_array_length(infos) != 4
 		|| !ft_check_infos_validity(infos, "A"))
 		return (ft_free_ambient(ambient), ft_free_array(infos), NULL);
-	ambient->ratio = ft_atoi(infos[0]);
-	ambient->color = ft_color_creator(ft_atoi(infos[1]),
-			ft_atoi(infos[2]), ft_atoi(infos[3]));
+	ambient->ratio = ft_atod(infos[0]);
+	ambient->color = ft_color_creator(ft_atod(infos[1]),
+			ft_atod(infos[2]), ft_atod(infos[3]));
 	ft_free_array(infos);
 	if (!ambient->color)
 		return (ft_free_ambient(ambient), NULL);

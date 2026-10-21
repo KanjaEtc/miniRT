@@ -13,9 +13,10 @@ CRITERION_LIB = -L /home/adbarth/Criterion/build/src -lcriterion
 LIBFT_DIR = libft
 
 
-SRCS = srcs/canvas_and_pixels.c \
-	   srcs/colors_basics.c \
-	   srcs/colors_and_canvas.c \
+SRCS = srcs/colors_basics.c \
+	   srcs/canvas_and_colors.c \
+	   srcs/canvas_creation.c \
+	   srcs/canvas_pixel_to_point.c \
 	   srcs/display.c \
 	   srcs/light_color_at_point.c \
 	   srcs/light_objects_normal_cy.c \

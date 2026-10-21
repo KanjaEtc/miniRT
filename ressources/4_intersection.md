@@ -23,6 +23,8 @@ Ou :
 
 A noter : si D.N donne un tout petit nombre (ex : 1e-6) alors le rayon est parallele au plan. L'equation a alors 0 (si (Q - O).N =/= 0) ou une infinite (si (Q - O).N = 0) de solutions.
 
+t doit etre superieur ou egal a 0. Sinon l'intersection potentielle est derriere l'origine du rayon.
+
 
 2) Sphere
 
@@ -58,6 +60,7 @@ Apres le developpement de l'identite remarquable :
 
 					t²D² + 2tD.(O - C) + |O - C|² - R² = 0
 
+(ou D² designe D scalaire D)
 C'est une equation de type ax² + bx + c = 0 (equation du second degre), ou :
 - a = D²
 - b = 2D.(O - C)
@@ -83,11 +86,11 @@ Si Δ = 0 alors l'equation a une solution (et il existe un point d'intersection 
 Si Δ < 0 alors l'equation n'admet pas de solution (et il n'y a pas de point d'intersection)
 
 La solution t peut etre :
-- positive : le rayon a un ou deux points d'intersection avec la sphere
-- negative : la sphere est derriere l'origine du rayon : on peut considerer qu'il n'y a pas d'intersection
+- toutes positives : le rayon a un ou deux points d'intersection avec la sphere
+- toutes negatives : la sphere est derriere l'origine du rayon : on peut considerer qu'il n'y a pas d'intersection
 - une positive, une negative : l'origine du rayon est a l'interieur de la sphere
 
-3) Cylindre
+3) Cylindre (A doit etre unitaire)
 
 On doit calculer la position du ou des points d'intersection du rayon avec la surface du cylindre (a.) et avec les disques des extremites (b.).
 
@@ -124,7 +127,7 @@ On obtient donc l'equation du second degre ax² + bx + c = 0 ou :
 - b = 2[(O - Q).D - ((O - Q).A)(D.A)]
 - c = (O - Q).(O - Q) - ((O - Q).A)² - R²
 
-On la resoud comme expliqu) Sphe dans 2) Sphere.
+On teste si a != 0. Si a est nul alors il existe 0 ou une infinite de solutions. Sinon on resoud cette equation du second degre comme expliqu) Sphe dans 2) Sphere. 
 
 S'il existe au moins une solution t, on verifie qu'elle est bien la range definie par la hauteur du cylindre. Si elle est est positive alors il y a intersection.
 
@@ -132,7 +135,7 @@ P(t) = O + tD
 Soient :
 - C le centre du cylindre (donne dans la map)
 - H sa hauteur (donnee dans la map)
-- h la coordonnee du point P(t) le long de l'axe A
+- h la distance du point a la position centrale du cylindre
 
 					h = (P - C).A
 Ou :
@@ -149,7 +152,7 @@ Soit C₁ le centre du premier disque :
 
 					C₁ = C - (H / 2)A
 Ou :
-- le vecteur A est multiplie coordonnee a coordonnee par H/2
+- A est multiplie par H/2 puis soustrait a C
 
 L'axe A du cylindre est egalement la normale du plan du disque C₁. Pour que P(t) appartienne a ce plan il faut donc que :
 
@@ -174,10 +177,10 @@ Le point P(t) appartient au plan du disque. Il appartient au disque lui-meme si,
 
 					|P - C₁| <= R
 
-Si oui, P(t) est un point d'intresection du rayon et du premier disque du cylindre.
+Si oui, P(t) est un point d'intersection du rayon et du premier disque du cylindre.
 
 Pour le second disque C₂ :
 
 					C₂ = C + (H/2)A
 
-Et continue on continue comme avec le premier disque.
+Et continue comme avec le premier disque.

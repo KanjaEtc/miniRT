@@ -172,9 +172,17 @@ t_cylinder	*ft_init_cylinders(void);
 
 /* =============================== CANVAS ============================== */
 
-/* canvas_and_pixels.c */
+/* canvas_and_colors.c */
+t_tuple		*ft_get_pixel_color(t_canvas *canvas, int w, int h);
+void		ft_write_pixel_color(t_canvas *canvas, int w, int h,
+				t_tuple *color);
+
+/* canvas_creation.c */
 t_canvas	*ft_canvas_creator(int width, int height);
 t_tuple		**ft_pixel_grid_allocator(int width, int height);
+
+/* canvas_pixel_to_point.c */
+t_tuple		*ft_from_pixel_to_point(t_world *world, t_canvas *canvas, t_tuple *pixel);
 
 /* =============================== COLORS ============================== */
 
@@ -184,11 +192,6 @@ t_tuple		*ft_color_by_ratio_multiplication(t_tuple *color, double ratio);
 t_tuple		*ft_colors_addition(t_tuple *c1, t_tuple *c2);
 bool		ft_is_a_color(t_tuple *color);
 t_tuple		*ft_color_creator(double x, double y, double z);
-
-/* colors_and_canvas.c */
-t_tuple		*ft_get_pixel_color(t_canvas *canvas, int w, int h);
-void		ft_write_pixel_color(t_canvas *canvas, int w, int h,
-				t_tuple *color);
 
 /* =============================== DISPLAY ETC ============================== */
 
@@ -242,6 +245,11 @@ double		ft_matrix_determinant(t_matrix *m);
 /* matrix_inversion.c */
 int			ft_is_matrix_invertible(t_matrix *m);
 t_matrix	*ft_inverse(t_matrix *m);
+
+/* ============================ RAYS =========================== */
+
+/* ray_sphere_intersection.c */
+t_ray 		*ft_create_ray (t_tuple *origin, t_tuple *direction);
 
 /* ============================ TRANSFORMATIONS =========================== */
 

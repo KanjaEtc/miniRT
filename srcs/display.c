@@ -56,13 +56,13 @@ static void	ft_display_cylinders(t_cylinder *cylinder)
 			printf("cylinder : color est NULL\n\n");
 			return ;
 		}
-		printf("center = %.1f, %.1f, %.1f\n", tmp->center->x, tmp->center->y,
+		printf("center = %.2f, %.2f, %.2f\n", tmp->center->x, tmp->center->y,
 			tmp->center->z);
-		printf("axis = %.1f, %.1f, %.1f\n", tmp->axis->x,
+		printf("axis = %.2f, %.2f, %.2f\n", tmp->axis->x,
 			tmp->axis->y, tmp->axis->z);
-			printf("diameter = %.1f\n", tmp->diameter);
-		printf("height = %.1f\n", tmp->height);
-		printf("color = %.1f, %.1f, %.1f\n\n", tmp->color->x,
+			printf("diameter = %.2f\n", tmp->diameter);
+		printf("height = %.2f\n", tmp->height);
+		printf("color = %.2f, %.2f, %.2f\n\n", tmp->color->x,
 			tmp->color->y, tmp->color->z);
 		tmp = tmp->next;
 	}
@@ -91,11 +91,11 @@ static void	ft_display_planes(t_plane *planes)
 			printf("plane : color est NULL\n\n");
 			return ;
 		}
-		printf("point = %.1f, %.1f, %.1f\n", tmp->point->x,
+		printf("point = %.2f, %.2f, %.2f\n", tmp->point->x,
 			tmp->point->y, tmp->point->z);
-		printf("normal = %.1f, %.1f, %.1f\n", tmp->normal->x,
+		printf("normal = %.2f, %.2f, %.2f\n", tmp->normal->x,
 			tmp->normal->y, tmp->normal->z);
-		printf("color = %.1f, %.1f, %.1f\n\n", tmp->color->x,
+		printf("color = %.2f, %.2f, %.2f\n\n", tmp->color->x,
 			tmp->color->y, tmp->color->z);
 		tmp = tmp->next;
 	}
@@ -119,10 +119,10 @@ static void	ft_display_spheres(t_sphere *spheres)
 	}
 	while (tmp)
 	{
-		printf("center = %.1f, %.1f, %.1f\n", tmp->center->x, tmp->center->y,
+		printf("center = %.2f, %.2f, %.2f\n", tmp->center->x, tmp->center->y,
 			tmp->center->z);
-		printf("diameter = %.1f\n", tmp->diameter);
-		printf("color = %.1f, %.1f, %.1f\n\n", tmp->color->x,
+		printf("diameter = %.2f\n", tmp->diameter);
+		printf("color = %.2f, %.2f, %.2f\n\n", tmp->color->x,
 			tmp->color->y, tmp->color->z);
 		tmp = tmp->next;
 	}
@@ -146,10 +146,10 @@ static void	ft_display_lights(t_light *lights)
 	}
 	while (tmp)
 	{
-		printf("origin = %.1f, %.1f, %.1f\n", tmp->origin->x,
+		printf("origin = %.2f, %.2f, %.2f\n", tmp->origin->x,
 			tmp->origin->y, tmp->origin->z);
-		printf("ratio = %.1f\n", tmp->ratio);
-		printf("color = %.1f, %.1f, %.1f\n\n", tmp->color->x,
+		printf("ratio = %.2f\n", tmp->ratio);
+		printf("color = %.2f, %.2f, %.2f\n\n", tmp->color->x,
 			tmp->color->y, tmp->color->z);
 		tmp = tmp->next;
 	}
@@ -168,11 +168,11 @@ static void	ft_display_camera(t_camera *camera)
 		printf("camera : normal est NULL\n\n");
 		return ;
 	}
-	printf("origin = %.1f, %.1f, %.1f\n", camera->origin->x, camera->origin->y,
+	printf("origin = %.2f, %.2f, %.2f\n", camera->origin->x, camera->origin->y,
 		camera->origin->z);
-	printf("normal = %.1f, %.1f, %.1f\n", camera->normal->x,
+	printf("normal = %.2f, %.2f, %.2f\n", camera->normal->x,
 		camera->normal->y, camera->normal->z);
-	printf("fov = %.1f\n\n", camera->fov);
+	printf("fov = %.2f\n\n", camera->fov);
 }
 
 static void	ft_display_ambient(t_ambient *ambient)
@@ -183,8 +183,8 @@ static void	ft_display_ambient(t_ambient *ambient)
 		printf("ambient : color est null\n\n");
 		return ;
 	}
-	printf("ratio = %.1f\n", ambient->ratio);
-	printf("color = %.1f, %.1f, %.1f\n\n", ambient->color->x,
+	printf("ratio = %.2f\n", ambient->ratio);
+	printf("color = %.2f, %.2f, %.2f\n\n", ambient->color->x,
 		ambient->color->y, ambient->color->z);
 }
 
