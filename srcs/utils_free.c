@@ -12,6 +12,14 @@
 
 #include "../include/header.h"
 
+void	*ft_free_intersection(t_intersection *intersection)
+{
+	if (intersection)
+		return (free(intersection->coordinates),
+			free(intersection->color), free(intersection), NULL);
+	return (NULL);
+}
+
 void	*ft_free_tuple_array(t_tuple **array, int index)
 {
 	int	i;

@@ -118,6 +118,7 @@ typedef struct s_intersection
 	t_tuple		*coordinates;
 	t_tuple		*color;
 
+	double		distance_to_camera;
 	t_object	*object;
 }	t_intersection;
 
