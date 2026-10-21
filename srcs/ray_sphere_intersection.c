@@ -12,14 +12,16 @@
 
 #include "../include/header.h"
 
-t_ray *ft_create_ray (t_tuple *origin, t_tuple *direction)
+t_ray	*ft_create_ray(t_tuple *origin, t_tuple *direction)
 {
-    t_ray *ray = malloc(sizeof(t_ray));
-    if (!ray)
-        return (NULL);
-    ray->origin = origin;
-    ray->direction = direction;
-    return (ray);
+	t_ray	*ray;
+
+	ray = malloc(sizeof(t_ray));
+	if (!ray)
+		return (NULL);
+	ray->origin = origin;
+	ray->direction = direction;
+	return (ray);
 }
 
 // t_sphere *create_sphere (t_tuple *center, double radius)

@@ -23,7 +23,7 @@ t_tuple	*ft_point_position(t_ray *ray, double t)
 	if (!point)
 		return (NULL);
 	result = ft_point_creator(ray->origin->x + point->x,
-		ray->origin->y + point->y, ray->origin->z + point->z);
+			ray->origin->y + point->y, ray->origin->z + point->z);
 	free(point);
-	return (result);		
+	return (result);
 }

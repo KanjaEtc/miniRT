@@ -29,7 +29,8 @@
 // 			point = ft_from_pixel_to_point(world, canvas,
 // 				&canvas->pixel_grid[i][j]);
 // 			ray = ft_create_ray(world->camera->origin,
-// 				ft_points_subtraction_normal(point, world->camera->normal)); //dupliquer le 1er ?
+// 				ft_points_subtraction_normal(point, world->camera->normal));
+				//dupliquer le 1er ?
 // 			color = ft_get_color(world, ray);
 // 			ft_write_pixel_color(canvas, i, j, color);
 // 			free(point);

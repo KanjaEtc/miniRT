@@ -182,7 +182,13 @@ t_canvas	*ft_canvas_creator(int width, int height);
 t_tuple		**ft_pixel_grid_allocator(int width, int height);
 
 /* canvas_pixel_to_point.c */
-t_tuple		*ft_from_pixel_to_point(t_world *world, t_canvas *canvas, t_tuple *pixel);
+t_tuple		*ft_from_pixel_to_point(t_world *world, t_canvas *canvas,
+				t_tuple *pixel);
+
+/* canvas_pixel_to_point2.c */
+t_tuple		*ft_compute_point_first_part(t_tuple *right, t_tuple *up,
+				double x, double y);
+t_tuple		*ft_compute_point_second_part(t_world *world, t_tuple *first_part);
 
 /* =============================== COLORS ============================== */
 
@@ -249,7 +255,7 @@ t_matrix	*ft_inverse(t_matrix *m);
 /* ============================ RAYS =========================== */
 
 /* ray_sphere_intersection.c */
-t_ray 		*ft_create_ray (t_tuple *origin, t_tuple *direction);
+t_ray		*ft_create_ray(t_tuple *origin, t_tuple *direction);
 
 /* ============================ TRANSFORMATIONS =========================== */
 

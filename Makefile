@@ -17,6 +17,7 @@ SRCS = srcs/colors_basics.c \
 	   srcs/canvas_and_colors.c \
 	   srcs/canvas_creation.c \
 	   srcs/canvas_pixel_to_point.c \
+	   srcs/canvas_pixel_to_point2.c \
 	   srcs/display.c \
 	   srcs/light_color_at_point.c \
 	   srcs/light_objects_normal_cy.c \
