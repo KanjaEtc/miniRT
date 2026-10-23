@@ -137,162 +137,172 @@ typedef struct s_ray
 /* =============================== PARSER ============================== */
 
 /* parsing.c */
-t_world		*ft_parser(char *file_name);
-int			ft_check_rt_extension(char *file_name);
+t_world			*ft_parser(char *file_name);
+int				ft_check_rt_extension(char *file_name);
 
 /* parsing_create_world.c */
-t_world		*ft_create_world(int fd);
+t_world			*ft_create_world(int fd);
 
 /* parsing_fill_world.c */
-t_camera	*ft_fill_c_struct(char *line);
-t_light		*ft_fill_l_struct(char *line);
-t_sphere	*ft_fill_sp_struct(char *line);
-t_plane		*ft_fill_pl_struct(char *line);
-t_cylinder	*ft_fill_cy_struct(char *line);
+t_camera		*ft_fill_c_struct(char *line);
+t_light			*ft_fill_l_struct(char *line);
+t_sphere		*ft_fill_sp_struct(char *line);
+t_plane			*ft_fill_pl_struct(char *line);
+t_cylinder		*ft_fill_cy_struct(char *line);
 
 /* parsing_infos_validity.c */
-int			ft_check_infos_validity(char **infos, char *identifier);
+int				ft_check_infos_validity(char **infos, char *identifier);
 
 /* parsing_check_identifiers.c */
 // int			ft_check_identifiers_validity(t_map *map);
-int			ft_check_mandatory_identifiers(t_world *world);
+int				ft_check_mandatory_identifiers(t_world *world);
 
 /* parsing_check_parameters.c */
 // int			ft_check_parameters(t_map *map);
 
 /* parsing_init_struct */
-t_world		*ft_init_world(void);
-t_ambient	*ft_init_ambient(void);
-t_camera	*ft_init_camera(void);
+t_world			*ft_init_world(void);
+t_ambient		*ft_init_ambient(void);
+t_camera		*ft_init_camera(void);
 
 /* parsing_init_list */
-t_light		*ft_init_lights(void);
-t_sphere	*ft_init_spheres(void);
-t_plane		*ft_init_planes(void);
-t_cylinder	*ft_init_cylinders(void);
+t_light			*ft_init_lights(void);
+t_sphere		*ft_init_spheres(void);
+t_plane			*ft_init_planes(void);
+t_cylinder		*ft_init_cylinders(void);
 
 /* =============================== CANVAS ============================== */
 
 /* canvas_and_colors.c */
-t_tuple		*ft_get_pixel_color(t_canvas *canvas, int w, int h);
-void		ft_write_pixel_color(t_canvas *canvas, int w, int h,
+t_tuple			*ft_get_pixel_color(t_canvas *canvas, int w, int h);
+void			ft_write_pixel_color(t_canvas *canvas, int w, int h,
 				t_tuple *color);
 
 /* canvas_creation.c */
-t_canvas	*ft_canvas_creator(int width, int height);
-t_tuple		**ft_pixel_grid_allocator(int width, int height);
+t_canvas		*ft_canvas_creator(int width, int height);
+t_tuple			**ft_pixel_grid_allocator(int width, int height);
 
 /* canvas_pixel_to_point.c */
-t_tuple		*ft_from_pixel_to_point(t_world *world, t_canvas *canvas,
+t_tuple			*ft_from_pixel_to_point(t_world *world, t_canvas *canvas,
 				t_tuple *pixel);
 
 /* canvas_pixel_to_point2.c */
-t_tuple		*ft_compute_point_first_part(t_tuple *right, t_tuple *up,
+t_tuple			*ft_compute_point_first_part(t_tuple *right, t_tuple *up,
 				double x, double y);
-t_tuple		*ft_compute_point_second_part(t_world *world, t_tuple *first_part);
+t_tuple			*ft_compute_point_second_part(t_world *world, t_tuple *first_part);
 
 /* =============================== COLORS ============================== */
 
 /* colors_basics.c */
-t_tuple		*ft_colors_multiplication(t_tuple *c1, t_tuple *c2);
-t_tuple		*ft_color_by_ratio_multiplication(t_tuple *color, double ratio);
-t_tuple		*ft_colors_addition(t_tuple *c1, t_tuple *c2);
-bool		ft_is_a_color(t_tuple *color);
-t_tuple		*ft_color_creator(double x, double y, double z);
+t_tuple			*ft_colors_multiplication(t_tuple *c1, t_tuple *c2);
+t_tuple			*ft_color_by_ratio_multiplication(t_tuple *color, double ratio);
+t_tuple			*ft_colors_addition(t_tuple *c1, t_tuple *c2);
+bool			ft_is_a_color(t_tuple *color);
+t_tuple			*ft_color_creator(double x, double y, double z);
 
 /* =============================== DISPLAY ETC ============================== */
 
 /* display.c */
-void		ft_display_matrix(t_matrix *matrix);
-void		ft_display_world(t_world *world);
-void		ft_display_tuple(t_tuple *t);
-void		test_fill_matrix(t_matrix *matrix, double start);
+void			ft_display_matrix(t_matrix *matrix);
+void			ft_display_world(t_world *world);
+void			ft_display_tuple(t_tuple *t);
+void			test_fill_matrix(t_matrix *matrix, double start);
 // void		ft_display_map(t_map *map);
+
+/* =============================== INTERSECTION ============================== */
+
+/* intersection.c */
+t_intersection	*ft_intersection(t_world *world, t_ray *ray);
+
+t_intersection	*ft_ray_planes_intersection(t_world *world, t_ray *ray);
+t_intersection	*ft_check_plane_intersection(t_world *world, t_ray *ray,
+	t_plane *plane);
+t_tuple			*ft_find_point_coordinates(t_ray *ray, double distance);
 
 /* =============================== LIGHT ============================== */
 
 /* light_color_at_point.c */
-t_tuple		*ft_color_at_a_point(t_world *world, t_intersection *intersection);
+t_tuple			*ft_color_at_a_point(t_world *world, t_intersection *intersection);
 
 /* light_objects_normal_cy.c */
-t_tuple		*ft_object_intersection_normal(t_intersection *intersection);
+t_tuple			*ft_object_intersection_normal(t_intersection *intersection);
 
 /* light_normal_sphere.c */
-t_tuple		*ft_normal_at_sphere_point(t_sphere *sphere, t_matrix *transform,
-				t_tuple *world_point);
-t_tuple		*ft_sphere_intersection_normal(t_intersection *intersection);
+t_tuple			*ft_normal_at_sphere_point(t_sphere *sphere, t_matrix *transform,
+					t_tuple *world_point);
+t_tuple			*ft_sphere_intersection_normal(t_intersection *intersection);
 
 /* light_phong_model.c */
-t_tuple		*ft_compute_amb(t_world *world, t_object *object);
-t_tuple		*ft_compute_diff(t_world *world, t_intersection *intersection);
-t_tuple		*ft_compute_spec(t_world *world, t_intersection *intersection);
+t_tuple			*ft_compute_amb(t_world *world, t_object *object);
+t_tuple			*ft_compute_diff(t_world *world, t_intersection *intersection);
+t_tuple			*ft_compute_spec(t_world *world, t_intersection *intersection);
 
 /* light_reflection.c */
-t_tuple		*ft_reflect(t_tuple *v_in, t_tuple *v_normal);
+t_tuple			*ft_reflect(t_tuple *v_in, t_tuple *v_normal);
 
 /* =============================== MATRICES ============================== */
 
 /* matrix_creation.c */
-t_matrix	*ft_matrix_creator(int n);
-int			ft_matrix_equality(t_matrix *a, t_matrix *b);
-t_matrix	*ft_identity_matrix_creator(int n);
-t_matrix	*ft_identity_matrix_creator(int n);
+t_matrix		*ft_matrix_creator(int n);
+int				ft_matrix_equality(t_matrix *a, t_matrix *b);
+t_matrix		*ft_identity_matrix_creator(int n);
+t_matrix		*ft_identity_matrix_creator(int n);
 
 /* matrix_operations.c */
-t_matrix	*ft_matrices_multplication(t_matrix *a, t_matrix *b);
-t_tuple		*ft_matrix_by_tuple_multiplication(t_matrix *m, t_tuple *t);
-t_matrix	*ft_transpose_matrix(t_matrix *m);
+t_matrix		*ft_matrices_multplication(t_matrix *a, t_matrix *b);
+t_tuple			*ft_matrix_by_tuple_multiplication(t_matrix *m, t_tuple *t);
+t_matrix		*ft_transpose_matrix(t_matrix *m);
 
 /* matrix_determinant.c */
-t_matrix	*ft_submatrix(t_matrix *m, int row, int col);
-double		ft_minor(t_matrix *m, int row, int col);
-double		ft_cofactor(t_matrix *m, int row, int col);
-double		ft_matrix_determinant(t_matrix *m);
+t_matrix		*ft_submatrix(t_matrix *m, int row, int col);
+double			ft_minor(t_matrix *m, int row, int col);
+double			ft_cofactor(t_matrix *m, int row, int col);
+double			ft_matrix_determinant(t_matrix *m);
 
 /* matrix_inversion.c */
-int			ft_is_matrix_invertible(t_matrix *m);
-t_matrix	*ft_inverse(t_matrix *m);
+int				ft_is_matrix_invertible(t_matrix *m);
+t_matrix		*ft_inverse(t_matrix *m);
 
 /* ============================ RAYS =========================== */
 
 /* ray_sphere_intersection.c */
-t_ray		*ft_create_ray(t_tuple *origin, t_tuple *direction);
+t_ray			*ft_create_ray(t_tuple *origin, t_tuple *direction);
 
 /* ============================ TRANSFORMATIONS =========================== */
 
 /* transformations.c */
-t_matrix	*ft_translation(double x, double y, double z);
-t_matrix	*ft_scaling(double x, double y, double z);
-t_matrix	*ft_x_axis_rotation(double radians);
-t_matrix	*ft_y_axis_rotation(double radians);
-t_matrix	*ft_z_axis_rotation(double radians);
+t_matrix		*ft_translation(double x, double y, double z);
+t_matrix		*ft_scaling(double x, double y, double z);
+t_matrix		*ft_x_axis_rotation(double radians);
+t_matrix		*ft_y_axis_rotation(double radians);
+t_matrix		*ft_z_axis_rotation(double radians);
 
 /* =============================== TUPLES ============================== */
 
 /* tuples_creation.c */
-int			ft_is_a_vector(t_tuple *tuple);
-int			ft_is_a_point(t_tuple *tuple);
-t_tuple		*ft_vector_creator(double x, double y, double z);
-t_tuple		*ft_point_creator(double x, double y, double z);
+int				ft_is_a_vector(t_tuple *tuple);
+int				ft_is_a_point(t_tuple *tuple);
+t_tuple			*ft_vector_creator(double x, double y, double z);
+t_tuple			*ft_point_creator(double x, double y, double z);
 
 /* tuples_comparison.c */
-int			ft_vectors_equality(t_tuple *v1, t_tuple *v2);
-int			ft_points_equality(t_tuple *p1, t_tuple *p2);
-double		ft_abs(double n);
+int				ft_vectors_equality(t_tuple *v1, t_tuple *v2);
+int				ft_points_equality(t_tuple *p1, t_tuple *p2);
+double			ft_abs(double n);
 
 /* tuples_basic_operations.c */
-t_tuple		*ft_tuples_addition(t_tuple *t1, t_tuple *t2);
-t_tuple		*ft_tuples_subtraction(t_tuple *t1, t_tuple *t2);
-t_tuple		*ft_tuple_opposite(t_tuple *t);
-t_tuple		*ft_vector_by_scalar_multiplication(t_tuple *vector, double scalar);
-t_tuple		*ft_vector_by_scalar_division(t_tuple *vector, double scalar);
+t_tuple			*ft_tuples_addition(t_tuple *t1, t_tuple *t2);
+t_tuple			*ft_tuples_subtraction(t_tuple *t1, t_tuple *t2);
+t_tuple			*ft_tuple_opposite(t_tuple *t);
+t_tuple			*ft_vector_by_scalar_multiplication(t_tuple *vector, double scalar);
+t_tuple			*ft_vector_by_scalar_division(t_tuple *vector, double scalar);
 
 /* tuples_complex_operations */
-double		ft_vector_length(t_tuple *v);
-t_tuple		*ft_normalize(t_tuple *vector);
-t_tuple		*ft_points_subtraction_normal(t_tuple *p1, t_tuple *p2);
-double		ft_dot_product(t_tuple *v1, t_tuple *v2);
-t_tuple		*ft_cross_product(t_tuple *v1, t_tuple *v2);
+double			ft_vector_length(t_tuple *v);
+t_tuple			*ft_normalize(t_tuple *vector);
+t_tuple			*ft_points_subtraction_normal(t_tuple *p1, t_tuple *p2);
+double			ft_dot_product(t_tuple *v1, t_tuple *v2);
+t_tuple			*ft_cross_product(t_tuple *v1, t_tuple *v2);
 
 /* tuples_utils.c */
 int			ft_is_a_normalized_vector(t_tuple *vector);
@@ -300,31 +310,31 @@ int			ft_is_a_normalized_vector(t_tuple *vector);
 /* =============================== UTILS ============================== */
 
 /* utils_list_addback.c */
-void		ft_l_addback(t_light **lights, t_light *new);
-void		ft_sp_addback(t_sphere **spheres, t_sphere *new);
-void		ft_pl_addback(t_plane **planes, t_plane *new);
-void		ft_cy_addback(t_cylinder **cylinders, t_cylinder *new);
+void			ft_l_addback(t_light **lights, t_light *new);
+void			ft_sp_addback(t_sphere **spheres, t_sphere *new);
+void			ft_pl_addback(t_plane **planes, t_plane *new);
+void			ft_cy_addback(t_cylinder **cylinders, t_cylinder *new);
 
 /* utils_list_clear.c */
-void		ft_lights_list_clear(t_light **lights);
-void		ft_spheres_list_clear(t_sphere **spheres);
-void		ft_planes_list_clear(t_plane **planes);
-void		ft_cylinders_list_clear(t_cylinder **cylinders);
+void			ft_lights_list_clear(t_light **lights);
+void			ft_spheres_list_clear(t_sphere **spheres);
+void			ft_planes_list_clear(t_plane **planes);
+void			ft_cylinders_list_clear(t_cylinder **cylinders);
 
 /* utils_free.c */
-void		*ft_free_tuple_array(t_tuple **array, int index);
-void		*ft_free_double_array(double **array, int index);
-void		*ft_free_matrix(t_matrix *m);
+void			*ft_free_tuple_array(t_tuple **array, int index);
+void			*ft_free_double_array(double **array, int index);
+void			*ft_free_matrix(t_matrix *m);
 
 /* utils_free_struct.c */
-void		*ft_free_world(t_world *world);
-void		ft_free_ambient(t_ambient *ambient);
-void		ft_free_camera(t_camera *camera);
+void			*ft_free_world(t_world *world);
+void			ft_free_ambient(t_ambient *ambient);
+void			ft_free_camera(t_camera *camera);
 
 /* utils_array.c */
-int			ft_array_length(char **array);
+int				ft_array_length(char **array);
 
 /* utils_clean_gnl.c */
-void		ft_clean_gnl(int fd);
+void			ft_clean_gnl(int fd);
 
 #endif

@@ -12,18 +12,7 @@
 
 #include "../include/header.h"
 
-t_tuple	*ft_find_point_coordinates(t_ray *ray, double distance)
-{
-	t_tuple	*tmp_vector;
-	t_tuple	*point;
-
-	tmp_vector = ft_vector_by_scalar_multiplication(ray->direction, distance);
-	point = ft_tuples_addition(ray->origin, tmp_vector);
-	free(tmp_vector);
-	return (point);
-}
-
-t_intersection	*ft_closer_intersection(t_intersection *i1, t_intersection *i2,
+static t_intersection	*ft_closer_intersection(t_intersection *i1, t_intersection *i2,
 	t_intersection *i3)
 {
 	double	min;

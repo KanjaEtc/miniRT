@@ -21,6 +21,17 @@
 	// - n = vecteur normal du plan (donne dans la map)
 	// - D = vecteur directeur du rayon
 
+t_tuple	*ft_find_point_coordinates(t_ray *ray, double distance)
+{
+	t_tuple	*tmp_vector;
+	t_tuple	*point;
+
+	tmp_vector = ft_vector_by_scalar_multiplication(ray->direction, distance);
+	point = ft_tuples_addition(ray->origin, tmp_vector);
+	free(tmp_vector);
+	return (point);
+}
+
 t_intersection	*ft_check_plane_intersection(t_world *world, t_ray *ray,
 	t_plane *plane)
 {
@@ -64,6 +75,7 @@ t_intersection	*ft_ray_planes_intersection(t_world *world, t_ray *ray)
 			ft_free_intersection(intersection);
 			intersection = tmp_intersection;
 		}
+		free(tmp_intersection);
 		tmp_plane = tmp_plane->next;
 	}
 	return (intersection);
